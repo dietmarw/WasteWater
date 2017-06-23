@@ -1,9 +1,9 @@
-within ;
+﻿within ;
 package WasteWater "Modelica WasteWater Library"
 extends Modelica.Icons.Library;
 
 
-annotation (uses(Modelica(version="3.2.1")),
+annotation (uses(Modelica(version="3.2.2")),
   Documentation(info="<html>
 <p>This package can be used to model and simulate biological municipal
 wastewater treatment plants.</p>
@@ -45,6 +45,7 @@ email: <a href=\"mailto:gerald.reichl@tu-ilmenau.de\">gerald.reichl@tu-ilmenau.d
 <h5>version 2.0.1 (2003)</h5>
 <p>First official version of the library released at 3rd Modelica Conference.</p>
 </html>"),
-  version="2.1.0",
-  conversion(from(version="2.0.1", script="Resources/Scripts/ConvertFromWasteWater_2.0.1.mos")));
+  version="2.1.1",
+  conversion(from(version="2.0.1", script="Resources/Scripts/ConvertFromWasteWater_2.0.1.mos"),
+      noneFromVersion="2.1.0"));
 end WasteWater;
