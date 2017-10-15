@@ -17,7 +17,7 @@ package WasteWaterUnits
         final unit="m/d");
 
   type SedimentationFlux = Real (final quantity="SedimentationFlux", final unit=
-         "g/(m2*d)");
+         "g/(m2.d)");
 
   type SludgeVolumeIndex = Real (final quantity="SludgeVolumeIndex", final unit=
          "ml/g");
