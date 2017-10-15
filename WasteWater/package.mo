@@ -2,6 +2,7 @@
 package WasteWater "Modelica WasteWater Library"
 extends Modelica.Icons.Library;
 
+  import SI=Modelica.SIunits "Importing SIunits on global level";
 
 annotation (uses(Modelica(version="3.2.2")),
   Documentation(info="<html>
