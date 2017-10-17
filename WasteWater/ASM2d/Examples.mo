@@ -4,8 +4,7 @@ package Examples
 
   extends Modelica.Icons.Library;
 
-  class SmallPlant "Small WWTP Configuration"
-    import WasteWater;
+  model SmallPlant "Small WWTP Configuration"
 
     //Q_air=12100.99290780142 is equal to a Kla of 3.5 h^-1 from COST benchmark
     extends Modelica.Icons.Example;
@@ -171,8 +170,7 @@ Main Author:
 "));
   end SmallPlant;
 
-  class BenchPlant "COST Benchmark WWTP Configuration"
-    import WasteWater;
+  model BenchPlant "COST Benchmark WWTP Configuration"
 
     //Q_air=12100.99290780142 is equal to a Kla of 3.5 h^-1 from COST benchmark
 
@@ -371,7 +369,6 @@ References:
   end BenchPlant;
 
   model ComplexPlant "Complex ASM2d WWTP"
-    import WasteWater;
     extends Modelica.Icons.Example;
 
     ControlledDivider2 cdivider1 annotation (Placement(transformation(extent={{
