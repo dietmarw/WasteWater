@@ -936,12 +936,6 @@ Parameters:
 
     ASM1.mixer3 mixer annotation (Placement(transformation(extent={{-104,22},{
               -84,42}})));
-    Modelica.Blocks.Sources.CombiTimeTable CombiTableTime(
-      fileName=Modelica.Utilities.Files.loadResource("modelica://WasteWater/Resources/ASM1/Inf_dry.txt"),
-      columns=integer(({16,3,4,5,6,7,8,9,10,11,12,13,14,15})),
-      tableName="Inf_dry",
-      tableOnFile=("Inf_dry") <> "NoName") annotation (Placement(transformation(
-            extent={{-114,78},{-94,98}})));
     ASM1.WWSource WWSource annotation (Placement(transformation(extent={{-88,78},
               {-68,98}})));
     ASM1.blower blower1(Q_max=34574.2654508612) annotation (Placement(
@@ -985,7 +979,7 @@ Parameters:
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
             extent={{32,14},{49,30}})));
     WasteWater.ASM1.Examples.SmallPlantIni ini annotation (Placement(transformation(extent={{-10,80},{10,100}})));
-    Modelica.Blocks.Sources.Constant constantInflow[14](k={ini.Q,ini.Si,ini.Ss,ini.Xi,ini.Xs,ini.Xbh,ini.Xba,ini.Xp,ini.So,ini.Sno,ini.Snh,ini.Snd,ini.Xnd,ini.Salk}) annotation (Placement(transformation(extent={{-41,80},{-29,92}})));
+    Modelica.Blocks.Sources.Constant constantInflow[14](k={ini.Q,ini.Si,ini.Ss,ini.Xi,ini.Xs,ini.Xbh,ini.Xba,ini.Xp,ini.So,ini.Sno,ini.Snh,ini.Snd,ini.Xnd,ini.Salk}) annotation (Placement(transformation(extent={{-112,82},{-100,94}})));
   equation
     connect(tank3.Out, divider.In) annotation (Line(points={{14,4},{
             17,4},{17,4.3},{20,4.3}}));
@@ -993,8 +987,6 @@ Parameters:
             {-77,31.6},{-77,4},{-65,4}}));
     connect(mixer.In1, WWSource.Out) annotation (Line(points={{-104,
             35.5},{-104,74},{-68,74},{-68,81},{-68.2,81}}));
-    connect(CombiTableTime.y, WWSource.data)
-      annotation (Line(points={{-93,88},{-87,88}}));
     connect(blower2.AirOut, tank3.AirIn) annotation (Line(points={{3,-42},
             {3,-24},{4,-24},{4,-5.8}}));
     connect(Feedback.y, PI1.u) annotation (Line(points={{81,50},{86,50}}));
@@ -1061,6 +1053,7 @@ Parameters:
     connect(sensor_TSS1.In, divider.Out1) annotation (Line(points={{40.5,14},
             {40.5,10.6},{40,10.6},{40,6.6}}));
 
+    connect(constantInflow.y, WWSource.data) annotation (Line(points={{-99.4,88},{-87,88}}, color={0,0,127}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,
