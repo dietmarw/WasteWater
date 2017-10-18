@@ -13,14 +13,6 @@ model deni "ASM1 denitrification tank"
   // tank specific parameters
   parameter Modelica.SIunits.Volume V=1000 "Volume of denitrification tank";
 
-  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
-            -10},{-90,10}})));
-  Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
-            -10},{110,10}})));
-  Interfaces.WWFlowAsm1out MeasurePort annotation (Placement(transformation(
-          extent={{50,40},{60,50}})));
-  Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
-          extent={{-110,30},{-90,50}})));
 equation
 
   aeration = 0;
@@ -71,14 +63,6 @@ model nitri "ASM1 nitrification tank"
   parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
   WWU.MassConcentration So_sat "Dissolved oxygen saturation";
 
-  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
-            -10},{-90,10}})));
-  Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
-            -10},{110,10}})));
-  Interfaces.WWFlowAsm1out MeasurePort annotation (Placement(transformation(
-          extent={{50,40},{60,50}})));
-  Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
-          extent={{-110,30},{-90,50}})));
   Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-5,
             -103},{5,-93}})));
 equation
@@ -272,13 +256,15 @@ model blower "Blower for the aeration of the nitrification tanks"
   Real H;
   // this is just a help variable to reduce expressions
 
-  Interfaces.AirFlow AirOut annotation (Placement(transformation(extent={{-20,
-            90},{0,110}})));
+  Interfaces.AirFlow AirOut annotation (Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(extent={{-10,90},{10,110}})));
   Modelica.Blocks.Interfaces.RealInput u
     annotation (Placement(transformation(
         origin={98,-30},
         extent={{-10,-10},{10,10}},
-        rotation=180)));
+        rotation=180), iconTransformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={110,-30})));
 equation
 
   H =0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
@@ -311,8 +297,7 @@ model pump "ASM1 wastewater pump"
 
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -43},{-90,-23}})));
-  Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
-            18},{110,38}})));
+  Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,16},{110,36}}), iconTransformation(extent={{90,16},{110,36}})));
   Modelica.Blocks.Interfaces.RealInput u annotation (Placement(transformation(
           extent={{-99,15},{-79,35}})));
 equation
@@ -471,8 +456,7 @@ model SludgeSink "Wastesludge sink"
   // only for graphical termination in diagram layer, no equation needed
 
   extends WasteWater.Icons.SludgeSink;
-  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
-            -22},{-90,-2}})));
+  Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,-24},{-90,-4}}), iconTransformation(extent={{-110,-24},{-90,-4}})));
   annotation (
     Documentation(info="This component terminates the waste sludge stream of an ASM1 wastewater treatment plant model.
 Storage or further sludge treatment is not jet considered."));

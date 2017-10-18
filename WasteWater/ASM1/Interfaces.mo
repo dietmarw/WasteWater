@@ -184,7 +184,7 @@ air between blower and nitrification tank."));
     Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{
               90,-10},{110,10}})));
     Interfaces.WWFlowAsm1out MeasurePort annotation (Placement(transformation(
-            extent={{50,40},{60,50}})));
+            extent={{54,40},{66,52}})));
     Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
             extent={{-110,30},{-90,50}})));
   equation

@@ -224,12 +224,12 @@ package Icons "Icon definitions for the WasteWater library"
             fillPattern=FillPattern.Solid),
           Line(points={{-90,40},{-55,40}}),
           Rectangle(
-            extent={{54,-6},{57,40}},
+            extent={{58,-6},{61,40}},
             lineColor={0,0,0},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{51,-6},{61,-16}},
+            extent={{55,-6},{65,-16}},
             lineColor={0,0,0},
             lineThickness=0.5,
             fillColor={192,192,192},
@@ -1043,12 +1043,12 @@ package Icons "Icon definitions for the WasteWater library"
             fillColor={0,127,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{54,-6},{57,40}},
+            extent={{58,-6},{61,40}},
             lineColor={0,0,0},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{50,-6},{60,-16}},
+            extent={{54,-6},{64,-16}},
             lineColor={0,0,0},
             lineThickness=0.5,
             fillColor={192,192,192},
@@ -1650,295 +1650,291 @@ package Icons "Icon definitions for the WasteWater library"
   partial model blower "Icon for an air blower"
     annotation (
       Icon(graphics={
-          Text(extent={{-101,-70},{70,-99}}, textString=
+          Text(extent={{-91,-70},{80,-99}},  textString=
                                                  "%name"),
           Rectangle(
-            extent={{-90,10},{-10,-68}},
+            extent={{-80,10},{0,-68}},
             lineColor={0,0,0},
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-87,7},{-13,-65}},
+            extent={{-77,7},{-3,-65}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={128,128,128}),
           Rectangle(
-            extent={{-80,-74},{-60,-68}},
+            extent={{-70,-74},{-50,-68}},
             lineColor={0,0,0},
             fillColor={0,0,0},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-84,5},{-16,-63}},
+            extent={{-74,5},{-6,-63}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-51,-24},{-24,-9},{-47,-25},{-51,-24}},
+            points={{-41,-24},{-14,-9},{-37,-25},{-41,-24}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-53,-35},{-73,-53},{-49,-35},{-53,-35}},
+            points={{-43,-35},{-63,-53},{-39,-35},{-43,-35}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-48,-29},{-28,-51},{-48,-33},{-48,-29}},
+            points={{-38,-29},{-18,-51},{-38,-33},{-38,-29}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-56,-32},{-72,-6},{-56,-27},{-56,-32}},
+            points={{-46,-32},{-62,-6},{-46,-27},{-46,-32}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-46,-26},{-18,-33},{-46,-29},{-46,-26}},
+            points={{-36,-26},{-8,-33},{-36,-29},{-36,-26}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Polygon(
-            points={{-46,-34},{-50,-60},{-49,-34},{-46,-34}},
+            points={{-36,-34},{-40,-60},{-39,-34},{-36,-34}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-54,-35},{-82,-27},{-54,-32},{-54,-35}},
+            points={{-44,-35},{-72,-27},{-44,-32},{-44,-35}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-56,-26},{-48,3},{-52,-26},{-56,-26}},
+            points={{-46,-26},{-38,3},{-42,-26},{-46,-26}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-58,-23},{-44,-36}},
+            extent={{-48,-23},{-34,-36}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-86,-53},{-12,-55}},
+            extent={{-76,-53},{-2,-55}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-87,-19},{-12,-21}},
+            extent={{-77,-19},{-2,-21}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-87,-2},{-12,-4}},
+            extent={{-77,-2},{-2,-4}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{12,32},{48,10}},
+            extent={{22,32},{58,10}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{12,52},{48,17}},
+            extent={{22,52},{58,17}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-66,34},{-34,16}},
+            extent={{-56,34},{-24,16}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-49,40},{-52,35},{-50,35},{-50,22},{-48,22},{-48,35},{-46,
-                35},{-49,40}},
+            points={{-39,40},{-42,35},{-40,35},{-40,22},{-38,22},{-38,35},{-36,35},{-39,40}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={159,223,223},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-87,-38},{-12,-40}},
+            extent={{-77,-38},{-2,-40}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-68,33},{-32,10}},
+            extent={{-58,33},{-22,10}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-68,52},{-32,18}},
+            extent={{-58,52},{-22,18}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-65,50},{-34,19}},
+            extent={{-55,50},{-24,19}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-53,52},{31,29}},
+            extent={{-43,52},{41,29}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-54,49},{29,32}},
+            extent={{-44,49},{39,32}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-65,35},{-35,16}},
+            extent={{-55,35},{-25,16}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{15,34},{45,16}},
+            extent={{25,34},{55,16}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-27,90},{7,52}},
+            extent={{-17,90},{17,52}},
             lineColor={0,0,0},
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-24,83},{4,48}},
+            extent={{-14,83},{14,48}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{16,49},{45,19}},
+            extent={{26,49},{55,19}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-10,10},{70,-68}},
+            extent={{0,10},{80,-68}},
             lineColor={0,0,0},
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-7,7},{67,-65}},
+            extent={{3,7},{77,-65}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={128,128,128}),
           Rectangle(
-            extent={{40,-74},{60,-68}},
+            extent={{50,-74},{70,-68}},
             lineColor={0,0,0},
             fillColor={0,0,0},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{-4,5},{64,-63}},
+            extent={{6,5},{74,-63}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={127,191,255},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{29,-24},{56,-9},{33,-25},{29,-24}},
+            points={{39,-24},{66,-9},{43,-25},{39,-24}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{27,-35},{7,-53},{31,-35},{27,-35}},
+            points={{37,-35},{17,-53},{41,-35},{37,-35}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{32,-29},{52,-51},{32,-33},{32,-29}},
+            points={{42,-29},{62,-51},{42,-33},{42,-29}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{24,-32},{8,-6},{24,-27},{24,-32}},
+            points={{34,-32},{18,-6},{34,-27},{34,-32}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{34,-26},{62,-33},{34,-29},{34,-26}},
+            points={{44,-26},{72,-33},{44,-29},{44,-26}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Polygon(
-            points={{34,-34},{30,-60},{31,-34},{34,-34}},
+            points={{44,-34},{40,-60},{41,-34},{44,-34}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{26,-35},{-2,-27},{26,-32},{26,-35}},
+            points={{36,-35},{8,-27},{36,-32},{36,-35}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{24,-26},{32,3},{28,-26},{24,-26}},
+            points={{34,-26},{42,3},{38,-26},{34,-26}},
             lineColor={128,128,128},
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Ellipse(
-            extent={{22,-23},{36,-36}},
+            extent={{32,-23},{46,-36}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-8,-53},{66,-55}},
+            extent={{2,-53},{76,-55}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-8,-19},{66,-21}},
+            extent={{2,-19},{76,-21}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-8,-2},{66,-4}},
+            extent={{2,-2},{76,-4}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-8,-38},{66,-40}},
+            extent={{2,-38},{76,-40}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{70,-13},{80,-47}},
+            extent={{80,-13},{90,-47}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{80,-27},{87,-33}},
+            extent={{90,-27},{97,-33}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={160,160,164}),
           Rectangle(
-            extent={{85,-21},{88,-39}},
+            extent={{95,-21},{98,-39}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={128,128,128}),
           Polygon(
-            points={{-49,41},{-55,35},{-51,35},{-51,22},{-48,22},{-48,35},{-44,
-                35},{-49,41}},
+            points={{-39,41},{-45,35},{-41,35},{-41,22},{-38,22},{-38,35},{-34,35},{-39,41}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={159,223,223},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{29,41},{23,35},{27,35},{27,22},{30,22},{30,35},{34,35},{29,
-                41}},
+            points={{39,41},{33,35},{37,35},{37,22},{40,22},{40,35},{44,35},{39,41}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={159,223,223},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-11,74},{-16,68},{-12,68},{-12,55},{-9,55},{-9,68},{-5,68},
-                {-11,74}},
+            points={{-1,74},{-6,68},{-2,68},{-2,55},{1,55},{1,68},{5,68},{-1,74}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={159,223,223},
@@ -2821,8 +2817,7 @@ package Icons "Icon definitions for the WasteWater library"
 
   partial model sensor_NH "Icon for an ammonium nitrogen sensor"
     extends sensor;
-    annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                             "NH")}));
+    annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="NH")}));
   end sensor_NH;
 
   partial model sensor_NO "Icon for a nitrate nitrogen sensor
@@ -2835,40 +2830,34 @@ package Icons "Icon definitions for the WasteWater library"
 
   partial model sensor_O2 "Icon for an oxygen sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "02")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="02")}));
 
   end sensor_O2;
 
   partial model sensor_PO "Icon for a phosphate sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "PO")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="PO")}));
   end sensor_PO;
 
   partial model sensor_Q "Icon for a flow sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "Q")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="Q")}));
   end sensor_Q;
 
   partial model sensor_TKN
     "Icon for a Kjeldal nitrogen and total nitrogen sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "TKN")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="TKN")}));
   end sensor_TKN;
 
   partial model sensor_TP "Icon for a total phosphorus sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "TP")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="TP")}));
   end sensor_TP;
 
   partial model sensor_TSS "Icon for a total suspended solids sensor"
     extends sensor;
-      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString
-              =                                                               "TSS")}));
+      annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="TSS")}));
   end sensor_TSS;
 
   annotation (

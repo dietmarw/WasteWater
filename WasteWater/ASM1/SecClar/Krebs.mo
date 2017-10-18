@@ -91,8 +91,7 @@ Copyright (C) 2003, Gerald Reichl
     Real te "thickening time in sludge layer in [d]";
     SI.Length hs "height of sludge layer";
     SI.Length he "height of excess layer";
-    WI.WWFlowAsm1in Feed annotation (Placement(transformation(extent={{-110,4},
-              {-90,24}})));
+    WI.WWFlowAsm1in Feed annotation (Placement(transformation(extent={{-110,4},{-90,24}}), iconTransformation(extent={{-110,4},{-90,24}})));
     WI.WWFlowAsm1out Effluent annotation (Placement(transformation(extent={{92,
               47},{112,67}})));
     WI.WWFlowAsm1out Return annotation (Placement(transformation(extent={{-40,
@@ -112,13 +111,12 @@ Copyright (C) 2003, Gerald Reichl
     rXi = Feed.Xi/Xf;
     rXnd = Feed.Xnd/Xf;
 
-      //following expression is only for steady state initial equation of XB and is necessary
-
-      //to calculate hs, if there would be problems with "initial()" in your modelica version
-    //leave out this term and initial XB (or hs) manually e.g. via script-file
-    if initial() then
-      XB = Feed.Q/(0.7*(-(Return.Q + Waste.Q)))*Xf;
-    end if;
+    /* following expression is only for steady state initial equation of XB and is necessary
+     to calculate hs, if there would be problems with "initial()" in your modelica version
+     leave out this term and initial XB (or hs) manually e.g. via script-file */
+  //   if initial() then
+  //     XB = Feed.Q/(0.7*(-(Return.Q + Waste.Q)))*Xf;
+  //   end if;
 
     //thickening time in sludge layer in [d]
     te = 5/7*Asc*hs/(-(Return.Q + Waste.Q));

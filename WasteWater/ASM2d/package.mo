@@ -1,4 +1,4 @@
-within WasteWater;
+﻿within WasteWater;
 package ASM2d "Component models for the Activated Sludge Model No.2d"
 extends Modelica.Icons.Library;
 
