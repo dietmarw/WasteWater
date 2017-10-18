@@ -643,11 +643,11 @@ end mixer3;
 
 
 model sensor_COD "Ideal sensor to measure chemical oxygen demand (COD)"
-
   extends WasteWater.Icons.sensor_COD;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput COD annotation (Placement(
+  WasteWater.Interfaces.MassConcentrationOutput
+                                        COD annotation (Placement(
         transformation(extent={{88,-10},{108,10}})));
 equation
 
@@ -667,7 +667,7 @@ model sensor_NH "Ideal sensor to measure ammonium nitrogen"
   extends WasteWater.Icons.sensor_NH;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput Snh annotation (Placement(
+  WasteWater.Interfaces.MassConcentrationOutput Snh annotation (Placement(
         transformation(extent={{88,-10},{108,10}})));
 equation
 
@@ -687,7 +687,7 @@ model sensor_NO "Ideal sensor to measure nitrate nitrogen"
   extends WasteWater.Icons.sensor_NO;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput Sno annotation (Placement(
+  WasteWater.Interfaces.MassConcentrationOutput Sno annotation (Placement(
         transformation(extent={{88,-10},{108,10}})));
 equation
 
@@ -707,7 +707,7 @@ model sensor_O2 "Ideal sensor to measure dissolved oxygen concentration"
   extends WasteWater.Icons.sensor_O2;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput So annotation (Placement(transformation(
+  WasteWater.Interfaces.MassConcentrationOutput So annotation (Placement(transformation(
           extent={{88,-10},{108,10}})));
 equation
 
@@ -770,7 +770,7 @@ model sensor_Q
             -10},{-90,10}})));
   Interfaces.WWFlowAsm1out Out annotation (Placement(transformation(extent={{90,
             -10},{110,10}})));
-  Modelica.Blocks.Interfaces.RealOutput Q
+  WasteWater.Interfaces.VolumeFlowRateOutput Q
     annotation (Placement(transformation(
         origin={0,-98},
         extent={{-10,-10},{10,10}},
@@ -808,7 +808,7 @@ model sensor_TKN "Ideal TKN and total nitrogen sensor"
   extends Interfaces.stoichiometry;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput TKN[2]
+  WasteWater.Interfaces.MassConcentrationOutput TKN[2]
     annotation (Placement(transformation(extent={{88,-10},{108,10}})));
 equation
 
@@ -834,7 +834,7 @@ model sensor_TSS
   extends WasteWater.Icons.sensor_TSS;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}})));
-  Modelica.Blocks.Interfaces.RealOutput TSS annotation (Placement(
+  WasteWater.Interfaces.MassConcentrationOutput TSS annotation (Placement(
         transformation(extent={{88,-10},{108,10}})));
 equation
 
