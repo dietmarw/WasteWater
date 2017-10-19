@@ -62,7 +62,7 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
 </p>
 </html>"));
   connector WWFlow "Waste water flow connector"
-    parameter Boolean InIcon = true "If true In-icon else Out-icon";
+    parameter Boolean FilledIcon = true "If true a filled icon = inport is displayed";
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration Si;
     WWU.MassConcentration Ss;
@@ -91,18 +91,18 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
               fillColor={191,95,0},
               fillPattern=FillPattern.Solid),
             Rectangle(
-              visible=not InIcon,
+              visible=not FilledIcon,
               extent={{-100,100},{100,-100}},
               lineColor={191,95,0}),
             Text(
-              visible=InIcon,
+              visible=FilledIcon,
               extent={{-100,40},{100,-40}},
               lineColor={255,255,255},
               fillColor={0,0,0},
               fillPattern=FillPattern.Solid,
               textString="%name"),
               Text(
-              visible=not InIcon,
+              visible=not FilledIcon,
               extent={{-100,40},{100,-40}},
               lineColor={191,95,0},
               fillColor={0,0,0},
@@ -119,7 +119,7 @@ of:
   <li>ASM3: 13 potential variables (ASM3 concentrations)</li>
 </ul>
 <p>
-The parameter <code>InIcon</code> controls the design only.
+The parameter <code>FilledIcon</code> controls the design only.
 </p>
 </html>
 "));
@@ -151,15 +151,7 @@ air between blower and nitrification tank.
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
 
-    // parameters based on the original ASM1 publication based on 15 deg C
-    Real mu_h "Maximum heterotrophic growth rate f(T) [day^-1]";
-    Real b_h "Heterotrophic decay rate f(T) [day^-1]";
-    Real mu_a "Maximum autotrophic growth rate f(T) [day^-1]";
-    //Real K_nh "Half-saturation (auto. growth) f(T) [g NH-N/m3]";
-    Real b_a "Autotrophic decay rate f(T) [day^-1]";
-    Real k_a "Ammonification rate f(T) [m3/(g COD day)]";
-    Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
-    Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
+    /* parameters based on the original ASM1 publication based on 15 deg C */
 
     parameter Real mu_h_T=4.0
       "Maximum heterotrophic growth rate at T=15 deg C [day^-1]";
@@ -180,6 +172,15 @@ air between blower and nitrification tank.
     parameter Real K_oa=0.4 "Half-saturation (auto. oxygen) [g O/m3]";
     parameter Real ny_g=0.8 "Anoxic growth rate correction factor [-]";
     parameter Real ny_h=0.4 "Anoxic hydrolysis rate correction factor [-]";
+
+    Real mu_h "Maximum heterotrophic growth rate f(T) [day^-1]";
+    Real b_h "Heterotrophic decay rate f(T) [day^-1]";
+    Real mu_a "Maximum autotrophic growth rate f(T) [day^-1]";
+    //Real K_nh "Half-saturation (auto. growth) f(T) [g NH-N/m3]";
+    Real b_a "Autotrophic decay rate f(T) [day^-1]";
+    Real k_a "Ammonification rate f(T) [m3/(g COD day)]";
+    Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
+    Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
 
     WWU.MassConcentration Si(fixed=true) "Soluble inert organic matter";
     WWU.MassConcentration Ss(fixed=true) "Readily biodegradable substrate";
@@ -203,6 +204,7 @@ air between blower and nitrification tank.
     Real p6;
     Real p7;
     Real p8;
+
     Real r1;
     Real r2;
     Real r3;
@@ -232,11 +234,12 @@ air between blower and nitrification tank.
     Real inputSalk;
     Real aeration;
 
-    WWFlow                       In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-    WWFlow                        Out(InIcon=false)
-                                      annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-    WWFlow                        MeasurePort(InIcon=false)
-                                              annotation (Placement(transformation(extent={{54,40},{66,52}})));
+    WWFlow In
+      annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+    WWFlow Out(FilledIcon=false)
+      annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    WWFlow MeasurePort(FilledIcon=false)
+      annotation (Placement(transformation(extent={{54,40},{66,52}})));
     Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
             extent={{-120,30},{-100,50}})));
 
@@ -322,7 +325,7 @@ Copyright (C) 2000 - 2002, Gerald Reichl
 "));
   end ASMbase;
 
-  partial model AMS1 "ASM1 specfic settings"
+  partial model ASM1 "ASM1 specfic settings"
     extends ASMbase;
 
     // Stoichiometric parameters based on the original ASM1 publication//
@@ -380,9 +383,8 @@ Copyright (C) 2000 - 2002, Gerald Reichl
          + ny_h*(K_oh/(K_oh + So))*(Sno/(K_no + Sno)))*Xbh;
     p8 = p7*Xnd/Xs;
 
-
     annotation (
       Documentation(info="<html>
     <p>This is a partial model providing the AMS1 specifc settings.</p></html>"));
-  end AMS1;
+  end ASM1;
 end Interfaces;
