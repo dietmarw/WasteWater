@@ -2,7 +2,9 @@
 package WasteWater "Modelica WasteWater Library"
 extends Modelica.Icons.Library;
 
+  /* global imports  for the library */
   import SI=Modelica.SIunits "Importing SIunits on global level";
+  import WWU = WasteWater.WasteWaterUnits "Short-cut for WW units";
 
 annotation (uses(Modelica(version="3.2.2")),
   Documentation(info="<html>
