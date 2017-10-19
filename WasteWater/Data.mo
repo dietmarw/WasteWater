@@ -3,7 +3,6 @@ package Data
   extends Modelica.Icons.VariantsPackage;
   record SmallPlantIni "Initialisation record for ASM1 SmallPlant model"
     extends Modelica.Icons.Record;
-    import WWU = WasteWater.WasteWaterUnits;
     /* PI Controller */
     parameter Real PI1_x=-3.511076570565e-004 "Start output of controller"
       annotation (Dialog(group="PI Controller"));
