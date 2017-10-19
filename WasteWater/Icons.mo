@@ -2769,6 +2769,8 @@ package Icons "Icon definitions for the WasteWater library"
   end mixer3;
 
   partial model sensor "Icon for a genric sensor"
+    parameter String Substance="" "Name of substance to be displayed";
+
     annotation (
       Icon(graphics={
           Ellipse(
@@ -2805,7 +2807,11 @@ package Icons "Icon definitions for the WasteWater library"
           Line(
             points={{0,-50},{0,-90}},
             thickness=0.5),
-          Line(points={{50,0},{88,0}})}));
+          Line(points={{50,0},{88,0}}),
+          Text(
+            extent={{-40,0},{40,-40}},
+            lineColor={0,0,0},
+            textString="%Substance")}));
   end sensor;
 
   partial model sensor_COD "Icon for a chemical oxygen demand sensor"
@@ -2859,7 +2865,6 @@ package Icons "Icon definitions for the WasteWater library"
     extends sensor;
       annotation (Icon(graphics={Text(extent={{-36,-10},{36,-32}}, textString="TSS")}));
   end sensor_TSS;
-
   annotation (
     Documentation(info="This package is part of the WasteWater Library and contains
 definitions for the graphical layout of components which are
