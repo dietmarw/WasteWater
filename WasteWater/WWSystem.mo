@@ -7,5 +7,5 @@ record WWSystem "Global settings for the waste water system to be modelled."
       ASM3 "ASM3") "Type of WWSystem";
 
       parameter WWType WWtype=WasteWater.WWSystem.WWType.ASM1;
-
+      annotation(defaultComponentName="WWS");
 end WWSystem;
