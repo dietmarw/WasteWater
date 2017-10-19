@@ -85,7 +85,7 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
           grid={2,2}),
           graphics={
             Rectangle(
-              visible=InIcon,
+              visible=FilledIcon,
               extent={{-100,100},{100,-100}},
               lineColor={191,95,0},
               fillColor={191,95,0},
