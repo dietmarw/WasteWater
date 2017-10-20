@@ -93,7 +93,9 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
             Rectangle(
               visible=not FilledIcon,
               extent={{-100,100},{100,-100}},
-              lineColor={191,95,0}),
+              lineColor={191,95,0},
+              fillColor={255,255,255},
+              fillPattern=FillPattern.Solid),
             Text(
               visible=FilledIcon,
               extent={{-100,40},{100,-40}},
@@ -149,7 +151,7 @@ air between blower and nitrification tank.
               textString="%name")}));
   end AirFlow;
 
-  model TankInterface
+  partial model Tank
     parameter Boolean useAir=false
       "Enable air port"
       annotation(choices(checkBox=true));
@@ -157,12 +159,19 @@ air between blower and nitrification tank.
     WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
     AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
     Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
-            extent={{-140,20},{-100,60}})));
+            extent={{-100,30},{-80,50}}), iconTransformation(extent={{-100,30},{-80,50}})));
+
+  equation
+
+    if useAir then
+      aeration = 0 "no aeration in this tank";
+    end if;
+
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
-  end TankInterface;
+  end Tank;
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
-    extends TankInterface;
+    extends Tank;
 
     /* parameters based on the original ASM1 publication based on 15 deg C */
 
@@ -312,7 +321,11 @@ This package is free software; it can be redistributed and/or modified under the
 disclaimer in the documentation of package Modelica in file \"Modelica/package.mo\".
 
 Copyright (C) 2000 - 2002, Gerald Reichl
-"));
+"), Icon(graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={191,91,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid)}));
   end ASMbase;
 
   model ASM1 "ASM1 specfic settings"
@@ -373,8 +386,90 @@ Copyright (C) 2000 - 2002, Gerald Reichl
          + ny_h*(K_oh/(K_oh + So))*(Sno/(K_no + Sno)))*Xbh;
     p8 = p7*Xnd/Xs;
 
-    annotation (
+    annotation (defaultComponentName="ASM1",
       Documentation(info="<html>
-    <p>This is a partial model providing the AMS1 specifc settings.</p></html>"));
+    <p>This is a partial model providing the AMS1 specifc settings.</p></html>"),
+      Icon(graphics={                                                                              Text(
+            extent={{-80,80},{80,-80}},
+            lineColor={0,0,0},
+            textString="%name")}));
   end ASM1;
+
+  model ASM2d "ASM1 specfic settings"
+    extends ASMbase;
+
+    // Stoichiometric parameters based on the original ASM1 publication//
+    parameter Real Y_h=0.67
+      "Heterotrophic Yield [g Xbh COD formed/(g COD utilised)]"
+      annotation(Dialog(tab="Stoichiometric", group="Stoichiometric parameters"));
+    parameter Real Y_a=0.24
+      "Autotrophic Yield [g Xba COD formed/(g N utilised)]"
+      annotation(Dialog(tab="Stoichiometric", group="Stoichiometric parameters"));
+    parameter Real f_p=0.08 "Fraction of biomass to particulate products [-]"
+      annotation(Dialog(tab="Stoichiometric", group="Stoichiometric parameters"));
+    parameter Real i_xb=0.086 "Fraction nitrogen in biomass [g N/(g COD)]"
+      annotation(Dialog(tab="Stoichiometric", group="Stoichiometric parameters"));
+    parameter Real i_xp=0.06
+      "Fraction nitrogen in particulate products [g N/(g COD)]"
+      annotation(Dialog(tab="Stoichiometric", group="Stoichiometric parameters"));
+
+  equation
+
+    /* Temperature dependent Kinetic parameters based on 15 deg C */
+    /* may be adapted to 10 or 20 deg C */
+    mu_h = mu_h_T*exp(0.069*(T - 15));
+    b_h  = b_h_T*exp(0.069*(T - 15));
+    mu_a = mu_a_T*exp(0.098*(T - 15));
+    //K_nh=1.0*exp(0.069*(T.signal[1]-15));
+    b_a  = b_a_T*exp(0.08*(T - 15));
+    k_a  = k_a_T*exp(0.069*(T - 15));
+    k_h  = k_h_T*exp(0.11*(T - 15));
+    K_x  = K_x_T*exp(0.11*(T - 15));
+
+    /* Biochemical Reactions */
+    r1 = 0;
+    r2 = (-p1 - p2)/Y_h + p7;
+    r3 = 0;
+    r4 = (1 - f_p)*(p4 + p5) - p7;
+    r5 = p1 + p2 - p4;
+    r6 = p3 - p5;
+    r7 = f_p*(p4 + p5);
+    r8 = -((1 - Y_h)/Y_h)*p1 - ((4.57 - Y_a)/Y_a)*p3;
+    r9 = -((1 - Y_h)/(2.86*Y_h))*p2 + p3/Y_a;
+    r10 = -i_xb*(p1 + p2) - (i_xb + (1/Y_a))*p3 + p6;
+    r11 = -p6 + p8;
+    r12 = (i_xb - f_p*i_xp)*(p4 + p5) - p8;
+    r13 = -i_xb/14*p1 + ((1 - Y_h)/(14*2.86*Y_h) - (i_xb/14))*p2 - ((i_xb/14)
+       + 1/(7*Y_a))*p3 + p6/14;
+
+    /* Process Rates */
+    p1 = mu_h*(Ss/(K_s + Ss))*(So/(K_oh + So))*Xbh;
+    p2 = mu_h*(Ss/(K_s + Ss))*(K_oh/(K_oh + So))*(Sno/(K_no + Sno))*ny_g*Xbh;
+    p3 = mu_a*(Snh/(K_nh + Snh))*(So/(K_oa + So))*Xba;
+    p4 = b_h*Xbh;
+    p5 = b_a*Xba;
+    p6 = k_a*Snd*Xbh;
+    p7 = k_h*((Xs/Xbh)/(K_x + (Xs/Xbh)))*((So/(K_oh + So))
+         + ny_h*(K_oh/(K_oh + So))*(Sno/(K_no + Sno)))*Xbh;
+    p8 = p7*Xnd/Xs;
+
+    annotation (defaultComponentName="ASM1",
+      Documentation(info="<html>
+    <p>This is a partial model providing the AMS1 specifc settings.</p></html>"),
+      Icon(graphics={                                                                              Text(
+            extent={{-80,80},{80,-80}},
+            lineColor={0,0,0},
+            textString="%name")}));
+  end ASM2d;
+
+  model ASMx
+    extends Tank;
+    replaceable ASMbase WWbase annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+  equation
+    connect(WWbase.In, In) annotation (Line(points={{-10,0},{-100,0}}, color={191,95,0}));
+    connect(WWbase.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
+    connect(WWbase.T, T) annotation (Line(points={{-9,4},{-52,4},{-52,40},{-90,40}}, color={0,0,127}));
+    connect(AirIn, WWbase.AirIn) annotation (Line(points={{0,-100},{0,-10}}, color={28,108,200}));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
+  end ASMx;
 end Interfaces;
