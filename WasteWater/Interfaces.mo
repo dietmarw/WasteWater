@@ -149,7 +149,20 @@ air between blower and nitrification tank.
               textString="%name")}));
   end AirFlow;
 
+  model TankInterface
+    parameter Boolean useAir=false
+      "Enable air port"
+      annotation(choices(checkBox=true));
+    WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+    WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
+    Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
+            extent={{-140,20},{-100,60}})));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
+  end TankInterface;
+
   partial model ASMbase "Base class of WWTP modelling by ASMx"
+    extends TankInterface;
 
     /* parameters based on the original ASM1 publication based on 15 deg C */
 
@@ -219,29 +232,20 @@ air between blower and nitrification tank.
     Real r12;
     Real r13;
 
-    Real inputSi;
-    Real inputSs;
-    Real inputXi;
-    Real inputXs;
-    Real inputXbh;
-    Real inputXba;
-    Real inputXp;
-    Real inputSo;
-    Real inputSno;
-    Real inputSnh;
-    Real inputSnd;
-    Real inputXnd;
-    Real inputSalk;
-    Real aeration;
-
-    WWFlow In
-      annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-    WWFlow Out(FilledIcon=false)
-      annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-    WWFlow MeasurePort(FilledIcon=false)
-      annotation (Placement(transformation(extent={{54,40},{66,52}})));
-    Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
-            extent={{-120,30},{-100,50}})));
+    input Real inputSi;
+    input Real inputSs;
+    input Real inputXi;
+    input Real inputXs;
+    input Real inputXbh;
+    input Real inputXba;
+    input Real inputXp;
+    input Real inputSo;
+    input Real inputSno;
+    input Real inputSnh;
+    input Real inputSnd;
+    input Real inputXnd;
+    input Real inputSalk;
+    input Real aeration;
 
   equation
 
@@ -278,20 +282,6 @@ air between blower and nitrification tank.
     Out.Xnd = Xnd;
     Out.Salk = Salk;
 
-    MeasurePort.Si = Si;
-    MeasurePort.Ss = Ss;
-    MeasurePort.Xi = Xi;
-    MeasurePort.Xs = Xs;
-    MeasurePort.Xbh = Xbh;
-    MeasurePort.Xba = Xba;
-    MeasurePort.Xp = Xp;
-    MeasurePort.So = So;
-    MeasurePort.Sno = Sno;
-    MeasurePort.Snh = Snh;
-    MeasurePort.Snd = Snd;
-    MeasurePort.Xnd = Xnd;
-    MeasurePort.Salk = Salk;
-
     annotation (
       Documentation(info="This partial model provides connectors and equations that are needed in the biological
 components (nitrification and denitrification tank) for ASM1 wastewater treatment plant models.
@@ -325,7 +315,7 @@ Copyright (C) 2000 - 2002, Gerald Reichl
 "));
   end ASMbase;
 
-  partial model ASM1 "ASM1 specfic settings"
+  model ASM1 "ASM1 specfic settings"
     extends ASMbase;
 
     // Stoichiometric parameters based on the original ASM1 publication//
