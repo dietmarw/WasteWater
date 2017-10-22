@@ -6,41 +6,24 @@ model deni "Denitrification tank"
   extends WasteWater.Icons.deni;
 
   /* tank specific parameters */
-  parameter Modelica.SIunits.Volume V=1000 "Volume of denitrification tank";
-  parameter WWSystem.WWType WWtype=WasteWater.WWSystem.WWType.ASM1;
+  inner parameter Modelica.SIunits.Volume V=1000 "Volume of denitrification tank";
+  parameter Types.BioTreatment BioTreat=WasteWater.Types.BioTreatment.ASM1;
   parameter Boolean Foo;
 
 //    replaceable model ASMx = Interfaces.ASM2d
 //      constrainedby Interfaces.ASMbase
 //      annotation (choicesAllMatching=true);
 
-Interfaces.ASM1 ASM1 if ASM1true annotation (Placement(transformation(visible=ASM1true,extent={{-10,30},{10,50}})));
-
-//Interfaces.ASM2d ASM2d if ASM2dtrue annotation (Placement(transformation(visible=ASM2dtrue,extent={{-10,-10},{10,10}})));
-//Interfaces.ASM2d ASM3 if ASM2dtrue annotation (Placement(transformation(visible=ASM2dtrue, extent={{-10,-50},{10,-30}})));
-
+Interfaces.ASM1 ASM1 if useASM1 annotation (Placement(transformation(visible=useASM1,extent={{-10,30},{10,50}})));
+Interfaces.ASM1 ASM2d if useASM2d annotation (Placement(transformation(visible=useASM2d,extent={{-10,-10},{10,10}})));
+Interfaces.ASM1 ASM3 if useASM3 annotation (Placement(transformation(visible=useASM3, extent={{-10,-50},{10,-30}})));
 
   protected
-  Boolean ASM1true = WWtype==WWSystem.WWType.ASM1;
-  Boolean ASM2dtrue = WWtype==WWSystem.WWType.ASM2d;
+  parameter Boolean useASM1=BioTreat == Types.BioTreatment.ASM1 annotation(Evaluate=true);
+  parameter Boolean useASM2d=BioTreat == Types.BioTreatment.ASM2d;
+  parameter Boolean useASM3=BioTreat == Types.BioTreatment.ASM3;
 
 equation
-
-  /* volume dependent dilution term of each concentration */
-
-  inputSi = (In.Si - Si)*In.Q/V;
-  inputSs = (In.Ss - Ss)*In.Q/V;
-  inputXi = (In.Xi - Xi)*In.Q/V;
-  inputXs = (In.Xs - Xs)*In.Q/V;
-  inputXbh = (In.Xbh - Xbh)*In.Q/V;
-  inputXba = (In.Xba - Xba)*In.Q/V;
-  inputXp = (In.Xp - Xp)*In.Q/V;
-  inputSo = (In.So - So)*In.Q/V;
-  inputSno = (In.Sno - Sno)*In.Q/V;
-  inputSnh = (In.Snh - Snh)*In.Q/V;
-  inputSnd = (In.Snd - Snd)*In.Q/V;
-  inputXnd = (In.Xnd - Xnd)*In.Q/V;
-  inputSalk = (In.Salk - Salk)*In.Q/V;
 
   connect(ASM1.T, T) annotation (Line(points={{-9,44},{-40,44},{-40,40},{-90,40}}, color={0,0,127}));
   connect(ASM2d.T, T) annotation (Line(points={{-9,4},{-40,4},{-40,40},{-90,40}}, color={0,0,127}));

@@ -10,7 +10,7 @@ package PreClar "Primary clarifier modelling based on ASM2d"
     import Modelica.Math.log;
     //WWU.MassConcentration Xmep "Ferric-phosphate FePO4";
 
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar1;
     extends Interfaces.conversion_factors;
 
@@ -163,7 +163,7 @@ Parameter:
     // to be used for feed forward calculation, e.g. influent data needed
 
     import Modelica.Math.log;
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar2;
     extends Interfaces.conversion_factors;
 
@@ -315,7 +315,7 @@ Parameter:
     // signals need to be in the sequence COD, Snh, Spo, pH in the inputtable
 
     import Modelica.Math.log;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     extends WasteWater.Icons.preclar2;
     extends Interfaces.conversion_factors;
 

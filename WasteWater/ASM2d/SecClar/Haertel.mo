@@ -10,26 +10,26 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM2d)"
 
     connector UpperLayerPin "Connector above influent layer"
 
-      import WWU = WasteWater.WasteWaterUnits;
+      import WWU = WasteWater.Types;
 
       // effluent flow
-      flow WWU.VolumeFlowRate Qe;
+      flow Types.VolumeFlowRate Qe;
       // sedimentation flux
-      flow WWU.SedimentationFlux SedFlux;
+      flow Types.SedimentationFlux SedFlux;
 
       // total sludge concentration in (m-1)-th layer (dn=down)
-      WWU.MassConcentration X_dn;
+      Types.MassConcentration X_dn;
 
       // soluble components
-      WWU.MassConcentration So;
-      WWU.MassConcentration Sf;
-      WWU.MassConcentration Sa;
-      WWU.MassConcentration Snh;
-      WWU.MassConcentration Sno;
-      WWU.MassConcentration Spo;
-      WWU.MassConcentration Si;
-      WWU.Alkalinity Salk;
-      WWU.MassConcentration Sn2;
+      Types.MassConcentration So;
+      Types.MassConcentration Sf;
+      Types.MassConcentration Sa;
+      Types.MassConcentration Snh;
+      Types.MassConcentration Sno;
+      Types.MassConcentration Spo;
+      Types.MassConcentration Si;
+      Types.Alkalinity Salk;
+      Types.MassConcentration Sn2;
       annotation (
         Documentation(info=
               "Connector for ASM2d information and mass exchange between layers above the influent layer (feed_layer)."));
@@ -38,33 +38,33 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM2d)"
 
     connector LowerLayerPin "Connector below influent layer"
 
-      import WWU = WasteWater.WasteWaterUnits;
+      import WWU = WasteWater.Types;
 
       // return and waste sludge flow Qr, Qw
-      flow WWU.VolumeFlowRate Qr;
-      flow WWU.VolumeFlowRate Qw;
+      flow Types.VolumeFlowRate Qr;
+      flow Types.VolumeFlowRate Qw;
 
       // sedimentation flux
-      flow WWU.SedimentationFlux SedFlux;
+      flow Types.SedimentationFlux SedFlux;
 
       // total sludge concentration in m-th layer
-      WWU.MassConcentration X;
+      Types.MassConcentration X;
 
       // total sludge concentration and sink velocity in
       // (m-1)-th layer (dn=down)
-      WWU.MassConcentration X_dn;
-      WWU.SedimentationVelocity vS_dn;
+      Types.MassConcentration X_dn;
+      Types.SedimentationVelocity vS_dn;
 
       // soluble components
-      WWU.MassConcentration So;
-      WWU.MassConcentration Sf;
-      WWU.MassConcentration Sa;
-      WWU.MassConcentration Snh;
-      WWU.MassConcentration Sno;
-      WWU.MassConcentration Spo;
-      WWU.MassConcentration Si;
-      WWU.Alkalinity Salk;
-      WWU.MassConcentration Sn2;
+      Types.MassConcentration So;
+      Types.MassConcentration Sf;
+      Types.MassConcentration Sa;
+      Types.MassConcentration Snh;
+      Types.MassConcentration Sno;
+      Types.MassConcentration Spo;
+      Types.MassConcentration Si;
+      Types.Alkalinity Salk;
+      Types.MassConcentration Sn2;
       annotation (
         Documentation(info=
               "Connector for ASM2d information and mass exchange between layers below the influent layer (feed_layer)."));
@@ -74,10 +74,10 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM2d)"
     partial model SCParam "partial model providing clarifier parameters"
 
       import SI = Modelica.SIunits;
-      import WWU = WasteWater.WasteWaterUnits;
+      import WWU = WasteWater.Types;
       parameter SI.Length zm;
       parameter SI.Area Asc;
-      parameter WWU.SludgeVolumeIndex ISV;
+      parameter Types.SludgeVolumeIndex ISV;
 
       annotation (
         Documentation(info="partial model providing clarifier parameters"));
@@ -86,20 +86,20 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM2d)"
 
     partial model SCVar "partial models providing variables"
 
-      import WWU = WasteWater.WasteWaterUnits;
-      WWU.MassConcentration X "total sludge concentration in m-th layer";
-      WWU.SedimentationVelocity vS "sink velocity in m-th layer";
-      WWU.SedimentationFlux Jsm "sedimentation flux m-th layer";
+      import WWU = WasteWater.Types;
+      Types.MassConcentration X "total sludge concentration in m-th layer";
+      Types.SedimentationVelocity vS "sink velocity in m-th layer";
+      Types.SedimentationFlux Jsm "sedimentation flux m-th layer";
 
-      WWU.MassConcentration So "Dissolved oxygen";
-      WWU.MassConcentration Sf "Readily biodegradable substrate";
-      WWU.MassConcentration Sa "Fermentation products";
-      WWU.MassConcentration Snh "Ammonium";
-      WWU.MassConcentration Sno "Nitrate (plus nitrite)";
-      WWU.MassConcentration Spo "Phosphate";
-      WWU.MassConcentration Si "Inert, non biodegradable organics";
-      WWU.Alkalinity Salk "Bicarbonate alkalinity";
-      WWU.MassConcentration Sn2 "Dinitrogen";
+      Types.MassConcentration So "Dissolved oxygen";
+      Types.MassConcentration Sf "Readily biodegradable substrate";
+      Types.MassConcentration Sa "Fermentation products";
+      Types.MassConcentration Snh "Ammonium";
+      Types.MassConcentration Sno "Nitrate (plus nitrite)";
+      Types.MassConcentration Spo "Phosphate";
+      Types.MassConcentration Si "Inert, non biodegradable organics";
+      Types.Alkalinity Salk "Bicarbonate alkalinity";
+      Types.MassConcentration Sn2 "Dinitrogen";
       annotation (
         Documentation(info="partial models providing variables"));
 
@@ -222,18 +222,18 @@ Copyright (C) 2001 - 2002, Gerald Reichl
     import SCP = ASM2d.SecClar.Haertel;
     import SI = Modelica.SIunits;
     import WI = ASM2d.Interfaces;
-    import WWU = WasteWater.WasteWaterUnits;
+    import WWU = WasteWater.Types;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
     parameter SI.Length zm=hsc/(1.0*n)
       "height of m-th secondary clarifier layer";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";
-    parameter WWU.SludgeVolumeIndex ISV=130 "Sludge Volume Index";
+    parameter Types.SludgeVolumeIndex ISV=130 "Sludge Volume Index";
     parameter Integer i=2
       "number of layers above current feed layer in this model";
 
     // total sludge concentration in clarifier feed
-    WWU.MassConcentration Xf;
+    Types.MassConcentration Xf;
 
     // layers 1 to 10
     SCP.bottom_layer S1(
@@ -538,7 +538,7 @@ From here return and waste sludge is removed.
     import WWSC = WasteWater.ASM2d.SecClar.Haertel.Interfaces;
     extends WWSC.SCParam;
     extends WWSC.SCVar;
-    WWU.MassConcentration Xf "sludge concentration in clarifier feed";
+    Types.MassConcentration Xf "sludge concentration in clarifier feed";
     SI.Length z "vertical coordinate of current layer";
 
     parameter SI.Length hsc;
@@ -676,7 +676,7 @@ function and the omega correction function by Haertel.
     extends WWSC.SCParam;
     extends WWSC.SCVar;
 
-    WWU.MassConcentration Xf "sludge concentration in clarifier feed";
+    Types.MassConcentration Xf "sludge concentration in clarifier feed";
     SI.Length z "vertical coordinate of current layer";
 
     parameter SI.Length hsc;

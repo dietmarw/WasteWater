@@ -5,7 +5,7 @@ package Interfaces
   extends Modelica.Icons.Library;
 
   connector WWFlowAsm1in "Inflow connector of ASM1 components"
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration Si;
     WWU.MassConcentration Ss;
@@ -45,7 +45,7 @@ The connector consists of one flow variable and 13 potential variables (ASM1 con
   end WWFlowAsm1in;
 
   connector WWFlowAsm1out "Outflow connector of ASM1 components"
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration Si;
     WWU.MassConcentration Ss;
@@ -75,7 +75,7 @@ The connector consists of one flow variable and 13 potential variables (ASM1 con
   end WWFlowAsm1out;
 
   connector AirFlow "Airflow connector"
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     flow WWU.VolumeFlowRate Q_air;
     annotation (
@@ -100,7 +100,7 @@ air between blower and nitrification tank."));
 
   partial model ASM1base "Base class of WWTP modelling by ASM1"
     extends Interfaces.stoichiometry;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     // parameters based on the original ASM1 publication based on 15 deg C
     Real mu_h "Maximum heterotrophic growth rate f(T) [day^-1]";

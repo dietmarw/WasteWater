@@ -131,7 +131,7 @@ model SecClarModTakacs "ASM3 Secondary Clarifier Model based on Takacs"
   package SCP = ASM3.SecClar.Takacs;
   import SI = Modelica.SIunits;
   package WI = ASM3.Interfaces;
-  package WWU = WasteWater.WasteWaterUnits;
+  package WWU = WasteWater.Types;
 
   parameter SI.Length hsc=4.0 "height of secondary clarifier";
   parameter Integer n=10 "number of layers of SC model";
@@ -261,7 +261,7 @@ end SecClarModTakacs;
 model blower "Blower for the aeration of the nitrification tanks"
 
   extends WasteWater.Icons.blower;
-  package WWU = WasteWater.WasteWaterUnits;
+  package WWU = WasteWater.Types;
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
   Real H;
@@ -296,7 +296,7 @@ end blower;
 model pump "ASM3 wastewater pump"
 
   extends WasteWater.Icons.pump;
-  package WWU = WasteWater.WasteWaterUnits;
+  package WWU = WasteWater.Types;
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
 

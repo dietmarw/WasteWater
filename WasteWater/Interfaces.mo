@@ -2,7 +2,7 @@ within WasteWater;
 package Interfaces "Colection of special interfaces"
   extends Modelica.Icons.InterfacesPackage;
   connector MassConcentrationOutput =
-                         output WasteWater.WasteWaterUnits.MassConcentration "Real output connector in [g/m3]"   annotation (
+                         output WasteWater.Types.MassConcentration           "Real output connector in [g/m3]"   annotation (
     defaultComponentName="y",
     Icon(
       coordinateSystem(preserveAspectRatio=true,
@@ -32,7 +32,7 @@ Connector with one output signal of type Real and unit g/m<sup>3</sup>.
 </p>
 </html>"));
   connector VolumeFlowRateOutput =
-                         output WasteWater.WasteWaterUnits.MassConcentration "Real output connector in [m3/d]"   annotation (
+                         output WasteWater.Types.MassConcentration           "Real output connector in [m3/d]"   annotation (
     defaultComponentName="y",
     Icon(
       coordinateSystem(preserveAspectRatio=true,
@@ -63,20 +63,20 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
 </html>"));
   connector WWFlow "Waste water flow connector"
     parameter Boolean FilledIcon = true "If true a filled icon = inport is displayed";
-    flow WWU.VolumeFlowRate Q;
-    WWU.MassConcentration Si;
-    WWU.MassConcentration Ss;
-    WWU.MassConcentration Xi;
-    WWU.MassConcentration Xs;
-    WWU.MassConcentration Xbh;
-    WWU.MassConcentration Xba;
-    WWU.MassConcentration Xp;
-    WWU.MassConcentration So;
-    WWU.MassConcentration Sno;
-    WWU.MassConcentration Snh;
-    WWU.MassConcentration Snd;
-    WWU.MassConcentration Xnd;
-    WWU.Alkalinity Salk;
+    flow Types.VolumeFlowRate Q;
+    Types.MassConcentration Si;
+    Types.MassConcentration Ss;
+    Types.MassConcentration Xi;
+    Types.MassConcentration Xs;
+    Types.MassConcentration Xbh;
+    Types.MassConcentration Xba;
+    Types.MassConcentration Xp;
+    Types.MassConcentration So;
+    Types.MassConcentration Sno;
+    Types.MassConcentration Snh;
+    Types.MassConcentration Snd;
+    Types.MassConcentration Xnd;
+    Types.Alkalinity Salk;
 
     annotation (
       Icon(coordinateSystem(
@@ -129,7 +129,7 @@ The parameter <code>FilledIcon</code> controls the design only.
   end WWFlow;
 
   connector AirFlow "Airflow connector"
-    flow WWU.VolumeFlowRate Q_air;
+    flow Types.VolumeFlowRate Q_air;
     annotation (
       Documentation(info="<html>
 <p>
@@ -158,8 +158,11 @@ air between blower and nitrification tank.
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
     AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-    Modelica.Blocks.Interfaces.RealInput T annotation (Placement(transformation(
+    Modelica.Blocks.Interfaces.RealInput T
+     annotation (Placement(transformation(
             extent={{-100,30},{-80,50}}), iconTransformation(extent={{-100,30},{-80,50}})));
+
+    input Real aeration = 0 "Ration of air";
 
   equation
 
@@ -172,6 +175,7 @@ air between blower and nitrification tank.
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
     extends Tank;
+    outer parameter Modelica.SIunits.Volume V "Volume of denitrification tank";
 
     /* parameters based on the original ASM1 publication based on 15 deg C */
 
@@ -204,19 +208,19 @@ air between blower and nitrification tank.
     Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
     Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
 
-    WWU.MassConcentration Si(fixed=true) "Soluble inert organic matter";
-    WWU.MassConcentration Ss(fixed=true) "Readily biodegradable substrate";
-    WWU.MassConcentration Xi(fixed=true) "Particulate inert organic matter";
-    WWU.MassConcentration Xs(fixed=true) "Slowly biodegradable substrate";
-    WWU.MassConcentration Xbh(fixed=true) "Active heterotrophic biomass";
-    WWU.MassConcentration Xba(fixed=true) "Active autotrophic biomass";
-    WWU.MassConcentration Xp(fixed=true) "Particulate products from biomass decay";
-    WWU.MassConcentration So(fixed=true) "Dissolved oxygen";
-    WWU.MassConcentration Sno(fixed=true) "Nitrate and nitrite nitrogen";
-    WWU.MassConcentration Snh(fixed=true) "Ammonium nitrogen";
-    WWU.MassConcentration Snd(fixed=true) "Soluble biodegradable organic nitrogen";
-    WWU.MassConcentration Xnd(fixed=true) "Particulate biodegradable organic nitrogen";
-    WWU.Alkalinity Salk(fixed=true) "Alkalinity";
+    Types.MassConcentration Si(fixed=true) "Soluble inert organic matter";
+    Types.MassConcentration Ss(fixed=true) "Readily biodegradable substrate";
+    Types.MassConcentration Xi(fixed=true) "Particulate inert organic matter";
+    Types.MassConcentration Xs(fixed=true) "Slowly biodegradable substrate";
+    Types.MassConcentration Xbh(fixed=true) "Active heterotrophic biomass";
+    Types.MassConcentration Xba(fixed=true) "Active autotrophic biomass";
+    Types.MassConcentration Xp(fixed=true) "Particulate products from biomass decay";
+    Types.MassConcentration So(fixed=true) "Dissolved oxygen";
+    Types.MassConcentration Sno(fixed=true) "Nitrate and nitrite nitrogen";
+    Types.MassConcentration Snh(fixed=true) "Ammonium nitrogen";
+    Types.MassConcentration Snd(fixed=true) "Soluble biodegradable organic nitrogen";
+    Types.MassConcentration Xnd(fixed=true) "Particulate biodegradable organic nitrogen";
+    Types.Alkalinity Salk(fixed=true) "Alkalinity";
 
     Real p1;
     Real p2;
@@ -241,20 +245,22 @@ air between blower and nitrification tank.
     Real r12;
     Real r13;
 
-    input Real inputSi;
-    input Real inputSs;
-    input Real inputXi;
-    input Real inputXs;
-    input Real inputXbh;
-    input Real inputXba;
-    input Real inputXp;
-    input Real inputSo;
-    input Real inputSno;
-    input Real inputSnh;
-    input Real inputSnd;
-    input Real inputXnd;
-    input Real inputSalk;
-    input Real aeration;
+    /* defining the inputs */
+    /* volume dependent dilution term of each concentration */
+
+    input Real inputSi = (In.Si - Si)*In.Q/V;
+    input Real inputSs = (In.Ss - Ss)*In.Q/V;
+    input Real inputXi = (In.Xi - Xi)*In.Q/V;
+    input Real inputXs = (In.Xs - Xs)*In.Q/V;
+    input Real inputXbh = (In.Xbh - Xbh)*In.Q/V;
+    input Real inputXba = (In.Xba - Xba)*In.Q/V;
+    input Real inputXp = (In.Xp - Xp)*In.Q/V;
+    input Real inputSo = (In.So - So)*In.Q/V;
+    input Real inputSno = (In.Sno - Sno)*In.Q/V;
+    input Real inputSnh = (In.Snh - Snh)*In.Q/V;
+    input Real inputSnd = (In.Snd - Snd)*In.Q/V;
+    input Real inputXnd = (In.Xnd - Xnd)*In.Q/V;
+    input Real inputSalk = (In.Salk - Salk)*In.Q/V;
 
   equation
 

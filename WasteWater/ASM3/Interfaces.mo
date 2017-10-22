@@ -5,7 +5,7 @@ package Interfaces
   extends Modelica.Icons.Library;
 
   connector WWFlowAsm3in "Inflow connector of ASM3 components"
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration So;
@@ -46,7 +46,7 @@ The connector consists of one flow variable and 13 potential variables (ASM3 con
   end WWFlowAsm3in;
 
   connector WWFlowAsm3out "Outflow connector of ASM3 components"
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration So;
@@ -80,7 +80,7 @@ The connector consists of one flow variable and 13 potential variables (ASM3 con
 
   connector AirFlow "Airflow connector"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     flow WWU.VolumeFlowRate Q_air;
     annotation (
       Documentation(info="The Airflow connector consists of a flow variable describing the exchange of
@@ -123,7 +123,7 @@ air between blower and nitrification tank."));
 
   partial model ASM3base "Base class of WWTP modelling by ASM3"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     extends Interfaces.stoichiometry;
 
     // Stoichio. matrix coefficients x(So,Ss,Sn2,Snox),y(Snh),z(Salk),t(Xss)

@@ -774,7 +774,7 @@ Main Author:
     package SCP = ASM2d.SecClar.Takacs;
     import SI = Modelica.SIunits;
     package WI = ASM2d.Interfaces;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";

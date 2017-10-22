@@ -6,7 +6,7 @@ package Interfaces
 
   connector WWFlowAsm2din "Inflow connector of ASM2d components"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration So;
     WWU.MassConcentration Sf;
@@ -53,7 +53,7 @@ The connector consists of one flow variable and 19 potential variables (ASM2d co
 
   connector WWFlowAsm2dout "Outflow connector of ASM2d components"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     flow WWU.VolumeFlowRate Q;
     WWU.MassConcentration So;
@@ -93,7 +93,7 @@ The connector consists of one flow variable and 19 potential variables (ASM2d co
 
   connector AirFlow "Airflow connector"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     flow WWU.VolumeFlowRate Q_air;
 
     annotation (
@@ -133,7 +133,7 @@ air between blower and nitrification tank."));
 
   partial model ASM2dbase "Base class of WWTP modelling by ASM2d"
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     extends Interfaces.conversion_factors;
 

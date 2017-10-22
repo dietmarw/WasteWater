@@ -9,7 +9,7 @@ package Krebs "Secondary settling tank modelling by Krebs (ASM2d)"
 
     partial model SCVar "partial models providing variables"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       WWU.MassConcentration Xf "total sludge concentration";
       WWU.MassConcentration XB "sludge concentration in sludge layer";
       WWU.MassConcentration XR "sludge concentration of return";
@@ -101,7 +101,7 @@ Copyright (C) 2003, Gerald Reichl
     extends WasteWater.ASM2d.Interfaces.conversion_factors;
     import SI = Modelica.SIunits;
     package WI = WasteWater.ASM2d.Interfaces;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter SI.Area Asc=1500.0 "area of secondary clarifier";

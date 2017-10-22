@@ -9,7 +9,7 @@ package Otterpohl "Secondary settling tank modelling by Otterpohl"
 
     connector UpperLayerPin "Connector above influent layer"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       // effluent flow
       flow WWU.VolumeFlowRate Qe;
       // sedimentation flux (from micro and macro flocs)
@@ -37,7 +37,7 @@ package Otterpohl "Secondary settling tank modelling by Otterpohl"
 
     connector LowerLayerPin "Connector below influent layer"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       // return and waste sludge flow Qr, Qw
       flow WWU.VolumeFlowRate Qr;
@@ -73,7 +73,7 @@ package Otterpohl "Secondary settling tank modelling by Otterpohl"
 
     partial model SCParam "partial model providing clarifier parameters"
       import SI = Modelica.SIunits;
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       parameter SI.Length zm;
       parameter SI.Area Asc;
       parameter WWU.SludgeVolumeIndex ISV;
@@ -86,7 +86,7 @@ package Otterpohl "Secondary settling tank modelling by Otterpohl"
 
     partial model SCVar "partial models providing variables"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       WWU.MassConcentration X "total sludge concentration in m-th layer";
       WWU.MassConcentration X_F "sludge concentration of macro flocs";
       WWU.MassConcentration X_S "sludge concentration of micro flocs";
@@ -215,7 +215,7 @@ Copyright (C) 2003, Gerald Reichl
     package SCP = ASM1.SecClar.Otterpohl;
     import SI = Modelica.SIunits;
     package WI = ASM1.Interfaces;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
     parameter SI.Length zm=hsc/(1.0*n)

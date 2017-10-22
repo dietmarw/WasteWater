@@ -1,8 +1,7 @@
 within WasteWater;
-package WasteWaterUnits
-  "Type definitions for use with the activated sludge models"
+package Types "Type definitions for use with the activated sludge models"
 
-  extends Modelica.Icons.Library;
+  extends Modelica.Icons.TypesPackage;
   type VolumeFlowRate = Real (final quantity="VolumeFlowRate", final unit=
           "m3/d");
   type MassConcentration = Real (
@@ -15,13 +14,14 @@ package WasteWaterUnits
       final min=0.0);
   type SedimentationVelocity = Real (final quantity="SedimentationVelocity",
         final unit="m/d");
-
   type SedimentationFlux = Real (final quantity="SedimentationFlux", final unit=
          "g/(m2.d)");
-
   type SludgeVolumeIndex = Real (final quantity="SludgeVolumeIndex", final unit=
          "ml/g");
-
+ type BioTreatment = enumeration(
+      ASM1 "ASM1",
+      ASM2d "ASM2d",
+      ASM3 "ASM3") "Type of bio treatment method";
   annotation (
     Invisible=true,
     Documentation(info="This package provides special convention for units and types
@@ -52,4 +52,4 @@ disclaimer in the documentation of package Modelica in file \"Modelica/package.m
 
 Copyright (C) 2000 - 2001, Gerald Reichl
 "));
-end WasteWaterUnits;
+end Types;

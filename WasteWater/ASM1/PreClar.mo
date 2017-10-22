@@ -9,7 +9,7 @@ package PreClar "Primary clarifier modelling based on ASM1"
     // dynamic primary clarifier tank, based on Otterpohl
     // to be used for feed forward calculation, e.g. influent data needed
 
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar1;
 
     // tank specific parameters
@@ -133,7 +133,7 @@ Parameter:
 
     import Modelica.Math.log;
 
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar2;
 
     // tank specific parameters
@@ -261,7 +261,7 @@ Parameter:
     import Modelica.Math.log;
     extends WasteWater.Icons.preclar2;
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
       // Interfaces.MeasurePort MeasurePort annotation (extent=[32, 90; 42, 100]);
 

@@ -9,7 +9,7 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
 
     connector UpperLayerPin "Connector above influent layer"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       // effluent flow
       flow WWU.VolumeFlowRate Qe;
@@ -34,7 +34,7 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
     end UpperLayerPin;
 
     connector LowerLayerPin "Connector below influent layer"
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       // return and waste sludge flow Qr, Qw
       flow WWU.VolumeFlowRate Qr;
@@ -62,7 +62,7 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
 
     partial model SCParam "partial model providing clarifier parameters"
       import SI = Modelica.SIunits;
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       parameter SI.Length zm;
       parameter SI.Area Asc;
       parameter WWU.SludgeVolumeIndex ISV;
@@ -71,7 +71,7 @@ package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
     end SCParam;
 
     partial model SCVar "partial models providing variables"
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
       WWU.MassConcentration X "total sludge concentration in m-th layer";
       WWU.SedimentationVelocity vS "sink velocity in m-th layer";
       WWU.SedimentationFlux Jsm "sedimentation flux m-th layer";
@@ -194,7 +194,7 @@ Copyright (C) 2002, Gerald Reichl
     package SCP = ASM1.SecClar.Haertel;
     import SI = Modelica.SIunits;
     package WI = ASM1.Interfaces;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";
     parameter SI.Length zm=hsc/(1.0*n)

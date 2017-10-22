@@ -9,7 +9,7 @@ package Takacs "Secondary settling tank modelling by Takacs"
 
     connector UpperLayerPin "Connector above influent layer"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       // effluent flow
       flow WWU.VolumeFlowRate Qe;
@@ -35,7 +35,7 @@ package Takacs "Secondary settling tank modelling by Takacs"
 
     connector LowerLayerPin "Connector below influent layer"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       // return and waste sludge flow Qr, Qw
       flow WWU.VolumeFlowRate Qr;
@@ -75,7 +75,7 @@ package Takacs "Secondary settling tank modelling by Takacs"
 
     partial model SCVar "partial models providing variables"
 
-      package WWU = WasteWater.WasteWaterUnits;
+      package WWU = WasteWater.Types;
 
       WWU.MassConcentration X "total sludge concentration in m-th layer";
       WWU.MassConcentration Xf "total sludge concentration in clarifier feed";
@@ -162,7 +162,7 @@ Copyright (C) 2000 - 2001, Gerald Reichl
     package SCP = ASM1.SecClar.Takacs;
     import SI = Modelica.SIunits;
     package WI = WasteWater.ASM1.Interfaces;
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
 
     parameter SI.Length hsc=4.0 "height of secondary clarifier";
     parameter Integer n=10 "number of layers of SC model";

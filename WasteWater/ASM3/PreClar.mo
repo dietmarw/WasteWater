@@ -9,7 +9,7 @@ package PreClar "Primary clarifier modelling based on ASM3"
 
     import Modelica.Math.log;
 
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar1;
     extends ASM3.Interfaces.stoichiometry;
 
@@ -136,7 +136,7 @@ Parameter:
 
     import Modelica.Math.log;
 
-    package WWU = WasteWaterUnits;
+    package WWU = Types;
     extends WasteWater.Icons.preclar2;
     extends ASM3.Interfaces.stoichiometry;
 
@@ -265,7 +265,7 @@ Parameter:
 
     import Modelica.Math.log;
 
-    package WWU = WasteWater.WasteWaterUnits;
+    package WWU = WasteWater.Types;
     extends WasteWater.Icons.preclar2;
     extends ASM3.Interfaces.stoichiometry;
 
