@@ -113,10 +113,10 @@ package Examples "Series of examples of WW plants"
       annotation (Placement(transformation(extent={{29,50},{49,70}})));
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
             extent={{32,20},{48,36}})));
-    Data.SmallPlantIni                          ini annotation (Placement(transformation(extent={{-10,80},{10,100}})));
+    Data.SmallPlantIni                          ini annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
     Modelica.Blocks.Sources.Constant constantInflow[14](k={ini.Q,ini.Si,ini.Ss,ini.Xi,ini.Xs,ini.Xbh,ini.Xba,ini.Xp,ini.So,ini.Sno,ini.Snh,ini.Snd,ini.Xnd,ini.Salk}) annotation (Placement(transformation(extent={{-50,70},{-70,90}})));
     WWSystem WWS(BioTreat=WasteWater.Types.BioTreatment.ASM1)
-                 annotation (Placement(transformation(extent={{-120,80},{-100,100}})));
+                 annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
   equation
     connect(tank3.Out, divider.In) annotation (Line(points={{10,10},{17,10},{17,4.3},{20,4.3}}));
     connect(mixer.Out, tank1.In) annotation (Line(points={{-80,29.6},{-77,29.6},{-77,10},{-71,10}}));

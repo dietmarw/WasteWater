@@ -51,8 +51,7 @@ package Icons "Icon definitions for the WasteWater library"
           Line(
             points={{0,-34},{0,40},{0,44}},
             thickness=1),
-          Text(extent={{-100,140},{100,100}},
-                                            textString=
+          Text(extent={{-100,100},{100,60}},textString=
                                                 "%name"),
           Line(
             points={{-2,-36},{-10,-36}},
@@ -234,13 +233,7 @@ package Icons "Icon definitions for the WasteWater library"
             lineColor={0,0,0},
             lineThickness=0.5,
             fillColor={192,192,192},
-            fillPattern=FillPattern.Solid),
-          Text(
-            extent={{-60,100},{60,40}},
-            lineColor={191,91,0},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid,
-            textString="%WWtype")}));
+            fillPattern=FillPattern.Solid)}));
   end deni;
 
   partial model nitri "Icon for a nitrification tank"
