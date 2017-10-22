@@ -164,6 +164,7 @@ air between blower and nitrification tank.
 
     input Real aeration = 0 "Ration of air";
 
+    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
   equation
 
     if useAir then
@@ -175,7 +176,8 @@ air between blower and nitrification tank.
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
     extends Tank;
-    outer parameter Modelica.SIunits.Volume V "Volume of denitrification tank";
+
+   outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
     /* parameters based on the original ASM1 publication based on 15 deg C */
 
@@ -208,19 +210,19 @@ air between blower and nitrification tank.
     Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
     Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
 
-    Types.MassConcentration Si(fixed=true) "Soluble inert organic matter";
-    Types.MassConcentration Ss(fixed=true) "Readily biodegradable substrate";
-    Types.MassConcentration Xi(fixed=true) "Particulate inert organic matter";
-    Types.MassConcentration Xs(fixed=true) "Slowly biodegradable substrate";
-    Types.MassConcentration Xbh(fixed=true) "Active heterotrophic biomass";
-    Types.MassConcentration Xba(fixed=true) "Active autotrophic biomass";
-    Types.MassConcentration Xp(fixed=true) "Particulate products from biomass decay";
-    Types.MassConcentration So(fixed=true) "Dissolved oxygen";
-    Types.MassConcentration Sno(fixed=true) "Nitrate and nitrite nitrogen";
-    Types.MassConcentration Snh(fixed=true) "Ammonium nitrogen";
-    Types.MassConcentration Snd(fixed=true) "Soluble biodegradable organic nitrogen";
-    Types.MassConcentration Xnd(fixed=true) "Particulate biodegradable organic nitrogen";
-    Types.Alkalinity Salk(fixed=true) "Alkalinity";
+    Types.MassConcentration Si(start=WWS.Tank1_Si, fixed=true) "Soluble inert organic matter";
+    Types.MassConcentration Ss(start=WWS.Tank1_Ss, fixed=true) "Readily biodegradable substrate";
+    Types.MassConcentration Xi(start=WWS.Tank1_Xi, fixed=true) "Particulate inert organic matter";
+    Types.MassConcentration Xs(start=WWS.Tank1_Xs, fixed=true) "Slowly biodegradable substrate";
+    Types.MassConcentration Xbh(start=WWS.Tank1_Xbh, fixed=true) "Active heterotrophic biomass";
+    Types.MassConcentration Xba(start=WWS.Tank1_Xba, fixed=true) "Active autotrophic biomass";
+    Types.MassConcentration Xp(start=WWS.Tank1_Xp, fixed=true) "Particulate products from biomass decay";
+    Types.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
+    Types.MassConcentration Sno(start=WWS.Tank1_Sno, fixed=true) "Nitrate and nitrite nitrogen";
+    Types.MassConcentration Snh(start=WWS.Tank1_Snh, fixed=true) "Ammonium nitrogen";
+    Types.MassConcentration Snd(start=WWS.Tank1_Snd, fixed=true) "Soluble biodegradable organic nitrogen";
+    Types.MassConcentration Xnd(start=WWS.Tank1_Xnd, fixed=true) "Particulate biodegradable organic nitrogen";
+    Types.Alkalinity Salk(start=WWS.Tank1_Salk, fixed=true) "Alkalinity";
 
     Real p1;
     Real p2;

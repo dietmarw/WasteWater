@@ -12,66 +12,66 @@ package Examples "Series of examples of WW plants"
     ASM1.divider2 divider annotation (Placement(transformation(extent={{20,-6},
               {40,14}})));
     ASM1.deni tank1(V=3000,
-      Si(start=ini.Tank1_Si, fixed=true),
-      Ss(start=ini.Tank1_Ss, fixed=true),
-      So(start=ini.Tank1_So, fixed=true),
-      Sno(start=ini.Tank1_Sno, fixed=true),
-      Snh(start=ini.Tank1_Snh, fixed=true),
-      Snd(start=ini.Tank1_Snd, fixed=true),
-      Xi(start=ini.Tank1_Xi, fixed=true),
-      Xs(start=ini.Tank1_Xs, fixed=true),
-      Xbh(start=ini.Tank1_Xbh, fixed=true),
-      Xba(start=ini.Tank1_Xba, fixed=true),
-      Xp(start=ini.Tank1_Xp, fixed=true),
-      Xnd(start=ini.Tank1_Xnd, fixed=true),
-      Salk(start=ini.Tank1_Salk, fixed=true))
+      Si(start=WWS.Tank1_Si, fixed=true),
+      Ss(start=WWS.Tank1_Ss, fixed=true),
+      So(start=WWS.Tank1_So, fixed=true),
+      Sno(start=WWS.Tank1_Sno, fixed=true),
+      Snh(start=WWS.Tank1_Snh, fixed=true),
+      Snd(start=WWS.Tank1_Snd, fixed=true),
+      Xi(start=WWS.Tank1_Xi, fixed=true),
+      Xs(start=WWS.Tank1_Xs, fixed=true),
+      Xbh(start=WWS.Tank1_Xbh, fixed=true),
+      Xba(start=WWS.Tank1_Xba, fixed=true),
+      Xp(start=WWS.Tank1_Xp, fixed=true),
+      Xnd(start=WWS.Tank1_Xnd, fixed=true),
+      Salk(start=WWS.Tank1_Salk, fixed=true))
         annotation (Placement(transformation(extent={{-71,0},{-51,20}})));
     ASM1.nitri tank2(V=1333,
-      Si(start=ini.Tank2_Si, fixed=true),
-      Ss(start=ini.Tank2_Ss, fixed=true),
-      So(start=ini.Tank2_So, fixed=true),
-      Sno(start=ini.Tank2_Sno, fixed=true),
-      Snh(start=ini.Tank2_Snh, fixed=true),
-      Snd(start=ini.Tank2_Snd, fixed=true),
-      Xi(start=ini.Tank2_Xi, fixed=true),
-      Xs(start=ini.Tank2_Xs, fixed=true),
-      Xbh(start=ini.Tank2_Xbh, fixed=true),
-      Xba(start=ini.Tank2_Xba, fixed=true),
-      Xp(start=ini.Tank2_Xp, fixed=true),
-      Xnd(start=ini.Tank2_Xnd, fixed=true),
-      Salk(start=ini.Tank2_Salk, fixed=true))
+      Si(start=WWS.Tank2_Si, fixed=true),
+      Ss(start=WWS.Tank2_Ss, fixed=true),
+      So(start=WWS.Tank2_So, fixed=true),
+      Sno(start=WWS.Tank2_Sno, fixed=true),
+      Snh(start=WWS.Tank2_Snh, fixed=true),
+      Snd(start=WWS.Tank2_Snd, fixed=true),
+      Xi(start=WWS.Tank2_Xi, fixed=true),
+      Xs(start=WWS.Tank2_Xs, fixed=true),
+      Xbh(start=WWS.Tank2_Xbh, fixed=true),
+      Xba(start=WWS.Tank2_Xba, fixed=true),
+      Xp(start=WWS.Tank2_Xp, fixed=true),
+      Xnd(start=WWS.Tank2_Xnd, fixed=true),
+      Salk(start=WWS.Tank2_Salk, fixed=true))
         annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
     ASM1.nitri tank3(V=1333,
-      Si(start=ini.Tank3_Si, fixed=true),
-      Ss(start=ini.Tank3_Ss, fixed=true),
-      So(start=ini.Tank3_So, fixed=true),
-      Sno(start=ini.Tank3_Sno, fixed=true),
-      Snh(start=ini.Tank3_Snh, fixed=true),
-      Snd(start=ini.Tank3_Snd, fixed=true),
-      Xi(start=ini.Tank3_Xi, fixed=true),
-      Xs(start=ini.Tank3_Xs, fixed=true),
-      Xbh(start=ini.Tank3_Xbh, fixed=true),
-      Xba(start=ini.Tank3_Xba, fixed=true),
-      Xp(start=ini.Tank3_Xp, fixed=true),
-      Xnd(start=ini.Tank3_Xnd, fixed=true),
-      Salk(start=ini.Tank3_Salk, fixed=true))
+      Si(start=WWS.Tank3_Si, fixed=true),
+      Ss(start=WWS.Tank3_Ss, fixed=true),
+      So(start=WWS.Tank3_So, fixed=true),
+      Sno(start=WWS.Tank3_Sno, fixed=true),
+      Snh(start=WWS.Tank3_Snh, fixed=true),
+      Snd(start=WWS.Tank3_Snd, fixed=true),
+      Xi(start=WWS.Tank3_Xi, fixed=true),
+      Xs(start=WWS.Tank3_Xs, fixed=true),
+      Xbh(start=WWS.Tank3_Xbh, fixed=true),
+      Xba(start=WWS.Tank3_Xba, fixed=true),
+      Xp(start=WWS.Tank3_Xp, fixed=true),
+      Xnd(start=WWS.Tank3_Xnd, fixed=true),
+      Salk(start=WWS.Tank3_Salk, fixed=true))
         annotation (Placement(transformation(extent={{-10,0},{10,20}})));
      WasteWater.ASM1.SecClar.Krebs.SecClarModKrebs Settler(
-      Si1(start=ini.Settler_Si1, fixed=true),
-      Ss1(start=ini.Settler_Ss1, fixed=true),
-      So1(start=ini.Settler_So1, fixed=true),
-      Sno1(start=ini.Settler_Sno1, fixed=true),
-      Snh1(start=ini.Settler_Snh1, fixed=true),
-      Snd1(start=ini.Settler_Snd1, fixed=true),
-      Salk1(start=ini.Settler_Salk1, fixed=true),
-      Si2(start=ini.Settler_Si2, fixed=true),
-      Ss2(start=ini.Settler_Ss2, fixed=true),
-      So2(start=ini.Settler_So2, fixed=true),
-      Sno2(start=ini.Settler_Sno2, fixed=true),
-      Snh2(start=ini.Settler_Snh2, fixed=true),
-      Snd2(start=ini.Settler_Snd2, fixed=true),
-      Salk2(start=ini.Settler_Salk2, fixed=true),
-      hs(start=ini.Settler_hs, fixed=true))
+      Si1(start=WWS.Settler_Si1, fixed=true),
+      Ss1(start=WWS.Settler_Ss1, fixed=true),
+      So1(start=WWS.Settler_So1, fixed=true),
+      Sno1(start=WWS.Settler_Sno1, fixed=true),
+      Snh1(start=WWS.Settler_Snh1, fixed=true),
+      Snd1(start=WWS.Settler_Snd1, fixed=true),
+      Salk1(start=WWS.Settler_Salk1, fixed=true),
+      Si2(start=WWS.Settler_Si2, fixed=true),
+      Ss2(start=WWS.Settler_Ss2, fixed=true),
+      So2(start=WWS.Settler_So2, fixed=true),
+      Sno2(start=WWS.Settler_Sno2, fixed=true),
+      Snh2(start=WWS.Settler_Snh2, fixed=true),
+      Snd2(start=WWS.Settler_Snd2, fixed=true),
+      Salk2(start=WWS.Settler_Salk2, fixed=true),
+      hs(start=WWS.Settler_hs, fixed=true))
         annotation (Placement(transformation(extent={{50,0},{70,20}})));
 
     ASM1.mixer3 mixer annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
@@ -113,8 +113,7 @@ package Examples "Series of examples of WW plants"
       annotation (Placement(transformation(extent={{29,50},{49,70}})));
     WasteWater.ASM1.sensor_TSS sensor_TSS1 annotation (Placement(transformation(
             extent={{32,20},{48,36}})));
-    Data.SmallPlantIni                          ini annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
-    Modelica.Blocks.Sources.Constant constantInflow[14](k={ini.Q,ini.Si,ini.Ss,ini.Xi,ini.Xs,ini.Xbh,ini.Xba,ini.Xp,ini.So,ini.Sno,ini.Snh,ini.Snd,ini.Xnd,ini.Salk}) annotation (Placement(transformation(extent={{-50,70},{-70,90}})));
+    Modelica.Blocks.Sources.Constant constantInflow[14](k={WWS.Q,WWS.Si,WWS.Ss,WWS.Xi,WWS.Xs,WWS.Xbh,WWS.Xba,WWS.Xp,WWS.So,WWS.Sno,WWS.Snh,WWS.Snd,WWS.Xnd,WWS.Salk}) annotation (Placement(transformation(extent={{-50,70},{-70,90}})));
     WWSystem WWS(BioTreat=WasteWater.Types.BioTreatment.ASM1)
                  annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
   equation
