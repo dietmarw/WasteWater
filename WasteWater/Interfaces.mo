@@ -152,9 +152,12 @@ air between blower and nitrification tank.
   end AirFlow;
 
   partial model Tank
-    parameter Boolean useAir=false
-      "Enable air port"
-      annotation(choices(checkBox=true));
+
+    /* tank specific parameters */
+    parameter Modelica.SIunits.Volume V=1000 "Volume of denitrification tank"
+      annotation(Dialog(group="Volume"));
+    parameter Boolean useAir=false "Enable air port"
+      annotation(choices(checkBox=true),Dialog(group="Volume"));
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
     AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));

@@ -1943,7 +1943,8 @@ package Icons "Icon definitions for the WasteWater library"
 
   partial model pump "Icon for a wastewater pump"
     annotation (Icon(graphics={
-          Text(extent={{-90,99},{90,59}}, textString=
+          Text(extent={{-100,100},{100,60}},
+                                          textString=
                                               "%name"),
           Rectangle(
             extent={{-60,55},{60,-55}},
@@ -2425,97 +2426,94 @@ package Icons "Icon definitions for the WasteWater library"
           preserveAspectRatio=false,
           extent={{-100,-100},{100,100}},
           grid={1,1}), graphics={
-          Text(extent={{-99,98},{97,53}}, textString=
+          Text(extent={{-100,100},{100,60}},
+                                          textString=
                                               "%name"),
           Rectangle(
-            extent={{-45,47},{47,-37}},
+            extent={{-50,50},{51,-50}},
             lineColor={0,0,0},
             fillPattern=FillPattern.VerticalCylinder,
             fillColor={128,128,128}),
           Rectangle(
-            extent={{90,40},{2,10}},
+            extent={{90,40},{2,7}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{90,0},{3,-30}},
+            extent={{90,-7},{3,-40}},
             lineColor={0,0,0},
             pattern=LinePattern.None,
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-40,40},{40,-30}},
+            extent={{-40,40},{40,-40}},
             lineColor={0,0,0},
             fillPattern=FillPattern.Sphere,
             fillColor={192,192,192}),
           Rectangle(
-            extent={{-91,20},{8,-14}},
+            extent={{-91,17},{8,-17}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={192,192,192}),
           Ellipse(
-            extent={{-38,38},{38,-28}},
+            extent={{38,37},{-37,-37}},
+            lineColor={0,0,255},
+            pattern=LinePattern.None,
+            fillColor={223,191,159},
+            fillPattern=FillPattern.Solid,
+            startAngle=0,
+            endAngle=360),
+          Rectangle(
+            extent={{3,37},{90,10}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={223,191,159},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{3,37},{90,13}},
+            extent={{0,-10},{90,-37}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={223,191,159},
             fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{5,-3},{90,-27}},
-            lineColor={0,0,255},
-            pattern=LinePattern.None,
-            fillColor={223,191,159},
-            fillPattern=FillPattern.Solid),
-          Rectangle(
-            extent={{-91,16},{-32,-10}},
+            extent={{-91,13},{-32,-13}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={223,191,159},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{3,-11},{22,-11},{21,-9},{27,-12},{21,-15},{22,-13},{3,-13},
-                {3,-11}},
+            points={{3,-14},{22,-14},{21,-12},{27,-15},{21,-18},{22,-16},{3,-16},{3,-14}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{47,31},{66,31},{65,33},{71,30},{65,27},{66,29},{47,29},{47,
-                31}},
+            points={{47,28},{66,28},{65,30},{71,27},{65,24},{66,26},{47,26},{47,28}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{48,-18},{67,-18},{66,-16},{72,-19},{66,-22},{67,-20},{48,
-                -20},{48,-18}},
+            points={{48,-21},{67,-21},{66,-19},{72,-22},{66,-25},{67,-23},{48,-23},{48,-21}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-42,0},{-23,0},{-24,2},{-18,-1},{-24,-4},{-23,-2},{-42,-2},
-                {-42,0}},
+            points={{-42,-3},{-23,-3},{-24,-1},{-18,-4},{-24,-7},{-23,-5},{-42,-5},{-42,-3}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-80,12},{-61,12},{-62,14},{-56,11},{-62,8},{-61,10},{-80,
-                10},{-80,12}},
+            points={{-80,9},{-61,9},{-62,11},{-56,8},{-62,5},{-61,7},{-80,7},{-80,9}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-12,24},{7,24},{6,26},{12,23},{6,20},{7,22},{-12,22},{-12,
-                24}},
+            points={{-12,21},{7,21},{6,23},{12,20},{6,17},{7,19},{-12,19},{-12,21}},
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={191,95,0},
@@ -2527,7 +2525,8 @@ package Icons "Icon definitions for the WasteWater library"
           preserveAspectRatio=false,
           extent={{-100,-100},{100,100}},
           grid={1,1}), graphics={
-          Text(extent={{-99,98},{99,50}}, textString=
+          Text(extent={{-100,100},{99,50}},
+                                          textString=
                                               "%name"),
           Rectangle(
             extent={{-46,47},{45,-37}},
