@@ -114,7 +114,7 @@ The parameter <code>FilledIcon</code> controls the design only.
   end WWFlow;
 
   connector AirFlow "Airflow connector"
-    flow Types.VolumeFlowRate Q_air;
+     Types.VolumeFlowRate Q_air;
     annotation (
       Documentation(info="<html>
 <p>
@@ -217,7 +217,6 @@ air between blower and nitrification tank.
     Types.MassConcentration Xbh(start=WWS.Tank1_Xbh, fixed=true) "Active heterotrophic biomass";
     Types.MassConcentration Xba(start=WWS.Tank1_Xba, fixed=true) "Active autotrophic biomass";
     Types.MassConcentration Xp(start=WWS.Tank1_Xp, fixed=true) "Particulate products from biomass decay";
-    Types.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
     Types.MassConcentration Sno(start=WWS.Tank1_Sno, fixed=true) "Nitrate and nitrite nitrogen";
     Types.MassConcentration Snh(start=WWS.Tank1_Snh, fixed=true) "Ammonium nitrogen";
     Types.MassConcentration Snd(start=WWS.Tank1_Snd, fixed=true) "Soluble biodegradable organic nitrogen";
@@ -250,19 +249,19 @@ air between blower and nitrification tank.
     /* defining the inputs */
     /* volume dependent dilution term of each concentration */
 
-    input Real inputSi = (In.Si - Si)*In.Q/V;
-    input Real inputSs = (In.Ss - Ss)*In.Q/V;
-    input Real inputXi = (In.Xi - Xi)*In.Q/V;
-    input Real inputXs = (In.Xs - Xs)*In.Q/V;
-    input Real inputXbh = (In.Xbh - Xbh)*In.Q/V;
-    input Real inputXba = (In.Xba - Xba)*In.Q/V;
-    input Real inputXp = (In.Xp - Xp)*In.Q/V;
-    input Real inputSo = (In.So - So)*In.Q/V;
-    input Real inputSno = (In.Sno - Sno)*In.Q/V;
-    input Real inputSnh = (In.Snh - Snh)*In.Q/V;
-    input Real inputSnd = (In.Snd - Snd)*In.Q/V;
-    input Real inputXnd = (In.Xnd - Xnd)*In.Q/V;
-    input Real inputSalk = (In.Salk - Salk)*In.Q/V;
+    Real inputSi = (In.Si - Si)*In.Q/V;
+    Real inputSs = (In.Ss - Ss)*In.Q/V;
+    Real inputXi = (In.Xi - Xi)*In.Q/V;
+    Real inputXs = (In.Xs - Xs)*In.Q/V;
+    Real inputXbh = (In.Xbh - Xbh)*In.Q/V;
+    Real inputXba = (In.Xba - Xba)*In.Q/V;
+    Real inputXp = (In.Xp - Xp)*In.Q/V;
+    Real inputSo = (In.So - So)*In.Q/V;
+    Real inputSno = (In.Sno - Sno)*In.Q/V;
+    Real inputSnh = (In.Snh - Snh)*In.Q/V;
+    Real inputSnd = (In.Snd - Snd)*In.Q/V;
+    Real inputXnd = (In.Xnd - Xnd)*In.Q/V;
+    Real inputSalk = (In.Salk - Salk)*In.Q/V;
 
   equation
 
