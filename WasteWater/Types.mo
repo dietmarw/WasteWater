@@ -22,6 +22,7 @@ package Types "Type definitions for use with the activated sludge models"
       ASM1 "ASM1",
       ASM2d "ASM2d",
       ASM3 "ASM3") "Type of bio treatment method";
+  type AerationRate = Real (final quantity="AerationRate", final unit="g/(m3.s)");
   annotation (
     Invisible=true,
     Documentation(info="This package provides special convention for units and types
