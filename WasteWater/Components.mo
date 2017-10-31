@@ -1,7 +1,7 @@
 within WasteWater;
 package Components "Main components in order to build a WW plant"
   extends Modelica.Icons.Package;
-model deni "Denitrification tank"
+model Deni "Denitrification tank"
   extends Interfaces.Tank(useAir=false);
   extends WasteWater.Icons.deni;
 
@@ -41,9 +41,9 @@ Parameters:
     - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
   V - volume of the tank [m3]
 "));
-end deni;
+end Deni;
 
-model mixer3 "Mixer of 3 flows"
+model Mixer3 "Mixer of 3 flows"
 
   extends WasteWater.Icons.mixer3;
   Interfaces.WWFlow In1 annotation (Placement(transformation(extent={{-110,25},{-90,45}})));
@@ -77,7 +77,7 @@ equation
   annotation (
     Documentation(info=
           "This component mixes 3 flows of wastewater (ASM1) of different concentration and different amount."));
-end mixer3;
+end Mixer3;
 
 model WWSource "Wastewater source"
 
@@ -123,53 +123,6 @@ The dimension of InPort is 14.
 "));
 end WWSource;
 
-model pump "ASM1 wastewater pump"
-
-  extends WasteWater.Icons.pump;
-  package WWU = WasteWater.Types;
-
-  parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
-  parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
-
-  Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,-43},{-90,-23}})));
-  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,18},{110,38}})));
-  Modelica.Blocks.Interfaces.RealInput u annotation (Placement(transformation(extent={{-100,16},{-80,36}})));
-
-  protected
-   Real H "Help variable to reduce expressions";
-
-equation
-
-  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
-  Out.Q = -(if H > Q_max then Q_max else if H < Q_min then Q_min else H);
-
-  Out.Q + In.Q = 0;
-  Out.Si = In.Si;
-  Out.Ss = In.Ss;
-  Out.Xi = In.Xi;
-  Out.Xs = In.Xs;
-  Out.Xbh = In.Xbh;
-  Out.Xba = In.Xba;
-  Out.Xp = In.Xp;
-  Out.So = In.So;
-  Out.Sno = In.Sno;
-  Out.Snh = In.Snh;
-  Out.Snd = In.Snd;
-  Out.Xnd = In.Xnd;
-  Out.Salk = In.Salk;
-
-  annotation (
-    Documentation(info="This component models an ASM1 wastewater pump. It generates a wastewater flow
-that is controlled by the signal u (-1 <= u <=1).
-
-Parameter:
-
-  Qmax - maximum pump capacity [m3/d], this is produced when the control signal u is 1 or greater.
-  Qmin - minimum pump capacity [m3/d], this is produced when the control signal u is -1 or below.
-
-"));
-end pump;
-
 model SludgeSink "Wastesludge sink"
     import WasteWater;
   // only for graphical termination in diagram layer, no equation needed
@@ -182,7 +135,7 @@ model SludgeSink "Wastesludge sink"
 Storage or further sludge treatment is not jet considered."));
 end SludgeSink;
 
-model divider2 "Flowdivider"
+model Divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
 
@@ -225,7 +178,7 @@ equation
   annotation (
     Documentation(info=
           "This component divides one ASM1 wastewater flow into two ASM1 wastewater flows."));
-end divider2;
+end Divider2;
 
 model EffluentSink "Receiving water (river)"
   // only for graphical termination in diagram layer, no equation needed
@@ -415,7 +368,7 @@ Parameters:
             pattern=LinePattern.Dash)}));
   end SecClarModKrebs;
 
-model nitri "ASM1 nitrification tank"
+model Nitri "ASM1 nitrification tank"
   // nitrification (aerated) tank, based on the ASM1 model
 
   extends WasteWater.Icons.nitri;
@@ -472,9 +425,9 @@ Parameters:
   de    - depth of the aeration system [m]
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
-end nitri;
+end Nitri;
 
-model blower "Blower for the aeration of the nitrification tanks"
+model Blower "Blower for the aeration of the nitrification tanks"
   extends WasteWater.Icons.blower;
 
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
@@ -507,5 +460,52 @@ Parameter:
   Qmin - minimum blower capacity [m3 Air/d], this is produced when the control signal u is -1 or below.
 
 "));
-end blower;
+end Blower;
+
+model Pump "ASM1 wastewater pump"
+
+  extends WasteWater.Icons.pump;
+  package WWU = WasteWater.Types;
+
+  parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
+  parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
+
+  Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,-43},{-90,-23}})));
+  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,18},{110,38}})));
+  Modelica.Blocks.Interfaces.RealInput u annotation (Placement(transformation(extent={{-100,16},{-80,36}})));
+
+  protected
+   Real H "Help variable to reduce expressions";
+
+equation
+
+  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
+  Out.Q = -(if H > Q_max then Q_max else if H < Q_min then Q_min else H);
+
+  Out.Q + In.Q = 0;
+  Out.Si = In.Si;
+  Out.Ss = In.Ss;
+  Out.Xi = In.Xi;
+  Out.Xs = In.Xs;
+  Out.Xbh = In.Xbh;
+  Out.Xba = In.Xba;
+  Out.Xp = In.Xp;
+  Out.So = In.So;
+  Out.Sno = In.Sno;
+  Out.Snh = In.Snh;
+  Out.Snd = In.Snd;
+  Out.Xnd = In.Xnd;
+  Out.Salk = In.Salk;
+
+  annotation (
+    Documentation(info="This component models an ASM1 wastewater pump. It generates a wastewater flow
+that is controlled by the signal u (-1 <= u <=1).
+
+Parameter:
+
+  Qmax - maximum pump capacity [m3/d], this is produced when the control signal u is 1 or greater.
+  Qmin - minimum pump capacity [m3/d], this is produced when the control signal u is -1 or below.
+
+"));
+end Pump;
 end Components;
