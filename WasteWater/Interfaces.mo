@@ -62,7 +62,7 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
 </p>
 </html>"));
   connector WWFlow "Waste water flow connector"
-    parameter Boolean FilledIcon = true "If true a filled icon = inport is displayed";
+   // parameter Boolean FilledIcon = true "If true a filled icon = inport is displayed";
     flow Types.VolumeFlowRate Q;
     Types.MassConcentration Si;
     Types.MassConcentration Ss;
@@ -85,28 +85,13 @@ Connector with one output signal of type Real and unit m<sup>3</sup>/d.
           grid={2,2}),
           graphics={
             Rectangle(
-              visible=FilledIcon,
               extent={{-100,100},{100,-100}},
               lineColor={191,95,0},
               fillColor={191,95,0},
               fillPattern=FillPattern.Solid),
-            Rectangle(
-              visible=not FilledIcon,
-              extent={{-100,100},{100,-100}},
-              lineColor={191,95,0},
-              fillColor={255,255,255},
-              fillPattern=FillPattern.Solid),
             Text(
-              visible=FilledIcon,
               extent={{-100,40},{100,-40}},
               lineColor={255,255,255},
-              fillColor={0,0,0},
-              fillPattern=FillPattern.Solid,
-              textString="%name"),
-              Text(
-              visible=not FilledIcon,
-              extent={{-100,40},{100,-40}},
-              lineColor={191,95,0},
               fillColor={0,0,0},
               fillPattern=FillPattern.Solid,
               textString="%name")}),
@@ -154,27 +139,39 @@ air between blower and nitrification tank.
   partial model Tank
 
     /* tank specific parameters */
-    parameter Modelica.SIunits.Volume V=1000 "Volume of denitrification tank"
+    parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
       annotation(Dialog(group="Volume"));
     parameter Boolean useAir=false "Enable air port"
       annotation(choices(checkBox=true),Dialog(group="Volume"));
-    WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-    WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-    Modelica.Blocks.Interfaces.RealInput T
-     annotation (Placement(transformation(
-            extent={{-100,30},{-80,50}}), iconTransformation(extent={{-100,30},{-80,50}})));
 
-    input Real aeration = 0 "Ration of air";
+    /* aeration system dependent parameters */
+    parameter Real alpha=0.7 "Oxygen transfer factor" annotation(Dialog(group="Volume", enable=useAir));
+    parameter Modelica.SIunits.Length de=4.5 "Depth of aeration" annotation(Dialog(group="Volume", enable=useAir));
+    parameter Real R_air=23.5 "Specific oxygen feed factor [gO2/(m3*m)]" annotation(Dialog(group="Volume", enable=useAir));
+    WWU.MassConcentration So_sat "Dissolved oxygen saturation";
+    WWU.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
+
+    WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+    WWFlow Out annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+    Modelica.Blocks.Interfaces.RealInput T
+     annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
+    WWU.AerationRate aeration "Ration of air";
 
     outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
   equation
+    So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T
+      "Temperature dependent oxygen saturation by Simba";
 
     if useAir then
+      /* extends the Oxygen differential equation by an aeration term aeration [mgO2/l];
+       AirIn.Q_air needs to be in Simulationtimeunit [m3/day]*/
+      aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
+      // aeration = Kla * (So_sat - So);
+    else
       aeration = 0 "no aeration in this tank";
     end if;
 
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
   end Tank;
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
