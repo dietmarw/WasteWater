@@ -7,27 +7,18 @@ package Examples "Series of examples of WW plants"
     //Q_air=12100.99290780142 is equal to a Kla of 3.5 h^-1 from COST benchmark
     //Q_air=34574.2654508612 is equal to a Kla of 10 h^-1 from COST benchmark
 
-    ASM1.EffluentSink Effluent annotation (Placement(transformation(extent={{90,-32},{110,-12}})));
-    ASM1.SludgeSink WasteSludge annotation (Placement(transformation(extent={{88,-56},{108,-36}})));
-    ASM1.divider2 divider annotation (Placement(transformation(extent={{20,-6},
+    Components.EffluentSink
+                      Effluent annotation (Placement(transformation(extent={{90,-32},{110,-12}})));
+    Components.SludgeSink
+                    WasteSludge annotation (Placement(transformation(extent={{88,-56},{108,-36}})));
+    Components.Divider2
+                  divider annotation (Placement(transformation(extent={{20,-6},
               {40,14}})));
-    Interfaces.ASM1 tank1(V=3000,
-      Si(start=WWS.Tank1_Si, fixed=true),
-      Ss(start=WWS.Tank1_Ss, fixed=true),
-      So(start=WWS.Tank1_So, fixed=true),
-      Sno(start=WWS.Tank1_Sno, fixed=true),
-      Snh(start=WWS.Tank1_Snh, fixed=true),
-      Snd(start=WWS.Tank1_Snd, fixed=true),
-      Xi(start=WWS.Tank1_Xi, fixed=true),
-      Xs(start=WWS.Tank1_Xs, fixed=true),
-      Xbh(start=WWS.Tank1_Xbh, fixed=true),
-      Xba(start=WWS.Tank1_Xba, fixed=true),
-      Xp(start=WWS.Tank1_Xp, fixed=true),
-      Xnd(start=WWS.Tank1_Xnd, fixed=true),
-      Salk(start=WWS.Tank1_Salk, fixed=true),
+    Components.Deni tank1(V=3000,
       useAir=false)
         annotation (Placement(transformation(extent={{-71,0},{-51,20}})));
-    ASM1.nitri tank2(V=1333,
+    Components.Nitri
+               tank2(V=1333,
       Si(start=WWS.Tank2_Si, fixed=true),
       Ss(start=WWS.Tank2_Ss, fixed=true),
       So(start=WWS.Tank2_So, fixed=true),
@@ -42,7 +33,8 @@ package Examples "Series of examples of WW plants"
       Xnd(start=WWS.Tank2_Xnd, fixed=true),
       Salk(start=WWS.Tank2_Salk, fixed=true))
         annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
-    ASM1.nitri tank3(V=1333,
+    Components.Nitri
+               tank3(V=1333,
       Si(start=WWS.Tank3_Si, fixed=true),
       Ss(start=WWS.Tank3_Ss, fixed=true),
       So(start=WWS.Tank3_So, fixed=true),
@@ -57,7 +49,7 @@ package Examples "Series of examples of WW plants"
       Xnd(start=WWS.Tank3_Xnd, fixed=true),
       Salk(start=WWS.Tank3_Salk, fixed=true))
         annotation (Placement(transformation(extent={{-10,0},{10,20}})));
-     WasteWater.ASM1.SecClar.Krebs.SecClarModKrebs Settler(
+     Components.SecClarModKrebs                    Settler(
       Si1(start=WWS.Settler_Si1, fixed=true),
       Ss1(start=WWS.Settler_Ss1, fixed=true),
       So1(start=WWS.Settler_So1, fixed=true),

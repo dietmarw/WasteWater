@@ -9,9 +9,12 @@ model deni "Denitrification tank"
 //      constrainedby Interfaces.ASMbase
 //      annotation (choicesAllMatching=true);
 
-Interfaces.ASM1 ASM1 if BioTreat == Types.BioTreatment.ASM1 annotation (Placement(transformation(extent={{-10,30},{10,50}})));
-Interfaces.ASM1 ASM2d if BioTreat == Types.BioTreatment.ASM2d annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-Interfaces.ASM1 ASM3 if BioTreat == Types.BioTreatment.ASM3 annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+Interfaces.ASM1 ASM1(V=V) if
+                        BioTreat == Types.BioTreatment.ASM1 annotation (Placement(transformation(extent={{-10,30},{10,50}})));
+Interfaces.ASM1 ASM2d(V=V) if
+                         BioTreat == Types.BioTreatment.ASM2d annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+Interfaces.ASM1 ASM3(V=V) if
+                        BioTreat == Types.BioTreatment.ASM3 annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
 
   protected
   parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
@@ -46,7 +49,7 @@ model mixer3 "Mixer of 3 flows"
   Interfaces.WWFlow In1 annotation (Placement(transformation(extent={{-110,25},{-90,45}})));
   Interfaces.WWFlow In2 annotation (Placement(transformation(extent={{-110,-15},{-90,5}})));
   Interfaces.WWFlow In3 annotation (Placement(transformation(extent={{-110,-55},{-90,-35}})));
-  Interfaces.WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,-14},{110,6}})));
+  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,-14},{110,6}})));
 equation
 
   In1.Q + In2.Q + In3.Q + Out.Q = 0;
@@ -79,7 +82,7 @@ end mixer3;
 model WWSource "Wastewater source"
 
   extends WasteWater.Icons.WWSource;
-  Interfaces.WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{88,-80},{108,-60}})));
+  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{88,-80},{108,-60}})));
   Modelica.Blocks.Interfaces.RealInput data[14]
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 equation
@@ -127,16 +130,17 @@ model pump "ASM1 wastewater pump"
 
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
-  Real H;
-  // this is just a help variable to reduce expressions
 
   Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,-43},{-90,-23}})));
-  Interfaces.WWFlow Out(FilledIcon=false) annotation (Placement(transformation(extent={{90,18},{110,38}}), iconTransformation(extent={{90,18},{110,38}})));
-  Modelica.Blocks.Interfaces.RealInput u annotation (Placement(transformation(
-          extent={{-100,16},{-80,36}})));
+  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,18},{110,38}})));
+  Modelica.Blocks.Interfaces.RealInput u annotation (Placement(transformation(extent={{-100,16},{-80,36}})));
+
+  protected
+   Real H "Help variable to reduce expressions";
+
 equation
 
-  H =0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
+  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
   Out.Q = -(if H > Q_max then Q_max else if H < Q_min then Q_min else H);
 
   Out.Q + In.Q = 0;
@@ -184,8 +188,8 @@ model divider2 "Flowdivider"
 
   extends WasteWater.Icons.divider2;
   Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-  Interfaces.WWFlow Out1(FilledIcon=false) annotation (Placement(transformation(extent={{90,12},{110,32}})));
-  Interfaces.WWFlow Out2(FilledIcon=false) annotation (Placement(transformation(extent={{90,-34},{110,-14}})));
+  Interfaces.WWFlow Out1 annotation (Placement(transformation(extent={{90,12},{110,32}})));
+  Interfaces.WWFlow Out2 annotation (Placement(transformation(extent={{90,-34},{110,-14}})));
 equation
 
   In.Q + Out1.Q + Out2.Q = 0;
@@ -251,13 +255,13 @@ end EffluentSink;
     SI.Length he "height of excess layer";
     Interfaces.WWFlow
                     Feed annotation (Placement(transformation(extent={{-110,4},{-90,24}}), iconTransformation(extent={{-110,4},{-90,24}})));
-    Interfaces.WWFlow Effluent(FilledIcon=false)
+    Interfaces.WWFlow Effluent
                               annotation (Placement(transformation(extent={{92,
               47},{112,67}})));
-    Interfaces.WWFlow Return(FilledIcon=false)
+    Interfaces.WWFlow Return
                             annotation (Placement(transformation(extent={{-40,
               -106},{-20,-86}})));
-    Interfaces.WWFlow Waste(FilledIcon=false)
+    Interfaces.WWFlow Waste
                            annotation (Placement(transformation(extent={{20,
               -106},{40,-86}})));
   equation
@@ -469,4 +473,39 @@ Parameters:
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
 end nitri;
+
+model blower "Blower for the aeration of the nitrification tanks"
+  extends WasteWater.Icons.blower;
+
+  parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
+  parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
+
+  Interfaces.AirFlow AirOut annotation (Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(extent={{-10,90},{10,110}})));
+  Modelica.Blocks.Interfaces.RealInput u
+    annotation (Placement(transformation(
+        origin={110,-30},
+        extent={{-10,-10},{10,10}},
+        rotation=180)));
+
+  protected
+  Real H "Help variable to reduce expressions";
+
+equation
+
+  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
+  AirOut.Q_air = -(if H > Q_max then Q_max else if H < Q_min then Q_min else H);
+
+  annotation (
+    Documentation(info="This component models a blower of a wastewater treatment plant which generates an airflow that is needed
+for the nitrification.
+The blower is connected to the nitrification tank.
+The airflow is controlled by a signal u (-1 <= u <= 1).
+
+Parameter:
+
+  Qmax - maximum blower capacity [m3 Air/d], this is produced when the control signal u is 1 or greater.
+  Qmin - minimum blower capacity [m3 Air/d], this is produced when the control signal u is -1 or below.
+
+"));
+end blower;
 end Components;
