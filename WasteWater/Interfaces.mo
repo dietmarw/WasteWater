@@ -153,12 +153,17 @@ air between blower and nitrification tank.
 
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     WWFlow Out annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-    AirFlow AirIn(Q_air = V* aeration/(R_air*de) * So_sat/(alpha*(So_sat - So))) if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+    //AirFlow AirIn(Q_air = V* aeration/(R_air*de) * So_sat/(alpha*(So_sat - So))) if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+
     Modelica.Blocks.Interfaces.RealInput T
      annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
     WWU.AerationRate aeration "Ration of air";
 
     outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+
+  protected
+     AirFlow Air;
   equation
     So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T
       "Temperature dependent oxygen saturation by Simba";
@@ -168,15 +173,21 @@ air between blower and nitrification tank.
        Original :
          aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
        Rearranged so it can be assigned in the AirFlow connector:
-         AirIn.Q_air = V* aeration/(R_air*de) * So_sat/(alpha*(So_sat - So));
+       AirIn.Q_air = V* aeration/(R_air*de) * So_sat/(alpha*(So_sat - So));
      */
+        // aeration = Kla * (So_sat - So);
 
-     // aeration = Kla * (So_sat - So);
+      aeration =(alpha*(So_sat - So)/So_sat*Air.Q_air*R_air*de)/V;
+  //     if useAir then
+  //        Air.Q_air = 32000;
+  //     else
+  //         Air.Q_air = 0;
+  //     end if;
 
-    if not useAir then
-      aeration = 0 "no aeration in this tank";
-    end if;
-
+      if not useAir then
+        Air.Q_air = 0;
+      end if;
+   connect(Air,AirIn);
   end Tank;
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
