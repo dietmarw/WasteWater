@@ -2,6 +2,32 @@ within WasteWater;
 package Components "Main components in order to build a WW plant"
   extends Modelica.Icons.Package;
 model Deni "Denitrification tank"
+  extends Interfaces.ASM1(useAir=false);
+  extends WasteWater.Icons.deni;
+
+//    replaceable model ASMx = Interfaces.ASM2d
+//      constrainedby Interfaces.ASMbase
+//      annotation (choicesAllMatching=true);
+
+  protected
+  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
+
+equation
+
+  annotation (
+    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
+of a wastewater treatment plant.
+
+The InPort signal gives the tank temperature to the model.
+
+Parameters:
+
+    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
+  V - volume of the tank [m3]
+"));
+end Deni;
+
+model Deni_bak "Denitrification tank"
   extends Interfaces.Tank(useAir=false);
   extends WasteWater.Icons.deni;
 
@@ -9,7 +35,7 @@ model Deni "Denitrification tank"
 //      constrainedby Interfaces.ASMbase
 //      annotation (choicesAllMatching=true);
 
-Interfaces.ASM1 ASM1(V=V) if
+Interfaces.ASM1 ASM1(V=V, useAir=false) if
                         BioTreat == Types.BioTreatment.ASM1 annotation (Placement(transformation(extent={{-10,30},{10,50}})));
 Interfaces.ASM1 ASM2d(V=V) if
                          BioTreat == Types.BioTreatment.ASM2d annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
@@ -41,7 +67,7 @@ Parameters:
     - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
   V - volume of the tank [m3]
 "));
-end Deni;
+end Deni_bak;
 
 model Mixer3 "Mixer of 3 flows"
 
@@ -368,48 +394,13 @@ Parameters:
             pattern=LinePattern.Dash)}));
   end SecClarModKrebs;
 
-model Nitri "ASM1 nitrification tank"
-  // nitrification (aerated) tank, based on the ASM1 model
-
+model Nitri "Nitrification (aerated) tank, based on the ASM1 model"
+   extends Interfaces.ASM1;
   extends WasteWater.Icons.nitri;
-  extends ASM1.Interfaces.ASM1base;
 
-  // tank specific parameters
-  parameter Modelica.SIunits.Volume V=1000 "Volume of nitrification tank";
 
-  // aeration system dependent parameters
-  parameter Real alpha=0.7 "Oxygen transfer factor";
-  parameter Modelica.SIunits.Length de=4.5 "depth of aeration";
-  parameter Real R_air=23.5 "specific oxygen feed factor [gO2/(m^3*m)]";
-  WWU.MassConcentration So_sat "Dissolved oxygen saturation";
-
-  ASM1.Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-5,-103},{5,-93}})));
 equation
 
-  // Temperature dependent oxygen saturation by Simba
-  So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T;
-
-  // extends the Oxygen differential equation by an aeration term
-  // aeration [mgO2/l]; AirIn.Q_air needs to be in
-  // Simulationtimeunit [m3*day^-1]
-  aeration = (alpha*(So_sat - So)/So_sat*AirIn.Q_air*R_air*de)/V;
-  // aeration = Kla * (So_sat - So);
-
-  // volume dependent dilution term of each concentration
-
-  inputSi = (In.Si - Si)*In.Q/V;
-  inputSs = (In.Ss - Ss)*In.Q/V;
-  inputXi = (In.Xi - Xi)*In.Q/V;
-  inputXs = (In.Xs - Xs)*In.Q/V;
-  inputXbh = (In.Xbh - Xbh)*In.Q/V;
-  inputXba = (In.Xba - Xba)*In.Q/V;
-  inputXp = (In.Xp - Xp)*In.Q/V;
-  inputSo = (In.So - So)*In.Q/V;
-  inputSno = (In.Sno - Sno)*In.Q/V;
-  inputSnh = (In.Snh - Snh)*In.Q/V;
-  inputSnd = (In.Snd - Snd)*In.Q/V;
-  inputXnd = (In.Xnd - Xnd)*In.Q/V;
-  inputSalk = (In.Salk - Salk)*In.Q/V;
 
   annotation (
     Documentation(info="This component models the ASM1 processes and reactions taking place in an aerated (nitrification) tank
