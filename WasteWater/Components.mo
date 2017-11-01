@@ -437,7 +437,7 @@ model Blower "Blower for the aeration of the nitrification tanks"
 equation
 
   H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
-  AirOut.Q_air = -(if H > Q_max then Q_max else if H < Q_min then Q_min else H);
+  AirOut.Q_air = (if H > Q_max then Q_max else if H < Q_min then Q_min else H);
 
   annotation (
     Documentation(info="This component models a blower of a wastewater treatment plant which generates an airflow that is needed
