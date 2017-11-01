@@ -92,6 +92,7 @@ Interfaces.WWFlow In
   annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 Interfaces.WWFlow Out
   annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+Interfaces.WWFlow MeasurePort "Just a simple connector to the outport" annotation (Placement(transformation(extent={{54,34},{66,46}})));
 Modelica.Blocks.Interfaces.RealInput T
    annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
 
@@ -111,6 +112,7 @@ equation
   connect(In, ASM2d.In) annotation (Line(points={{-100,0},{-10,0}}, color={191,95,0}));
   connect(In, ASM1.In) annotation (Line(points={{-100,0},{-20,0},{-20,40},{-10,40}}, color={191,95,0}));
   connect(In, ASM3.In) annotation (Line(points={{-100,0},{-20,0},{-20,-40},{-10,-40}}, color={191,95,0}));
+  connect(Out, MeasurePort) annotation (Line(points={{100,0},{80,0},{80,40},{60,40}}, color={191,95,0}));
   annotation (
     Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
 of a wastewater treatment plant.
@@ -147,6 +149,69 @@ Parameters:
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
 end Nitri;
+
+model Nitri2 "Nitrification tank"
+  extends WasteWater.Icons.nitri;
+  /* tank specific parameters */
+  parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
+    annotation(Dialog(group="Tank"));
+
+//    replaceable model ASMx = Interfaces.ASM2d
+//      constrainedby Interfaces.ASMbase
+//      annotation (choicesAllMatching=true);
+
+Interfaces.ASM1 ASM1(V=V, useAir=true) if
+                             BioTreat == Types.BioTreatment.ASM1
+  annotation (Placement(transformation(extent={{-10,30},{10,50}})));
+Interfaces.ASM1 ASM2d(V=V, useAir=true) if
+                              BioTreat == Types.BioTreatment.ASM2d
+  annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+Interfaces.ASM1 ASM3(V=V, useAir=true) if
+                             BioTreat == Types.BioTreatment.ASM3
+  annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+
+Interfaces.WWFlow In
+  annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+Interfaces.WWFlow Out
+  annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+Modelica.Blocks.Interfaces.RealInput T
+   annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
+
+outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+
+  Interfaces.AirFlow AirIn annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
+  Interfaces.WWFlow MeasurePort "Just a simple connector to the outport" annotation (Placement(transformation(extent={{54,34},{66,46}})));
+
+  protected
+  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
+
+equation
+
+  connect(ASM1.T, T) annotation (Line(points={{-9,44},{-40,44},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM2d.T, T) annotation (Line(points={{-9,4},{-40,4},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM3.T, T) annotation (Line(points={{-9,-36},{-40,-36},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM1.Out, Out) annotation (Line(points={{10,40},{40,40},{40,0},{100,0}}, color={191,95,0}));
+  connect(ASM2d.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
+  connect(ASM3.Out, Out) annotation (Line(points={{10,-40},{40,-40},{40,0},{100,0}}, color={191,95,0}));
+  connect(In, ASM2d.In) annotation (Line(points={{-100,0},{-10,0}}, color={191,95,0}));
+  connect(In, ASM1.In) annotation (Line(points={{-100,0},{-20,0},{-20,40},{-10,40}}, color={191,95,0}));
+  connect(In, ASM3.In) annotation (Line(points={{-100,0},{-20,0},{-20,-40},{-10,-40}}, color={191,95,0}));
+  connect(AirIn, ASM3.AirIn) annotation (Line(points={{0,-100},{0,-50}}, color={28,108,200}));
+  connect(AirIn, ASM2d.AirIn) annotation (Line(points={{0,-100},{0,-10}}, color={28,108,200}));
+  connect(AirIn, ASM1.AirIn) annotation (Line(points={{0,-100},{0,30}}, color={28,108,200}));
+  connect(Out, MeasurePort) annotation (Line(points={{100,0},{80,0},{80,40},{60,40}}, color={191,95,0}));
+  annotation (
+    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
+of a wastewater treatment plant.
+
+The InPort signal gives the tank temperature to the model.
+
+Parameters:
+
+    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
+  V - volume of the tank [m3]
+"));
+end Nitri2;
 
 model Divider2 "Flowdivider"
 

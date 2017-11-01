@@ -153,7 +153,7 @@ air between blower and nitrification tank.
   end TankInterface;
 
   partial model Tank
-     /* tank specific parameters */
+    /* tank specific parameters */
     parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
       annotation(Dialog(group="Tank"));
     extends TankInterface;
@@ -173,8 +173,11 @@ air between blower and nitrification tank.
       "Temperature dependent oxygen saturation by Simba";
 
     /* extends the Oxygen differential equation by an aeration term aeration [mgO2/l];
-  AirIn.Q_air needs to be in Simulationtimeunit [m3/day] */
-    // aeration = Kla * (So_sat - So);
+  AirIn.Q_air needs to be in Simulationtimeunit [m3/day] 
+  aeration = Kla * (So_sat - So);
+  Q_air=12100.99290780142 is equal to a Kla of 3.5 h^-1 from COST benchmark
+  Q_air=34574.2654508612 is equal to a Kla of 10 h^-1 from COST benchmark
+  */
     aeration =(alpha*(So_sat - So)/So_sat*Air.Q_air*R_air*de)/V;
     if not useAir then
       Air.Q_air = 0;
