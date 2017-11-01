@@ -136,33 +136,38 @@ air between blower and nitrification tank.
               textString="%name")}));
   end AirFlow;
 
-  partial model Tank
-
-    /* tank specific parameters */
-    parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
-      annotation(Dialog(group="Volume"));
+  partial model TankInterface
     parameter Boolean useAir=false "Enable air port"
-      annotation(choices(checkBox=true),Dialog(group="Volume"));
-
-    /* aeration system dependent parameters */
-    parameter Real alpha=0.7 "Oxygen transfer factor" annotation(Dialog(group="Volume", enable=useAir));
-    parameter Modelica.SIunits.Length de=4.5 "Depth of aeration" annotation(Dialog(group="Volume", enable=useAir));
-    parameter Real R_air=23.5 "Specific oxygen feed factor [gO2/(m3*m)]" annotation(Dialog(group="Volume", enable=useAir));
-    WWU.MassConcentration So_sat "Dissolved oxygen saturation";
-    WWU.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
-
+      annotation(choices(checkBox=true),Dialog(group="Tank"));
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
     WWFlow Out annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
     Modelica.Blocks.Interfaces.RealInput T
      annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
-    WWU.AerationRate aeration "Ration of air";
-
-    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
   protected
      AirFlow Air;
+  equation
+    connect(Air,AirIn);
+  end TankInterface;
+
+  partial model Tank
+     /* tank specific parameters */
+    parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
+      annotation(Dialog(group="Tank"));
+    extends TankInterface;
+
+    /* aeration system dependent parameters */
+    parameter Real alpha=0.7 "Oxygen transfer factor" annotation(Dialog(group="Tank", enable=useAir));
+    parameter Modelica.SIunits.Length de=4.5 "Depth of aeration" annotation(Dialog(group="Tank", enable=useAir));
+    parameter Real R_air=23.5 "Specific oxygen feed factor [gO2/(m3*m)]" annotation(Dialog(group="Tank", enable=useAir));
+
+    WWU.MassConcentration So_sat "Dissolved oxygen saturation";
+    WWU.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
+    WWU.AerationRate aeration "Ration of air";
+    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+
   equation
     So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T
       "Temperature dependent oxygen saturation by Simba";
@@ -175,7 +180,6 @@ air between blower and nitrification tank.
       Air.Q_air = 0;
     end if;
 
-    connect(Air,AirIn);
   end Tank;
 
   partial model ASMbase "Base class of WWTP modelling by ASMx"
@@ -484,4 +488,46 @@ Copyright (C) 2000 - 2002, Gerald Reichl
                                                                              color={28,108,200}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
   end ASMx;
+
+  partial model Tank_bak
+
+    /* tank specific parameters */
+    parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
+      annotation(Dialog(group="Volume"));
+    parameter Boolean useAir=false "Enable air port"
+      annotation(choices(checkBox=true),Dialog(group="Volume"));
+
+    /* aeration system dependent parameters */
+    parameter Real alpha=0.7 "Oxygen transfer factor" annotation(Dialog(group="Volume", enable=useAir));
+    parameter Modelica.SIunits.Length de=4.5 "Depth of aeration" annotation(Dialog(group="Volume", enable=useAir));
+    parameter Real R_air=23.5 "Specific oxygen feed factor [gO2/(m3*m)]" annotation(Dialog(group="Volume", enable=useAir));
+    WWU.MassConcentration So_sat "Dissolved oxygen saturation";
+    WWU.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
+
+    WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+    WWFlow Out annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+    AirFlow AirIn if useAir annotation (Placement(transformation(extent={{-10,-112},{10,-92}})));
+
+    Modelica.Blocks.Interfaces.RealInput T
+     annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
+    WWU.AerationRate aeration "Ration of air";
+
+    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+
+  protected
+     AirFlow Air;
+  equation
+    So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T
+      "Temperature dependent oxygen saturation by Simba";
+
+    /* extends the Oxygen differential equation by an aeration term aeration [mgO2/l];
+  AirIn.Q_air needs to be in Simulationtimeunit [m3/day] */
+    // aeration = Kla * (So_sat - So);
+    aeration =(alpha*(So_sat - So)/So_sat*Air.Q_air*R_air*de)/V;
+    if not useAir then
+      Air.Q_air = 0;
+    end if;
+
+    connect(Air,AirIn);
+  end Tank_bak;
 end Interfaces;

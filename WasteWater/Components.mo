@@ -1,110 +1,6 @@
 within WasteWater;
 package Components "Main components in order to build a WW plant"
   extends Modelica.Icons.Package;
-model Deni "Denitrification tank"
-  extends Interfaces.ASM1(useAir=false);
-  extends WasteWater.Icons.deni;
-
-//    replaceable model ASMx = Interfaces.ASM2d
-//      constrainedby Interfaces.ASMbase
-//      annotation (choicesAllMatching=true);
-
-  protected
-  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
-
-equation
-
-  annotation (
-    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
-of a wastewater treatment plant.
-
-The InPort signal gives the tank temperature to the model.
-
-Parameters:
-
-    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
-  V - volume of the tank [m3]
-"));
-end Deni;
-
-model Deni_bak "Denitrification tank"
-  extends Interfaces.Tank(useAir=false);
-  extends WasteWater.Icons.deni;
-
-//    replaceable model ASMx = Interfaces.ASM2d
-//      constrainedby Interfaces.ASMbase
-//      annotation (choicesAllMatching=true);
-
-Interfaces.ASM1 ASM1(V=V, useAir=false) if
-                        BioTreat == Types.BioTreatment.ASM1 annotation (Placement(transformation(extent={{-10,30},{10,50}})));
-Interfaces.ASM1 ASM2d(V=V) if
-                         BioTreat == Types.BioTreatment.ASM2d annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-Interfaces.ASM1 ASM3(V=V) if
-                        BioTreat == Types.BioTreatment.ASM3 annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
-
-  protected
-  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
-
-equation
-
-  connect(ASM1.T, T) annotation (Line(points={{-9,44},{-40,44},{-40,40},{-90,40}}, color={0,0,127}));
-  connect(ASM2d.T, T) annotation (Line(points={{-9,4},{-40,4},{-40,40},{-90,40}}, color={0,0,127}));
-  connect(ASM3.T, T) annotation (Line(points={{-9,-36},{-40,-36},{-40,40},{-90,40}}, color={0,0,127}));
-  connect(ASM1.Out, Out) annotation (Line(points={{10,40},{40,40},{40,0},{100,0}}, color={191,95,0}));
-  connect(ASM2d.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
-  connect(ASM3.Out, Out) annotation (Line(points={{10,-40},{40,-40},{40,0},{100,0}}, color={191,95,0}));
-  connect(In, ASM2d.In) annotation (Line(points={{-100,0},{-10,0}}, color={191,95,0}));
-  connect(In, ASM1.In) annotation (Line(points={{-100,0},{-20,0},{-20,40},{-10,40}}, color={191,95,0}));
-  connect(In, ASM3.In) annotation (Line(points={{-100,0},{-20,0},{-20,-40},{-10,-40}}, color={191,95,0}));
-  annotation (
-    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
-of a wastewater treatment plant.
-
-The InPort signal gives the tank temperature to the model.
-
-Parameters:
-
-    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
-  V - volume of the tank [m3]
-"));
-end Deni_bak;
-
-model Mixer3 "Mixer of 3 flows"
-
-  extends WasteWater.Icons.mixer3;
-  Interfaces.WWFlow In1 annotation (Placement(transformation(extent={{-110,25},{-90,45}})));
-  Interfaces.WWFlow In2 annotation (Placement(transformation(extent={{-110,-15},{-90,5}})));
-  Interfaces.WWFlow In3 annotation (Placement(transformation(extent={{-110,-55},{-90,-35}})));
-  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,-14},{110,6}})));
-equation
-
-  In1.Q + In2.Q + In3.Q + Out.Q = 0;
-  Out.Si = (In1.Si*In1.Q + In2.Si*In2.Q + In3.Si*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.Ss = (In1.Ss*In1.Q + In2.Ss*In2.Q + In3.Ss*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.Xi = (In1.Xi*In1.Q + In2.Xi*In2.Q + In3.Xi*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.Xs = (In1.Xs*In1.Q + In2.Xs*In2.Q + In3.Xs*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.Xbh = (In1.Xbh*In1.Q + In2.Xbh*In2.Q + In3.Xbh*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Xba = (In1.Xba*In1.Q + In2.Xba*In2.Q + In3.Xba*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Xp = (In1.Xp*In1.Q + In2.Xp*In2.Q + In3.Xp*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.So = (In1.So*In1.Q + In2.So*In2.Q + In3.So*In3.Q)/(In1.Q + In2.Q + In3.Q);
-  Out.Sno = (In1.Sno*In1.Q + In2.Sno*In2.Q + In3.Sno*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Snh = (In1.Snh*In1.Q + In2.Snh*In2.Q + In3.Snh*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Snd = (In1.Snd*In1.Q + In2.Snd*In2.Q + In3.Snd*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Xnd = (In1.Xnd*In1.Q + In2.Xnd*In2.Q + In3.Xnd*In3.Q)/(In1.Q + In2.Q +
-    In3.Q);
-  Out.Salk = (In1.Salk*In1.Q + In2.Salk*In2.Q + In3.Salk*In3.Q)/(In1.Q + In2.Q
-     + In3.Q);
-
-  annotation (
-    Documentation(info=
-          "This component mixes 3 flows of wastewater (ASM1) of different concentration and different amount."));
-end Mixer3;
-
 model WWSource "Wastewater source"
 
   extends WasteWater.Icons.WWSource;
@@ -149,17 +45,108 @@ The dimension of InPort is 14.
 "));
 end WWSource;
 
-model SludgeSink "Wastesludge sink"
-    import WasteWater;
-  // only for graphical termination in diagram layer, no equation needed
+model Deni "Denitrification tank"
+  extends Interfaces.ASM1(useAir=false);
+  extends WasteWater.Icons.deni;
 
-  extends WasteWater.Icons.SludgeSink;
-  WasteWater.Interfaces.WWFlow
-                          In annotation (Placement(transformation(extent={{-110,-22},{-90,-2}}), iconTransformation(extent={{-110,-22},{-90,-2}})));
+//    replaceable model ASMx = Interfaces.ASM2d
+//      constrainedby Interfaces.ASMbase
+//      annotation (choicesAllMatching=true);
+
+  protected
+  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
+
+equation
+
   annotation (
-    Documentation(info="This component terminates the waste sludge stream of an ASM1 wastewater treatment plant model.
-Storage or further sludge treatment is not jet considered."));
-end SludgeSink;
+    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
+of a wastewater treatment plant.
+
+The InPort signal gives the tank temperature to the model.
+
+Parameters:
+
+    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
+  V - volume of the tank [m3]
+"));
+end Deni;
+
+model Deni2 "Denitrification tank"
+  extends WasteWater.Icons.deni;
+  /* tank specific parameters */
+  parameter Modelica.SIunits.Volume V(start=1000) "Volume of denitrification tank"
+    annotation(Dialog(group="Tank"));
+
+//    replaceable model ASMx = Interfaces.ASM2d
+//      constrainedby Interfaces.ASMbase
+//      annotation (choicesAllMatching=true);
+
+Interfaces.ASM1 ASM1(V=V) if BioTreat == Types.BioTreatment.ASM1
+  annotation (Placement(transformation(extent={{-10,30},{10,50}})));
+Interfaces.ASM1 ASM2d(V=V) if BioTreat == Types.BioTreatment.ASM2d
+  annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+Interfaces.ASM1 ASM3(V=V) if BioTreat == Types.BioTreatment.ASM3
+  annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+
+Interfaces.WWFlow In
+  annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
+Interfaces.WWFlow Out
+  annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+Modelica.Blocks.Interfaces.RealInput T
+   annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
+
+outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+
+  protected
+  parameter Types.BioTreatment BioTreat=WWS.BioTreat "Type of biological treatment set in WWS";
+
+equation
+
+  connect(ASM1.T, T) annotation (Line(points={{-9,44},{-40,44},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM2d.T, T) annotation (Line(points={{-9,4},{-40,4},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM3.T, T) annotation (Line(points={{-9,-36},{-40,-36},{-40,40},{-90,40}}, color={0,0,127}));
+  connect(ASM1.Out, Out) annotation (Line(points={{10,40},{40,40},{40,0},{100,0}}, color={191,95,0}));
+  connect(ASM2d.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
+  connect(ASM3.Out, Out) annotation (Line(points={{10,-40},{40,-40},{40,0},{100,0}}, color={191,95,0}));
+  connect(In, ASM2d.In) annotation (Line(points={{-100,0},{-10,0}}, color={191,95,0}));
+  connect(In, ASM1.In) annotation (Line(points={{-100,0},{-20,0},{-20,40},{-10,40}}, color={191,95,0}));
+  connect(In, ASM3.In) annotation (Line(points={{-100,0},{-20,0},{-20,-40},{-10,-40}}, color={191,95,0}));
+  annotation (
+    Documentation(info="This component models the ASM1 processes and reactions taking place in an unaerated (denitrification) tank
+of a wastewater treatment plant.
+
+The InPort signal gives the tank temperature to the model.
+
+Parameters:
+
+    - all stoichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
+  V - volume of the tank [m3]
+"));
+end Deni2;
+
+model Nitri "Nitrification (aerated) tank, based on the ASM1 model"
+   extends Interfaces.ASM1;
+  extends WasteWater.Icons.nitri;
+
+
+equation
+
+
+  annotation (
+    Documentation(info="This component models the ASM1 processes and reactions taking place in an aerated (nitrification) tank
+of a wastewater treatment plant.
+
+The InPort signal gives the tank temperature to the model.
+
+Parameters:
+
+        - all soichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
+  V     - volume of the tank [m3]
+  alpha - oxygen transfer factor
+  de    - depth of the aeration system [m]
+  R_air - specific oxygen feed factor [g O2/(m3*m)]
+"));
+end Nitri;
 
 model Divider2 "Flowdivider"
 
@@ -206,15 +193,41 @@ equation
           "This component divides one ASM1 wastewater flow into two ASM1 wastewater flows."));
 end Divider2;
 
-model EffluentSink "Receiving water (river)"
-  // only for graphical termination in diagram layer, no equation needed
+model Mixer3 "Mixer of 3 flows"
 
-  extends WasteWater.Icons.EffluentSink;
-  Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,10},{-90,30}})));
+  extends WasteWater.Icons.mixer3;
+  Interfaces.WWFlow In1 annotation (Placement(transformation(extent={{-110,25},{-90,45}})));
+  Interfaces.WWFlow In2 annotation (Placement(transformation(extent={{-110,-15},{-90,5}})));
+  Interfaces.WWFlow In3 annotation (Placement(transformation(extent={{-110,-55},{-90,-35}})));
+  Interfaces.WWFlow Out annotation (Placement(transformation(extent={{90,-14},{110,6}})));
+equation
+
+  In1.Q + In2.Q + In3.Q + Out.Q = 0;
+  Out.Si = (In1.Si*In1.Q + In2.Si*In2.Q + In3.Si*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.Ss = (In1.Ss*In1.Q + In2.Ss*In2.Q + In3.Ss*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.Xi = (In1.Xi*In1.Q + In2.Xi*In2.Q + In3.Xi*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.Xs = (In1.Xs*In1.Q + In2.Xs*In2.Q + In3.Xs*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.Xbh = (In1.Xbh*In1.Q + In2.Xbh*In2.Q + In3.Xbh*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Xba = (In1.Xba*In1.Q + In2.Xba*In2.Q + In3.Xba*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Xp = (In1.Xp*In1.Q + In2.Xp*In2.Q + In3.Xp*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.So = (In1.So*In1.Q + In2.So*In2.Q + In3.So*In3.Q)/(In1.Q + In2.Q + In3.Q);
+  Out.Sno = (In1.Sno*In1.Q + In2.Sno*In2.Q + In3.Sno*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Snh = (In1.Snh*In1.Q + In2.Snh*In2.Q + In3.Snh*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Snd = (In1.Snd*In1.Q + In2.Snd*In2.Q + In3.Snd*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Xnd = (In1.Xnd*In1.Q + In2.Xnd*In2.Q + In3.Xnd*In3.Q)/(In1.Q + In2.Q +
+    In3.Q);
+  Out.Salk = (In1.Salk*In1.Q + In2.Salk*In2.Q + In3.Salk*In3.Q)/(In1.Q + In2.Q
+     + In3.Q);
+
   annotation (
-    Documentation(info="This component terminates an ASM1 wastewater treatment plant model e.g. the wastewater flow to the receiving water.
-"));
-end EffluentSink;
+    Documentation(info=
+          "This component mixes 3 flows of wastewater (ASM1) of different concentration and different amount."));
+end Mixer3;
 
   model SecClarModKrebs "ASM1 Secondary Settling Tank Model based on Krebs"
 
@@ -394,64 +407,27 @@ Parameters:
             pattern=LinePattern.Dash)}));
   end SecClarModKrebs;
 
-model Nitri "Nitrification (aerated) tank, based on the ASM1 model"
-   extends Interfaces.ASM1;
-  extends WasteWater.Icons.nitri;
+model EffluentSink "Receiving water (river)"
+  // only for graphical termination in diagram layer, no equation needed
 
-
-equation
-
-
+  extends WasteWater.Icons.EffluentSink;
+  Interfaces.WWFlow In annotation (Placement(transformation(extent={{-110,10},{-90,30}})));
   annotation (
-    Documentation(info="This component models the ASM1 processes and reactions taking place in an aerated (nitrification) tank
-of a wastewater treatment plant.
-
-The InPort signal gives the tank temperature to the model.
-
-Parameters:
-
-        - all soichiometric and kinetic parameters of the activated sludge model No.1 (ASM1)
-  V     - volume of the tank [m3]
-  alpha - oxygen transfer factor
-  de    - depth of the aeration system [m]
-  R_air - specific oxygen feed factor [g O2/(m3*m)]
+    Documentation(info="This component terminates an ASM1 wastewater treatment plant model e.g. the wastewater flow to the receiving water.
 "));
-end Nitri;
+end EffluentSink;
 
-model Blower "Blower for the aeration of the nitrification tanks"
-  extends WasteWater.Icons.blower;
+model SludgeSink "Wastesludge sink"
+    import WasteWater;
+  // only for graphical termination in diagram layer, no equation needed
 
-  parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
-  parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
-
-  Interfaces.AirFlow AirOut annotation (Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(extent={{-10,90},{10,110}})));
-  Modelica.Blocks.Interfaces.RealInput u
-    annotation (Placement(transformation(
-        origin={110,-30},
-        extent={{-10,-10},{10,10}},
-        rotation=180)));
-
-  protected
-  Real H "Help variable to reduce expressions";
-
-equation
-
-  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
-  AirOut.Q_air = (if H > Q_max then Q_max else if H < Q_min then Q_min else H);
-
+  extends WasteWater.Icons.SludgeSink;
+  WasteWater.Interfaces.WWFlow
+                          In annotation (Placement(transformation(extent={{-110,-22},{-90,-2}}), iconTransformation(extent={{-110,-22},{-90,-2}})));
   annotation (
-    Documentation(info="This component models a blower of a wastewater treatment plant which generates an airflow that is needed
-for the nitrification.
-The blower is connected to the nitrification tank.
-The airflow is controlled by a signal u (-1 <= u <= 1).
-
-Parameter:
-
-  Qmax - maximum blower capacity [m3 Air/d], this is produced when the control signal u is 1 or greater.
-  Qmin - minimum blower capacity [m3 Air/d], this is produced when the control signal u is -1 or below.
-
-"));
-end Blower;
+    Documentation(info="This component terminates the waste sludge stream of an ASM1 wastewater treatment plant model.
+Storage or further sludge treatment is not jet considered."));
+end SludgeSink;
 
 model Pump "ASM1 wastewater pump"
 
@@ -499,4 +475,40 @@ Parameter:
 
 "));
 end Pump;
+
+model Blower "Blower for the aeration of the nitrification tanks"
+  extends WasteWater.Icons.blower;
+
+  parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
+  parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
+
+  Interfaces.AirFlow AirOut annotation (Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(extent={{-10,90},{10,110}})));
+  Modelica.Blocks.Interfaces.RealInput u
+    annotation (Placement(transformation(
+        origin={110,-30},
+        extent={{-10,-10},{10,10}},
+        rotation=180)));
+
+  protected
+  Real H "Help variable to reduce expressions";
+
+equation
+
+  H = 0.5*(-Q_min + Q_max) + u*0.5*(-Q_min + Q_max) + Q_min;
+  AirOut.Q_air = (if H > Q_max then Q_max else if H < Q_min then Q_min else H);
+
+  annotation (
+    Documentation(info="This component models a blower of a wastewater treatment plant which generates an airflow that is needed
+for the nitrification.
+The blower is connected to the nitrification tank.
+The airflow is controlled by a signal u (-1 <= u <= 1).
+
+Parameter:
+
+  Qmax - maximum blower capacity [m3 Air/d], this is produced when the control signal u is 1 or greater.
+  Qmin - minimum blower capacity [m3 Air/d], this is produced when the control signal u is -1 or below.
+
+"));
+end Blower;
+
 end Components;
