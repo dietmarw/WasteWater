@@ -214,18 +214,18 @@ air between blower and nitrification tank.
     Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
     Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
 
-    Types.MassConcentration Si(start=WWS.Tank1_Si, fixed=true) "Soluble inert organic matter";
-    Types.MassConcentration Ss(start=WWS.Tank1_Ss, fixed=true) "Readily biodegradable substrate";
-    Types.MassConcentration Xi(start=WWS.Tank1_Xi, fixed=true) "Particulate inert organic matter";
-    Types.MassConcentration Xs(start=WWS.Tank1_Xs, fixed=true) "Slowly biodegradable substrate";
-    Types.MassConcentration Xbh(start=WWS.Tank1_Xbh, fixed=true) "Active heterotrophic biomass";
-    Types.MassConcentration Xba(start=WWS.Tank1_Xba, fixed=true) "Active autotrophic biomass";
-    Types.MassConcentration Xp(start=WWS.Tank1_Xp, fixed=true) "Particulate products from biomass decay";
-    Types.MassConcentration Sno(start=WWS.Tank1_Sno, fixed=true) "Nitrate and nitrite nitrogen";
-    Types.MassConcentration Snh(start=WWS.Tank1_Snh, fixed=true) "Ammonium nitrogen";
-    Types.MassConcentration Snd(start=WWS.Tank1_Snd, fixed=true) "Soluble biodegradable organic nitrogen";
-    Types.MassConcentration Xnd(start=WWS.Tank1_Xnd, fixed=true) "Particulate biodegradable organic nitrogen";
-    Types.Alkalinity Salk(start=WWS.Tank1_Salk, fixed=true) "Alkalinity";
+    Types.MassConcentration Si "Soluble inert organic matter";
+    Types.MassConcentration Ss "Readily biodegradable substrate";
+    Types.MassConcentration Xi "Particulate inert organic matter";
+    Types.MassConcentration Xs "Slowly biodegradable substrate";
+    Types.MassConcentration Xbh "Active heterotrophic biomass";
+    Types.MassConcentration Xba "Active autotrophic biomass";
+    Types.MassConcentration Xp "Particulate products from biomass decay";
+    Types.MassConcentration Sno "Nitrate and nitrite nitrogen";
+    Types.MassConcentration Snh "Ammonium nitrogen";
+    Types.MassConcentration Snd "Soluble biodegradable organic nitrogen";
+    Types.MassConcentration Xnd "Particulate biodegradable organic nitrogen";
+    Types.Alkalinity Salk "Alkalinity";
 
     Real p1;
     Real p2;
@@ -480,7 +480,8 @@ Copyright (C) 2000 - 2002, Gerald Reichl
     connect(WWbase.In, In) annotation (Line(points={{-10,0},{-100,0}}, color={191,95,0}));
     connect(WWbase.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
     connect(WWbase.T, T) annotation (Line(points={{-9,4},{-52,4},{-52,40},{-90,40}}, color={0,0,127}));
-    connect(AirIn, WWbase.AirIn) annotation (Line(points={{0,-100},{0,-10}}, color={28,108,200}));
+    connect(AirIn, WWbase.AirIn) annotation (Line(points={{0,-102},{0,-10.2}},
+                                                                             color={28,108,200}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
   end ASMx;
 end Interfaces;
