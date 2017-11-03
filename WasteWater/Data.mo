@@ -93,4 +93,20 @@ package Data
     extends Data.SmallPlantIni;
     annotation (defaultComponentName="ini");
   end SmallPlantAquaSim;
+
+  record ASM1vars "Variables as used in the ASM1 models"
+    Types.MassConcentration Si "Soluble inert organic matter";
+    Types.MassConcentration Ss "Readily biodegradable substrate";
+    Types.MassConcentration Xi "Particulate inert organic matter";
+    Types.MassConcentration Xs "Slowly biodegradable substrate";
+    Types.MassConcentration Xbh "Active heterotrophic biomass";
+    Types.MassConcentration Xba "Active autotrophic biomass";
+    Types.MassConcentration Xp "Particulate products from biomass decay";
+    Types.MassConcentration So "Dissolved oxygen";
+    Types.MassConcentration Sno "Nitrate and nitrite nitrogen";
+    Types.MassConcentration Snh "Ammonium nitrogen";
+    Types.MassConcentration Snd "Soluble biodegradable organic nitrogen";
+    Types.MassConcentration Xnd "Particulate biodegradable organic nitrogen";
+    Types.Alkalinity Salk "Alkalinity";
+  end ASM1vars;
 end Data;

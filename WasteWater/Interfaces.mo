@@ -137,6 +137,7 @@ air between blower and nitrification tank.
   end AirFlow;
 
   partial model TankInterface
+    extends Data.ASM1vars;
     parameter Boolean useAir=false "Enable air port"
       annotation(choices(checkBox=true),Dialog(group="Tank"));
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -164,7 +165,6 @@ air between blower and nitrification tank.
     parameter Real R_air=23.5 "Specific oxygen feed factor [gO2/(m3*m)]" annotation(Dialog(group="Tank", enable=useAir));
 
     WWU.MassConcentration So_sat "Dissolved oxygen saturation";
-    WWU.MassConcentration So(start=WWS.Tank1_So, fixed=true) "Dissolved oxygen";
     WWU.AerationRate aeration "Ration of air";
     outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
@@ -221,18 +221,6 @@ air between blower and nitrification tank.
     Real k_h "Maximum specific hydrolysis rate f(T) [g Xs/(g Xbh COD day)]";
     Real K_x "Half-saturation (hydrolysis) f(T) [g Xs/(g Xbh COD)]";
 
-    Types.MassConcentration Si "Soluble inert organic matter";
-    Types.MassConcentration Ss "Readily biodegradable substrate";
-    Types.MassConcentration Xi "Particulate inert organic matter";
-    Types.MassConcentration Xs "Slowly biodegradable substrate";
-    Types.MassConcentration Xbh "Active heterotrophic biomass";
-    Types.MassConcentration Xba "Active autotrophic biomass";
-    Types.MassConcentration Xp "Particulate products from biomass decay";
-    Types.MassConcentration Sno "Nitrate and nitrite nitrogen";
-    Types.MassConcentration Snh "Ammonium nitrogen";
-    Types.MassConcentration Snd "Soluble biodegradable organic nitrogen";
-    Types.MassConcentration Xnd "Particulate biodegradable organic nitrogen";
-    Types.Alkalinity Salk "Alkalinity";
 
     Real p1;
     Real p2;
