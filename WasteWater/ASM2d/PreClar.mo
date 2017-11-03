@@ -11,7 +11,7 @@ package PreClar "Primary clarifier modelling based on ASM2d"
     //WWU.MassConcentration Xmep "Ferric-phosphate FePO4";
 
     package WWU = Types;
-    extends WasteWater.Icons.preclar1;
+    extends WasteWater.Icons.PreClar;
     extends Interfaces.conversion_factors;
 
     // tank specific parameters

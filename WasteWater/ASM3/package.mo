@@ -7,7 +7,7 @@ extends Modelica.Icons.Library;
 model deni "ASM3 denitrification tank"
   //denitrification tank based on the ASM3 model
 
-  extends WasteWater.Icons.deni;
+  extends WasteWater.Icons.Deni;
   extends Interfaces.ASM3base;
 
   // tank specific parameters
@@ -58,7 +58,7 @@ end deni;
 model nitri "ASM3 nitrification tank"
   // nitrification (aerated) tank, based on the ASM3 model
 
-  extends WasteWater.Icons.nitri;
+  extends WasteWater.Icons.Nitri;
   extends Interfaces.ASM3base;
 
   // tank specific parameters
@@ -260,7 +260,7 @@ end SecClarModTakacs;
 
 model blower "Blower for the aeration of the nitrification tanks"
 
-  extends WasteWater.Icons.blower;
+  extends WasteWater.Icons.Blower;
   package WWU = WasteWater.Types;
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
@@ -295,7 +295,7 @@ end blower;
 
 model pump "ASM3 wastewater pump"
 
-  extends WasteWater.Icons.pump;
+  extends WasteWater.Icons.Pump;
   package WWU = WasteWater.Types;
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
@@ -540,7 +540,7 @@ model divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
 
-  extends WasteWater.Icons.divider2;
+  extends WasteWater.Icons.Divider2;
   Interfaces.WWFlowAsm3in In annotation (Placement(transformation(extent={{-111,
             -7},{-91,13}})));
   Interfaces.WWFlowAsm3out Out1 annotation (Placement(transformation(extent={{
@@ -587,7 +587,7 @@ end divider2;
 
 model mixer2 "Mixer of two ASM3 characterised flows"
 
-  extends WasteWater.Icons.mixer2;
+  extends WasteWater.Icons.Mixer2;
   Interfaces.WWFlowAsm3in In1 annotation (Placement(transformation(extent={{
             -111,20},{-91,40}})));
   Interfaces.WWFlowAsm3in In2 annotation (Placement(transformation(extent={{
@@ -622,7 +622,7 @@ model mixer3 "Mixer of 3 ASM3 characterised flows"
 
     // mixes 3 flows of wastewater of different concentration and different amount
 
-  extends WasteWater.Icons.mixer3;
+  extends WasteWater.Icons.Mixer3;
   Interfaces.WWFlowAsm3in In1 annotation (Placement(transformation(extent={{
             -110,29},{-90,49}})));
   Interfaces.WWFlowAsm3in In2 annotation (Placement(transformation(extent={{

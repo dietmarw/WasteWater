@@ -7,7 +7,7 @@ extends Modelica.Icons.Library;
 model deni "ASM2d denitrification tank"
   //denitrification tank based on the ASM2d model
 
-  extends WasteWater.Icons.deni;
+  extends WasteWater.Icons.Deni;
   extends Interfaces.ASM2dbase;
 
   // tank specific parameters
@@ -64,7 +64,7 @@ end deni;
 model nitri "ASM2d nitrification tank"
   // nitrification (aerated) tank, based on the ASM2d model
 
-  extends WasteWater.Icons.nitri;
+  extends WasteWater.Icons.Nitri;
   extends Interfaces.ASM2dbase;
 
   // aeration system dependent parameters
@@ -353,7 +353,7 @@ end SecClarModTakacs;
 model blower "Blower for the aeration of the nitrification tanks"
 
   package WWU = WasteWater.Types;
-  extends WasteWater.Icons.blower;
+  extends WasteWater.Icons.Blower;
 
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum blower capacity";
@@ -390,7 +390,7 @@ end blower;
 model pump "ASM2d wastewater pump"
 
   package WWU = WasteWater.Types;
-  extends WasteWater.Icons.pump;
+  extends WasteWater.Icons.Pump;
 
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum pump capacity";
@@ -665,7 +665,7 @@ model divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
 
-  extends WasteWater.Icons.divider2;
+  extends WasteWater.Icons.Divider2;
   Interfaces.WWFlowAsm2din In annotation (Placement(transformation(extent={{
             -110,-7},{-90,13}})));
   Interfaces.WWFlowAsm2dout Out1 annotation (Placement(transformation(extent={{
@@ -724,7 +724,7 @@ end divider2;
 
 model mixer2 "Mixer of two ASM2d characterised flows"
 
-  extends WasteWater.Icons.mixer2;
+  extends WasteWater.Icons.Mixer2;
   Interfaces.WWFlowAsm2din In1 annotation (Placement(transformation(extent={{
             -110,15},{-90,35}})));
   Interfaces.WWFlowAsm2din In2 annotation (Placement(transformation(extent={{
@@ -763,7 +763,7 @@ end mixer2;
 
 model mixer3 "Mixer of 3 ASM2d characterised flows"
 
-  extends WasteWater.Icons.mixer3;
+  extends WasteWater.Icons.Mixer3;
   Interfaces.WWFlowAsm2din In1 annotation (Placement(transformation(extent={{
             -110,25},{-90,45}})));
   Interfaces.WWFlowAsm2din In2 annotation (Placement(transformation(extent={{

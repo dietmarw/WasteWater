@@ -260,14 +260,10 @@ Copyright (C) 2000 - 2001, Gerald Reichl
             -2.22045e-15,-17}}));
     connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
             -2.22045e-15,59}}));
-    connect(Feed, S6.In) annotation (Line(points={{-100,10},{-67.5,10},{-67.5,
-            9.8},{-35,9.8}}));
-    connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-100},{30,
-            -100}}));
-    connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{
-            67.5,57},{100,57}}));
-    connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-100},{-30,
-            -100}}));
+    connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67.5,14},{-67.5,9.8},{-35,9.8}}));
+    connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-96},{30,-96}}));
+    connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{67.5,57},{102,57}}));
+    connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
     // total sludge concentration in clarifier feed
     Xf = 0.75*(Feed.Xs + Feed.Xbh + Feed.Xba + Feed.Xp + Feed.Xi);

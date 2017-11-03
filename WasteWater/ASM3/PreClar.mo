@@ -10,7 +10,7 @@ package PreClar "Primary clarifier modelling based on ASM3"
     import Modelica.Math.log;
 
     package WWU = Types;
-    extends WasteWater.Icons.preclar1;
+    extends WasteWater.Icons.PreClar;
     extends ASM3.Interfaces.stoichiometry;
 
     // tank specific parameters
