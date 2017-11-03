@@ -1,6 +1,6 @@
 ﻿within ;
 package WasteWater "Modelica WasteWater Library"
-extends Modelica.Icons.Library;
+extends Modelica.Icons.Package;
 
   /* global imports  for the library */
   import SI=Modelica.SIunits "Importing SIunits on global level";
@@ -18,7 +18,7 @@ the secondary settling process.</p>
 
 <p>PS: SimulationTimeUnit for all models built with the WasteWater library is days [d].</p>
 
-<p>The WasteWater package is free software; it can be redistributed and/or modified under the terms of the <a href=\"https://modelica.org/licenses/ModelicaLicense1.1\">Modelica 1.1 license</a>.</p>
+<p>The WasteWater package is free software; it can be redistributed and/or modified under the terms of the <a href=\"modelica://WasteWater.UsersGuide.ModelicaLicense\">Modelica License 1.1</a>.</p>
 
 <p>The WasteWater package currently consists of the following subpackages:
 <ul>
