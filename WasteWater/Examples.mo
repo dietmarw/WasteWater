@@ -4,10 +4,9 @@ package Examples "Series of examples of WW plants"
 
   model ASM1SmallPlantRun "Small WWTP Configuration"
     import WasteWater;
-    import WasteWater;
     extends Modelica.Icons.Example;
 
-    WasteWater.Components.Nitri tank2(V=1333, ASM1(
+    Components.Nitri tank2(V=1333, ASM1(
         Si(start=WWS.Tank2_Si, fixed=true),
         Ss(start=WWS.Tank2_Ss, fixed=true),
         So(start=WWS.Tank2_So, fixed=true),
