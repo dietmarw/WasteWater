@@ -7,7 +7,7 @@ extends Modelica.Icons.Library;
 model deni "ASM1 denitrification tank"
   //denitrification tank based on the ASM1 model
 
-  extends WasteWater.Icons.deni;
+  extends WasteWater.Icons.Deni;
   extends Interfaces.ASM1base;
 
   // tank specific parameters
@@ -51,7 +51,7 @@ end deni;
 model nitri "ASM1 nitrification tank"
   // nitrification (aerated) tank, based on the ASM1 model
 
-  extends WasteWater.Icons.nitri;
+  extends WasteWater.Icons.Nitri;
   extends Interfaces.ASM1base;
 
   // tank specific parameters
@@ -212,14 +212,10 @@ equation
           -2.22045e-15,-17}}));
   connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
           -2.22045e-15,59}}));
-  connect(Feed, S6.In) annotation (Line(points={{-100,10},{-67.5,10},{-67.5,9.8},
-          {-35,9.8}}));
-  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-100},{30,
-          -100}}));
-  connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{
-          67.5,57},{100,57}}));
-  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-100},{-30,
-          -100}}));
+  connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67.5,14},{-67.5,9.8},{-35,9.8}}));
+  connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-96},{30,-96}}));
+  connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{67.5,57},{102,57}}));
+  connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
   // total sludge concentration in clarifier feed
   Xf = 0.75*(Feed.Xs + Feed.Xbh + Feed.Xba + Feed.Xp + Feed.Xi);
@@ -248,7 +244,7 @@ end SecClarModTakacs;
 
 model blower "Blower for the aeration of the nitrification tanks"
 
-  extends WasteWater.Icons.blower;
+  extends WasteWater.Icons.Blower;
   package WWU = WasteWater.Types;
 
   parameter WWU.VolumeFlowRate Q_max=20000 "maximum blower capacity";
@@ -287,7 +283,7 @@ end blower;
 
 model pump "ASM1 wastewater pump"
 
-  extends WasteWater.Icons.pump;
+  extends WasteWater.Icons.Pump;
   package WWU = WasteWater.Types;
 
   parameter WWU.VolumeFlowRate Q_min=0.0 "minimum pump capacity";
@@ -524,7 +520,7 @@ model divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
 
-  extends WasteWater.Icons.divider2;
+  extends WasteWater.Icons.Divider2;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-110,
             -7},{-90,13}})));
   Interfaces.WWFlowAsm1out Out1 annotation (Placement(transformation(extent={{
@@ -571,7 +567,7 @@ end divider2;
 
 model mixer2 "Mixer of two ASM1 characterised flows"
 
-  extends WasteWater.Icons.mixer2;
+  extends WasteWater.Icons.Mixer2;
   Interfaces.WWFlowAsm1in In1 annotation (Placement(transformation(extent={{
             -110,15},{-90,35}})));
   Interfaces.WWFlowAsm1in In2 annotation (Placement(transformation(extent={{
@@ -603,7 +599,7 @@ end mixer2;
 
 model mixer3 "Mixer of 3 ASM1 characterised flows"
 
-  extends WasteWater.Icons.mixer3;
+  extends WasteWater.Icons.Mixer3;
   Interfaces.WWFlowAsm1in In1 annotation (Placement(transformation(extent={{
             -110,25},{-90,45}})));
   Interfaces.WWFlowAsm1in In2 annotation (Placement(transformation(extent={{

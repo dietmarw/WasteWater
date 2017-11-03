@@ -10,7 +10,7 @@ package PreClar "Primary clarifier modelling based on ASM1"
     // to be used for feed forward calculation, e.g. influent data needed
 
     package WWU = Types;
-    extends WasteWater.Icons.preclar1;
+    extends WasteWater.Icons.PreClar;
 
     // tank specific parameters
 

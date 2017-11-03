@@ -3,7 +3,7 @@ package Icons "Icon definitions for the WasteWater library"
 
   extends Modelica.Icons.Library;
 
-  partial block deni "Icon for a denitrification tank"
+  partial block Deni "Icon for a denitrification tank"
     annotation (
       Icon(graphics={
           Rectangle(
@@ -234,9 +234,9 @@ package Icons "Icon definitions for the WasteWater library"
             lineThickness=0.5,
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid)}));
-  end deni;
+  end Deni;
 
-  partial model nitri "Icon for a nitrification tank"
+  partial model Nitri "Icon for a nitrification tank"
 
     annotation (
       Icon(graphics={
@@ -1065,9 +1065,9 @@ package Icons "Icon definitions for the WasteWater library"
             fillColor={192,192,192},
             fillPattern=FillPattern.Solid),
           Line(points={{-90,40},{-53,40}})}));
-  end nitri;
+  end Nitri;
 
-  partial model preclar1 "Icon for a dynamic preclarifier tank"
+  partial model PreClar "Icon for a preclarifier tank"
 
     annotation (
       Icon(graphics={
@@ -1119,13 +1119,9 @@ package Icons "Icon definitions for the WasteWater library"
           Line(
             points={{80,28},{80,6}},
             thickness=0.5),
-          Line(points={{-38,-48},{-36,-44},{-34,-40},{-32,-36},{-30,-32},{-26,
-                -26},{-24,-24},{-22,-22},{-18,-18},{-14,-14},{-12,-12},{-10,-10},
-                {-6,-8},{-2,-6},{2,-4},{8,-2},{14,0},{20,0},{24,0},{28,0}}),
-          Line(points={{38,90},{38,14}}, color={160,160,164}),
           Text(extent={{-100,80},{40,40}}, textString=
                                                "%name")}));
-  end preclar1;
+  end PreClar;
 
   partial model preclar2 "Icon for a static preclarifier tank"
     annotation (
@@ -1647,7 +1643,7 @@ package Icons "Icon definitions for the WasteWater library"
       Documentation(info="Icon for a secondary clarifier"));
   end SecClarSimple;
 
-  partial model blower "Icon for an air blower"
+  partial model Blower "Icon for an air blower"
     annotation (
       Icon(graphics={
           Text(extent={{-91,-70},{80,-99}},  textString=
@@ -1939,9 +1935,9 @@ package Icons "Icon definitions for the WasteWater library"
             pattern=LinePattern.None,
             fillColor={159,223,223},
             fillPattern=FillPattern.Solid)}));
-  end blower;
+  end Blower;
 
-  partial model pump "Icon for a wastewater pump"
+  partial model Pump "Icon for a wastewater pump"
     annotation (Icon(graphics={
           Text(extent={{-100,100},{100,60}},
                                           textString=
@@ -2082,7 +2078,7 @@ package Icons "Icon definitions for the WasteWater library"
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid)}));
-  end pump;
+  end Pump;
 
   partial model FlowSource "Icon for a flow source"
     annotation (
@@ -2421,7 +2417,7 @@ package Icons "Icon definitions for the WasteWater library"
           Text(extent={{-100,90},{99,51}}, textString="%name")}));
   end ControlledDivider2;
 
-  partial model divider2 "Icon for a flow divider into 2 flows"
+  partial model Divider2 "Icon for a flow divider into 2 flows"
     annotation (Icon(coordinateSystem(
           preserveAspectRatio=false,
           extent={{-100,-100},{100,100}},
@@ -2518,9 +2514,9 @@ package Icons "Icon definitions for the WasteWater library"
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid)}));
-  end divider2;
+  end Divider2;
 
-  partial model mixer2 "Icon for a mixer of 2 flows"
+  partial model Mixer2 "Icon for a mixer of 2 flows"
     annotation (Icon(coordinateSystem(
           preserveAspectRatio=false,
           extent={{-100,-100},{100,100}},
@@ -2621,9 +2617,9 @@ package Icons "Icon definitions for the WasteWater library"
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid)}));
 
-  end mixer2;
+  end Mixer2;
 
-  partial model mixer3 "Icon for a mixer of 3 flows"
+  partial model Mixer3 "Icon for a mixer of 3 flows"
     annotation (
       Icon(coordinateSystem(
           preserveAspectRatio=false,
@@ -2765,7 +2761,7 @@ package Icons "Icon definitions for the WasteWater library"
             pattern=LinePattern.None,
             fillColor={191,95,0},
             fillPattern=FillPattern.Solid)}));
-  end mixer3;
+  end Mixer3;
 
   partial model sensor "Icon for a genric sensor"
     parameter String Substance="" "Name of substance to be displayed";
