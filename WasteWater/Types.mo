@@ -3,7 +3,7 @@ package Types "Type definitions for use with the activated sludge models"
 
   extends Modelica.Icons.TypesPackage;
   type VolumeFlowRate = Real (final quantity="VolumeFlowRate", final unit=
-          "m3/d");
+          "m3/s") "Set this to per second for now since 1 sec = 1 day in simulation";
   type MassConcentration = Real (
       final quantity="MassConcentration",
       final unit="mg/l",
