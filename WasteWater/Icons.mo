@@ -1094,12 +1094,12 @@ package Icons "Icon definitions for the WasteWater library"
             points={{80,-6},{90,-6}},
             thickness=0.5),
           Rectangle(
-            extent={{-80,84},{80,-80}},
+            extent={{-80,80},{80,-80}},
             lineColor={0,0,0},
             fillPattern=FillPattern.HorizontalCylinder,
             fillColor={255,191,127}),
           Rectangle(
-            extent={{-90,86},{84,28}},
+            extent={{-80,80},{80,28}},
             lineColor={255,255,255},
             fillColor={255,255,255},
             fillPattern=FillPattern.Solid),
@@ -1123,7 +1123,7 @@ package Icons "Icon definitions for the WasteWater library"
                 -26},{-24,-24},{-22,-22},{-18,-18},{-14,-14},{-12,-12},{-10,-10},
                 {-6,-8},{-2,-6},{2,-4},{8,-2},{14,0},{20,0},{24,0},{28,0}}),
           Line(points={{38,90},{38,14}}, color={160,160,164}),
-          Text(extent={{-100,80},{38,40}}, textString=
+          Text(extent={{-100,80},{40,40}}, textString=
                                                "%name")}));
   end preclar1;
 
