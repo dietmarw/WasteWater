@@ -85,19 +85,14 @@ record WWSystem "Global settings for the waste water system to be modelled."
   parameter Types.MassConcentration Settler_Snd2=6.003165935477e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
   parameter Types.Alkalinity Settler_Salk2=4.437580751343e+000 "Alkalinity" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
 
-
-
-
-
-
     annotation (
       defaultComponentName="WWS",
-      defaultComponentPrefixes="inner",
+      defaultComponentPrefixes="inner parameter",
       missingInnerMessage="
-Your model is using an outer \"WWsystem\" component but
-an inner \"WWsystem\" component is not defined.
+Your model is using an outer \"WWSystem\" component but
+an inner \"WWSystem\" component is not defined.
 For simulation drag WasteWater.WWSystem into your model
-to specify system properties. The default System settings
+to specify system properties. The default system settings
 are used for the current simulation.
 ",    Icon(graphics={
         Rectangle(
