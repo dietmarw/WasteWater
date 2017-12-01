@@ -1476,31 +1476,19 @@ Copyright (C) 2002, Gerald Reichl
                   -106},{40,-86}})));
       equation
 
-        connect(S1.Up, S2.Dn) annotation (Line(points={{-2.22045e-15,-78},{
-                -2.22045e-15,-74}}));
-        connect(S2.Up, S3.Dn) annotation (Line(points={{-2.22045e-15,-59},{
-                -2.22045e-15,-55}}));
-        connect(S3.Up, S4.Dn) annotation (Line(points={{-2.22045e-15,-40},{
-                -2.22045e-15,-36}}));
-        connect(S5.Up, S6.Dn) annotation (Line(points={{-2.22045e-15,-2},{
-                -2.22045e-15,2}}));
-        connect(S6.Up, S7.Dn) annotation (Line(points={{-2.22045e-15,17},{
-                -2.22045e-15,21}}));
-        connect(S7.Up, S8.Dn) annotation (Line(points={{-2.22045e-15,36},{
-                -2.22045e-15,40}}));
-        connect(S9.Up, S10.Dn) annotation (Line(points={{-2.22045e-15,74},{
-                -2.22045e-15,78}}));
-        connect(S4.Up, S5.Dn) annotation (Line(points={{-2.22045e-15,-21},{
-                -2.22045e-15,-17}}));
-        connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
-                -2.22045e-15,59}}));
-        connect(Feed, S8.In) annotation (Line(points={{-98,14},{-98,47.8},{-33,47.8}}));
-        connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-100},{30,
-                -100}}));
-        connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{
-                67.5,57},{100,57}}));
-        connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-100},{-30,
-                -100}}));
+        connect(S1.Up, S2.Dn) annotation (Line(points={{0,-78},{0,-78},{2,-78},{2,-76},{-2,-76},{-2,-74}}));
+        connect(S2.Up, S3.Dn) annotation (Line(points={{0,-59},{0,-58},{0,-58},{2,-58},{-2,-58},{-2,-55}}));
+        connect(S3.Up, S4.Dn) annotation (Line(points={{0,-40},{0,-40},{2,-40},{2,-38},{-2,-38},{-2,-36}}));
+        connect(S5.Up, S6.Dn) annotation (Line(points={{0,-2},{0,-2},{2,-2},{2,0},{-2,0},{-2,2}}));
+        connect(S6.Up, S7.Dn) annotation (Line(points={{0,17},{0,18},{2,18},{2,20},{-2,20},{-2,21}}));
+        connect(S7.Up, S8.Dn) annotation (Line(points={{0,36},{0,38},{0,38},{2,38},{-2,38},{-2,40}}));
+        connect(S9.Up, S10.Dn) annotation (Line(points={{0,74},{0,76},{0,76},{2,76},{-2,76},{-2,78}}));
+        connect(S4.Up, S5.Dn) annotation (Line(points={{0,-21},{0,-20},{0,-20},{2,-20},{-2,-20},{-2,-17}}));
+        connect(S8.Up, S9.Dn) annotation (Line(points={{0,55},{0,56},{2,56},{2,58},{-2,58},{-2,59}}));
+        connect(Feed, S8.In) annotation (Line(points={{-100,14},{-100,47,8},{-35,47,8}}));
+        connect(S1.PQw, Waste) annotation (Line(points={{17,5,-93},{17,5,-96},{30,-96}}));
+        connect(S10.Out, Effluent) annotation (Line(points={{35,85,5},{67,85,5},{67,57},{102,57}}));
+        connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
         // total sludge concentration in clarifier feed
         Xf = 0.75*(Feed.Xs + Feed.Xbh + Feed.Xba + Feed.Xp + Feed.Xi);
@@ -4064,27 +4052,18 @@ Copyright (C) 2000 - 2001, Gerald Reichl
           rXnd=rXnd) annotation (Placement(transformation(extent={{-35,78},{35,93}})));
       equation
 
-        connect(S1.Up, S2.Dn) annotation (Line(points={{-2.22045e-15,-78},{
-                -2.22045e-15,-74}}));
-        connect(S2.Up, S3.Dn) annotation (Line(points={{-2.22045e-15,-59},{
-                -2.22045e-15,-55}}));
-        connect(S3.Up, S4.Dn) annotation (Line(points={{-2.22045e-15,-40},{
-                -2.22045e-15,-36}}));
-        connect(S5.Up, S6.Dn) annotation (Line(points={{-2.22045e-15,-2},{
-                -2.22045e-15,2}}));
-        connect(S6.Up, S7.Dn) annotation (Line(points={{-2.22045e-15,17},{
-                -2.22045e-15,21}}));
-        connect(S7.Up, S8.Dn) annotation (Line(points={{-2.22045e-15,36},{
-                -2.22045e-15,40}}));
-        connect(S9.Up, S10.Dn) annotation (Line(points={{-2.22045e-15,74},{
-                -2.22045e-15,78}}));
-        connect(S4.Up, S5.Dn) annotation (Line(points={{-2.22045e-15,-21},{
-                -2.22045e-15,-17}}));
-        connect(S8.Up, S9.Dn) annotation (Line(points={{-2.22045e-15,55},{
-                -2.22045e-15,59}}));
-        connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67.5,14},{-67.5,9.8},{-35,9.8}}));
-        connect(S1.PQw, Waste) annotation (Line(points={{17.5,-93},{17.5,-96},{30,-96}}));
-        connect(S10.Out, Effluent) annotation (Line(points={{35,85.5},{67.5,85.5},{67.5,57},{102,57}}));
+        connect(S1.Up, S2.Dn) annotation (Line(points={{0,-78},{0,-78},{2,-78},{2,-76},{-2,-76},{-2,-74}}));
+        connect(S2.Up, S3.Dn) annotation (Line(points={{0,-59},{0,-58},{0,-58},{2,-58},{-2,-58},{-2,-55}}));
+        connect(S3.Up, S4.Dn) annotation (Line(points={{0,-40},{0,-40},{2,-40},{2,-38},{-2,-38},{-2,-36}}));
+        connect(S5.Up, S6.Dn) annotation (Line(points={{0,-2},{0,-2},{2,-2},{2,0},{-2,0},{-2,2}}));
+        connect(S6.Up, S7.Dn) annotation (Line(points={{0,17},{0,18},{2,18},{2,20},{-2,20},{-2,21}}));
+        connect(S7.Up, S8.Dn) annotation (Line(points={{0,36},{0,38},{0,38},{2,38},{-2,38},{-2,40}}));
+        connect(S9.Up, S10.Dn) annotation (Line(points={{0,74},{0,76},{0,76},{2,76},{-2,76},{-2,78}}));
+        connect(S4.Up, S5.Dn) annotation (Line(points={{0,-21},{0,-20},{0,-20},{2,-20},{-2,-20},{-2,-17}}));
+        connect(S8.Up, S9.Dn) annotation (Line(points={{0,55},{0,56},{2,56},{2,58},{-2,58},{-2,59}}));
+        connect(Feed, S6.In) annotation (Line(points={{-100,14},{-67,14},{-67,9,8},{-35,9,8}}));
+        connect(S1.PQw, Waste) annotation (Line(points={{17,5,-93},{17,5,-96},{30,-96}}));
+        connect(S10.Out, Effluent) annotation (Line(points={{35,85,5},{67,85,5},{67,57},{102,57}}));
         connect(S1.PQr, Return) annotation (Line(points={{-21,-93},{-21,-96},{-30,-96}}));
 
         // total sludge concentration in clarifier feed
