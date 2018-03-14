@@ -137,7 +137,7 @@ air between blower and nitrification tank.
   end AirFlow;
 
   partial model TankInterface
-    extends Data.ASM1vars;
+    extends Data.ASM1.vars;
     parameter Boolean useAir=false "Enable air port"
       annotation(choices(checkBox=true),Dialog(group="Tank"));
     WWFlow In annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
@@ -166,7 +166,7 @@ air between blower and nitrification tank.
 
     WWU.MassConcentration So_sat "Dissolved oxygen saturation";
     WWU.AerationRate aeration "Ration of air";
-    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+    outer Components.WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
   equation
     So_sat =13.89 + (-0.3825 + (0.007311 - 0.00006588*T)*T)*T
@@ -188,7 +188,7 @@ air between blower and nitrification tank.
   partial model ASMbase "Base class of WWTP modelling by ASMx"
     extends Tank;
 
-   outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+    outer Components.WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
     /* parameters based on the original ASM1 publication based on 15 deg C */
 
@@ -475,8 +475,7 @@ Copyright (C) 2000 - 2002, Gerald Reichl
     connect(WWbase.In, In) annotation (Line(points={{-10,0},{-100,0}}, color={191,95,0}));
     connect(WWbase.Out, Out) annotation (Line(points={{10,0},{100,0}}, color={191,95,0}));
     connect(WWbase.T, T) annotation (Line(points={{-9,4},{-52,4},{-52,40},{-90,40}}, color={0,0,127}));
-    connect(AirIn, WWbase.AirIn) annotation (Line(points={{0,-102},{0,-10.2}},
-                                                                             color={28,108,200}));
+    connect(AirIn, WWbase.AirIn) annotation (Line(points={{0,-100},{0,-10}}, color={28,108,200}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(coordinateSystem(preserveAspectRatio=false)));
   end ASMx;
 
@@ -503,7 +502,7 @@ Copyright (C) 2000 - 2002, Gerald Reichl
      annotation (Placement(transformation(extent={{-100,30},{-80,50}})));
     WWU.AerationRate aeration "Ration of air";
 
-    outer WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+    outer Components.WWSystem WWS annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
   protected
      AirFlow Air;

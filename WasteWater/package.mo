@@ -6,7 +6,8 @@ extends Modelica.Icons.Package;
   import SI=Modelica.SIunits "Importing SIunits on global level";
   import WWU = WasteWater.Types  "Short-cut for WW units";
 
-annotation (uses(Modelica(version="3.2.2")),
+  annotation (preferredView="info",
+  uses(Modelica(version="3.2.2")),
   Documentation(info="<html>
 <p>This package can be used to model and simulate biological municipal
 wastewater treatment plants.</p>

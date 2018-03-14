@@ -130,8 +130,7 @@ package Examples "Series of examples of WW plants"
     Sensors.sensor_TSS         sensor_TSS1 annotation (Placement(transformation(
             extent={{32,20},{48,36}})));
     Modelica.Blocks.Sources.Constant constantInflow[14](k={WWS.Q,WWS.Si,WWS.Ss,WWS.Xi,WWS.Xs,WWS.Xbh,WWS.Xba,WWS.Xp,WWS.So,WWS.Sno,WWS.Snh,WWS.Snd,WWS.Xnd,WWS.Salk}) annotation (Placement(transformation(extent={{-50,70},{-70,90}})));
-    inner WWSystem WWS
-                 annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
+    inner Components.WWSystem WWS annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
   equation
     connect(tank3.Out, divider.In) annotation (Line(points={{10,10},{17,10},{17,4},{20,4}}));
     connect(mixer.Out, tank1.In) annotation (Line(points={{-80,29.6},{-77,29.6},{-77,10},{-71,10}}));
