@@ -1042,7 +1042,6 @@ Parameters:
   Xt  -  threshold value for Xtss [mg/l]
 "));
   end JenaSecClarModTakacs;
-
   annotation (
     Documentation(info="This package contains example ASM1 wastewater treatment plant models to demonstrate the usage of
 the WasteWater.ASM1 library.

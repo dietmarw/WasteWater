@@ -49,7 +49,5 @@ email: <a href=\"mailto:gerald.reichl@tu-ilmenau.de\">gerald.reichl@tu-ilmenau.d
 <h5>version 2.0.1 (2003)</h5>
 <p>First official version of the library released at 3rd Modelica Conference.</p>
 </html>"),
-  version="2.1.1",
-  conversion(from(version="2.0.1", script="Resources/Scripts/ConvertFromWasteWater_2.0.1.mos"),
-      noneFromVersion="2.1.0"));
+  version="3.0.0-alpha.1");
 end WasteWater;

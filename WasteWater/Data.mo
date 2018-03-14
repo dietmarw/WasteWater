@@ -108,5 +108,4 @@ package Data
       annotation (defaultComponentName="ini");
     end SmallPlantIni;
   end ASM1;
-
 end Data;

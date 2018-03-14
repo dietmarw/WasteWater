@@ -60,7 +60,6 @@ Parameters:
 "));
 end deni;
 
-
 model nitri "ASM2d nitrification tank"
   // nitrification (aerated) tank, based on the ASM2d model
 
@@ -130,7 +129,6 @@ Parameters:
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
 end nitri;
-
 
 model precipitation "Phosphorus precipitation tank"
 
@@ -202,7 +200,6 @@ Parameters:
  Mpre - molar mass of precipitant [g/mol]
 "));
 end precipitation;
-
 
 model SecClarModTakacs "ASM2d Secondary Clarifier Model based on Takacs"
 
@@ -349,7 +346,6 @@ Parameters:
 "));
 end SecClarModTakacs;
 
-
 model blower "Blower for the aeration of the nitrification tanks"
 
   package WWU = WasteWater.Types;
@@ -385,7 +381,6 @@ Parameter:
 
 "));
 end blower;
-
 
 model pump "ASM2d wastewater pump"
 
@@ -442,7 +437,6 @@ Parameter:
 
 "));
 end pump;
-
 
 model FlowSource "Flowsource"
 
@@ -503,7 +497,6 @@ The dimension of InPort is 1.
           points={{4,-54},{4,-68},{88,-68}},
           thickness=0.5)}));
 end FlowSource;
-
 
 model WWSource "Wastewater source"
 
@@ -566,7 +559,6 @@ Parameters:
    - all ASM2d conversion factors for the calculation of Xtss."));
 end WWSource;
 
-
 model EffluentSink "Receiving water (river)"
   // only for graphical termination in diagram layer, no equations needed
 
@@ -578,7 +570,6 @@ model EffluentSink "Receiving water (river)"
 "));
 end EffluentSink;
 
-
 model SludgeSink "Wastesludge sink"
   // only for graphical termination in diagram layer, no equations needed
 
@@ -589,7 +580,6 @@ model SludgeSink "Wastesludge sink"
     Documentation(info="This component terminates the waste sludge stream of an ASM2d wastewater treatment plant model.
 Storage or further sludge treatment is not jet considered."));
 end SludgeSink;
-
 
 model ControlledDivider2 "Controlled flow divider"
   // divides one flow of wastewater into 2 Flows controlled by the
@@ -660,7 +650,6 @@ Is u.signal=1, the flow goes to output 1 (Out1) and is u.signal=0, the flow goes
 The concentrations of the outport-flows are equal to the concentration at inport."));
 end ControlledDivider2;
 
-
 model divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
@@ -721,7 +710,6 @@ equation
           "This component divides one ASM2d wastewater flow into two ASM2d wastewater flows."));
 end divider2;
 
-
 model mixer2 "Mixer of two ASM2d characterised flows"
 
   extends WasteWater.Icons.Mixer2;
@@ -759,7 +747,6 @@ equation
     Documentation(info=
           "This component mixes two flows of wastewater (ASM2d) of different concentration and different amount."));
 end mixer2;
-
 
 model mixer3 "Mixer of 3 ASM2d characterised flows"
 
@@ -811,7 +798,6 @@ equation
           "This component mixes 3 flows of wastewater (ASM2d) of different concentration and different amount."));
 end mixer3;
 
-
 model sensor_COD "Ideal sensor to measure chemical oxygen demand (COD)"
 
   extends WasteWater.Icons.sensor_COD;
@@ -831,7 +817,6 @@ of ASM2d wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_COD;
-
 
 model sensor_NH "Ideal sensor to measure ammonium nitrogen"
 
@@ -853,7 +838,6 @@ further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_NH;
 
-
 model sensor_NO "Ideal sensor to measure nitrate nitrogen"
 
   extends WasteWater.Icons.sensor_NO;
@@ -873,7 +857,6 @@ of ASM2d wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_NO;
-
 
 model sensor_O2 "Ideal sensor to measure dissolved oxygen concentration"
 
@@ -935,7 +918,6 @@ further processed with blocks of the Modelica.Blocks library).
         Line(points={{50,0},{88,0}})}));
 end sensor_O2;
 
-
 model sensor_PO "Ideal sensor to measure dissolved phosphorus"
 
   extends WasteWater.Icons.sensor_PO;
@@ -955,7 +937,6 @@ of ASM2d wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_PO;
-
 
 model sensor_Q
   "Ideal sensor to measure the flow rate of an ASM2d wastewater stream"
@@ -1003,7 +984,6 @@ the Modelica.Blocks library).
 "));
 end sensor_Q;
 
-
 model sensor_TKN "Ideal TKN and total nitrogen sensor"
 
   extends WasteWater.Icons.sensor_TKN;
@@ -1030,7 +1010,6 @@ signal[2] - N_total
 "));
 end sensor_TKN;
 
-
 model sensor_TP
   "Ideal sensor to measure the total phosphorus concentration in ASM2d wastewater"
 
@@ -1051,7 +1030,6 @@ of ASM2d wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_TP;
-
 
 model sensor_TSS
   "Ideal sensor to measure total suspended solids concentration (ASM2d)"

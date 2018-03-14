@@ -47,7 +47,6 @@ Parameters:
 "));
 end deni;
 
-
 model nitri "ASM1 nitrification tank"
   // nitrification (aerated) tank, based on the ASM1 model
 
@@ -107,7 +106,6 @@ Parameters:
   R_air - specific oxygen feed factor [g O2/(m3*m)]
 "));
 end nitri;
-
 
 model SecClarModTakacs "Secondary Clarifier ASM1 Model based on Takacs"
 
@@ -241,7 +239,6 @@ Parameters:
 "));
 end SecClarModTakacs;
 
-
 model blower "Blower for the aeration of the nitrification tanks"
 
   extends WasteWater.Icons.Blower;
@@ -279,7 +276,6 @@ Parameter:
 
 "));
 end blower;
-
 
 model pump "ASM1 wastewater pump"
 
@@ -327,7 +323,6 @@ Parameter:
 
 "));
 end pump;
-
 
 model FlowSource "Flowsource"
 
@@ -389,7 +384,6 @@ The dimension of InPort is 1.
   1 volumeflowrate Q of incoming wastewater [m3/d]"));
 end FlowSource;
 
-
 model WWSource "Wastewater source"
 
   extends WasteWater.Icons.WWSource;
@@ -435,7 +429,6 @@ The dimension of InPort is 14.
 "));
 end WWSource;
 
-
 model EffluentSink "Receiving water (river)"
   // only for graphical termination in diagram layer, no equation needed
 
@@ -447,7 +440,6 @@ model EffluentSink "Receiving water (river)"
 "));
 end EffluentSink;
 
-
 model SludgeSink "Wastesludge sink"
   // only for graphical termination in diagram layer, no equation needed
 
@@ -457,7 +449,6 @@ model SludgeSink "Wastesludge sink"
     Documentation(info="This component terminates the waste sludge stream of an ASM1 wastewater treatment plant model.
 Storage or further sludge treatment is not jet considered."));
 end SludgeSink;
-
 
 model ControlledDivider2 "Controlled flow divider"
   // divides one flow of wastewater into 2 Flows controlled by the
@@ -515,7 +506,6 @@ Is u.signal=1, the flow goes to output 1 (Out1) and is u.signal=0, the flow goes
 The concentrations of the outport-flows are equal to the concentration at inport."));
 end ControlledDivider2;
 
-
 model divider2 "Flowdivider"
 
     // divides one flow of wastewater into 2 Flows; one amount needs to be specified
@@ -564,7 +554,6 @@ equation
           "This component divides one ASM1 wastewater flow into two ASM1 wastewater flows."));
 end divider2;
 
-
 model mixer2 "Mixer of two ASM1 characterised flows"
 
   extends WasteWater.Icons.Mixer2;
@@ -595,7 +584,6 @@ equation
     Documentation(info=
           "This component mixes two flows of wastewater (ASM1) of different concentration and different amount."));
 end mixer2;
-
 
 model mixer3 "Mixer of 3 ASM1 characterised flows"
 
@@ -637,7 +625,6 @@ equation
           "This component mixes 3 flows of wastewater (ASM1) of different concentration and different amount."));
 end mixer3;
 
-
 model sensor_COD "Ideal sensor to measure chemical oxygen demand (COD)"
   extends WasteWater.Icons.sensor_COD;
   Interfaces.WWFlowAsm1in In annotation (Placement(transformation(extent={{-10,
@@ -656,7 +643,6 @@ of ASM1 wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_COD;
-
 
 model sensor_NH "Ideal sensor to measure ammonium nitrogen"
 
@@ -677,7 +663,6 @@ further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_NH;
 
-
 model sensor_NO "Ideal sensor to measure nitrate nitrogen"
 
   extends WasteWater.Icons.sensor_NO;
@@ -696,7 +681,6 @@ of ASM1 wastewater and provides the result as output signal (to be
 further processed with blocks of the Modelica.Blocks library).
 "));
 end sensor_NO;
-
 
 model sensor_O2 "Ideal sensor to measure dissolved oxygen concentration"
 
@@ -757,7 +741,6 @@ further processed with blocks of the Modelica.Blocks library).
                                              "%name")}));
 end sensor_O2;
 
-
 model sensor_Q
   "Ideal sensor to measure the flow rate of an ASM1 wastewater stream"
 
@@ -797,7 +780,6 @@ the Modelica.Blocks library).
 "));
 end sensor_Q;
 
-
 model sensor_TKN "Ideal TKN and total nitrogen sensor"
 
   extends WasteWater.Icons.sensor_TKN;
@@ -822,7 +804,6 @@ signal[1] - TKN
 signal[2] - N_total
 "));
 end sensor_TKN;
-
 
 model sensor_TSS
   "Ideal sensor to measure total suspended solids concentration (ASM1)"
