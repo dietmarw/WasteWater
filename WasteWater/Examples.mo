@@ -92,7 +92,7 @@ package Examples "Series of examples of WW plants"
                 blower2(Q_max=34574.2654508612) annotation (Placement(
           transformation(extent={{-10,-60},{10,-40}})));
     Sensors.sensor_O2
-                   sensor_O2 annotation (Placement(transformation(extent={{0,30},{20,50}})));
+                   sensor_O2 annotation (Placement(transformation(extent={{4,30},{24,50}})));
     Modelica.Blocks.Math.Feedback Feedback annotation (Placement(transformation(
             extent={{62,50},{82,70}})));
     Modelica.Blocks.Continuous.PI PI1(T=0.001, k=500, initType=Modelica.Blocks.Types.Init.InitialState)
@@ -132,48 +132,48 @@ package Examples "Series of examples of WW plants"
     Modelica.Blocks.Sources.Constant constantInflow[14](k={WWS.Q,WWS.Si,WWS.Ss,WWS.Xi,WWS.Xs,WWS.Xbh,WWS.Xba,WWS.Xp,WWS.So,WWS.Sno,WWS.Snh,WWS.Snd,WWS.Xnd,WWS.Salk}) annotation (Placement(transformation(extent={{-50,70},{-70,90}})));
     inner Components.WWSystem WWS annotation (Placement(transformation(extent={{-120,-100},{-100,-80}})));
   equation
-    connect(tank3.Out, divider.In) annotation (Line(points={{10,10},{17,10},{17,4},{20,4}}));
-    connect(mixer.Out, tank1.In) annotation (Line(points={{-80,29.6},{-77,29.6},{-77,10},{-71,10}}));
-    connect(mixer.In1, WWSource.Out) annotation (Line(points={{-100,33.5},{-100,34},{-110,34},{-110,73},{-99.8,73}}));
-    connect(blower2.AirOut, tank3.AirIn) annotation (Line(points={{0,-40},{0,0}}));
     connect(Feedback.y, PI1.u) annotation (Line(points={{81,60},{86,60}}));
     connect(PI1.y, blower2.u) annotation (Line(points={{109,60},{118,60},{118,-80},{16,-80},{16,-53},{11,-53}}));
-    connect(divider.Out2, RecyclePump.In) annotation (Line(points={{40,1.6},{46,1.6},{46,-8.7},{-70,-8.7}}));
-    connect(RecyclePump.Out, mixer.In3) annotation (Line(points={{-90,-14.8},{-104,-14.8},{-104,26},{-100,26},{-100,25.5}}));
-    connect(ReturnPump.Out, mixer.In2) annotation (Line(points={{20,-32.8},{20,-32},{-112,-32},{-112,29.5},{-100,29.5}}));
     connect(sensor_O2.So, Feedback.u2)
-      annotation (Line(points={{19.8,40},{72,40},{72,52}}));
+      annotation (Line(points={{23.8,40},{72,40},{72,52}}));
     connect(OxygenSetpoint.y, Feedback.u1)
       annotation (Line(points={{50,60},{64,60}}, color={0,0,255}));
     connect(Constant1.y, blower1.u) annotation (Line(points={{-59,-70},{-13.2,-70},{-13.2,-53},{-19,-53}},
                                           color={0,0,255}));
-    connect(WastePump.Out, WasteSludge.In) annotation (Line(points={{80,-47.2},{84,-47.2},{84,-47.2},{88,-47.2}}));
     connect(WastePump.u, Constant2.y)
       annotation (Line(points={{61,-47.4},{48,-47.4},{48,-60},{41,-60}},
                                                                      color={0,0,
             255}));
-    connect(tank2.Out, tank3.In) annotation (Line(points={{-20,10},{-10,10}}));
-    connect(tank1.Out, tank2.In) annotation (Line(points={{-51,10},{-40,10}}));
-    connect(blower1.AirOut, tank2.AirIn) annotation (Line(points={{-30,-40},{-30,0}}));
     connect(Constant1.y, RecyclePump.u) annotation (Line(points={{-59,-70},{-49,-70},{-49,-14.6},{-71,-14.6}},
                                          color={0,0,255}));
-    connect(Settler.Return, ReturnPump.In) annotation (Line(points={{57,0.4},{57,-26.7},{40,-26.7}}));
-    connect(WastePump.In, Settler.Waste) annotation (Line(points={{60,-53.3},{52,-53.3},{52,-31},{63,-31},{63,0.4}}));
-    connect(sensor_NH1.In, Settler.Effluent) annotation (Line(points={{88,24.5},{88,15.7},{70.2,15.7}}));
-    connect(sensor_NO1.In, Settler.Effluent) annotation (Line(points={{108,24},{108,15.7},{70.2,15.7}}));
-    connect(sensor_TKN1.In, Settler.Effluent) annotation (Line(points={{108,8},{108,15.7},{70.2,15.7}}));
-    connect(sensor_COD1.In, Settler.Effluent) annotation (Line(points={{88,8},{88,15.7},{70.2,15.7}}));
     connect(Constant2.y, ReturnPump.u) annotation (Line(points={{41,-60},{48,-60},{48,-32.6},{39,-32.6}},
                                            color={0,0,255}));
-    connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,6.2},{44.5,6.2},{44.5,11.4},{50,11.4}}));
-    connect(sensor_TSS1.In, divider.Out1) annotation (Line(points={{40,20},{40,6.2}}));
 
     connect(constantInflow.y, WWSource.data) annotation (Line(points={{-71,80},{-81,80}}, color={0,0,127}));
     connect(Temperature.y, tank1.T) annotation (Line(points={{-83.4,54},{-74,54},{-74,14},{-70,14}}, color={0,0,127}));
     connect(tank2.T, Temperature.y) annotation (Line(points={{-39,14},{-44,14},{-44,54},{-83.4,54}}, color={0,0,127}));
     connect(tank3.T, Temperature.y) annotation (Line(points={{-9,14},{-16,14},{-16,54},{-83.4,54}},  color={0,0,127}));
-    connect(Effluent.In, Settler.Effluent) annotation (Line(points={{90,-20},{80,-20},{80,15.7},{70.2,15.7}}, color={191,95,0}));
-    connect(sensor_O2.In, tank3.Out) annotation (Line(points={{10,30},{10,10}},        color={191,95,0}));
+    connect(Effluent.In, Settler.Effluent) annotation (Line(points={{90,-20},{70,-20},{70,15.7},{70.2,15.7}}, color={191,95,0}));
+    connect(sensor_O2.In, tank3.Out) annotation (Line(points={{14,30},{14,10},{10,10}},color={191,95,0}));
+    connect(WWSource.Out, mixer.In1) annotation (Line(points={{-99.8,73},{-112,73},{-112,34},{-100,34},{-100,33.5}}, color={191,95,0}));
+    connect(mixer.In2, ReturnPump.Out) annotation (Line(points={{-100,29.5},{-112,29.5},{-112,-32.8},{20,-32.8}}, color={191,95,0}));
+    connect(RecyclePump.Out, mixer.In3) annotation (Line(points={{-90,-14.8},{-108,-14.8},{-108,25.5},{-100,25.5}}, color={191,95,0}));
+    connect(mixer.Out, tank1.In) annotation (Line(points={{-80,29.6},{-76,29.6},{-76,10},{-71,10}}, color={191,95,0}));
+    connect(tank1.Out, tank2.In) annotation (Line(points={{-51,10},{-40,10}}, color={191,95,0}));
+    connect(tank2.Out, tank3.In) annotation (Line(points={{-20,10},{-10,10}}, color={191,95,0}));
+    connect(blower1.AirOut, tank2.AirIn) annotation (Line(points={{-30,-40},{-30,0}}, color={28,108,200}));
+    connect(blower2.AirOut, tank3.AirIn) annotation (Line(points={{0,-40},{0,-40},{0,0}}, color={28,108,200}));
+    connect(tank3.Out, divider.In) annotation (Line(points={{10,10},{16,10},{16,4},{20,4}}, color={191,95,0}));
+    connect(divider.Out1, sensor_TSS1.In) annotation (Line(points={{40,6.2},{40,20}}, color={191,95,0}));
+    connect(sensor_NH1.In, Settler.Effluent) annotation (Line(points={{88,24.5},{88,16},{70.2,16},{70.2,15.7}}, color={191,95,0}));
+    connect(sensor_COD1.In, Settler.Effluent) annotation (Line(points={{88,8},{88,16},{70.2,16},{70.2,15.7}}, color={191,95,0}));
+    connect(sensor_NO1.In, Settler.Effluent) annotation (Line(points={{108,24},{108,16},{70.2,16},{70.2,15.7}}, color={191,95,0}));
+    connect(sensor_TKN1.In, Settler.Effluent) annotation (Line(points={{108,8},{108,16},{70.2,16},{70.2,15.7}}, color={191,95,0}));
+    connect(Settler.Waste, WastePump.In) annotation (Line(points={{63,0.4},{63,-34},{54,-34},{54,-53.3},{60,-53.3}}, color={191,95,0}));
+    connect(Settler.Return, ReturnPump.In) annotation (Line(points={{57,0.4},{57,-26.7},{40,-26.7}}, color={191,95,0}));
+    connect(WastePump.Out, WasteSludge.In) annotation (Line(points={{80,-47.2},{84,-47.2},{84,-47.2},{88,-47.2}}, color={191,95,0}));
+    connect(RecyclePump.In, divider.Out2) annotation (Line(points={{-70,-8.7},{44,-8.7},{44,1.6},{40,1.6}}, color={191,95,0}));
+    connect(divider.Out1, Settler.Feed) annotation (Line(points={{40,6.2},{40,6},{44,6},{44,11.4},{50,11.4}}, color={191,95,0}));
     annotation (
       Diagram(coordinateSystem(
           preserveAspectRatio=false,
