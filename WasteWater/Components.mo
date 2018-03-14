@@ -3,8 +3,8 @@ package Components "Main components in order to build a WW plant"
   record WWSystem "Global settings for the waste water system to be modelled."
 
     /* General */
-    parameter Types.BioTreatment BioTreat=WasteWater.Types.BioTreatment.ASM1 "Type of biologial treatment";
-    parameter Real PI1_x=-3.511076570565e-004 "Start output of controller";
+    parameter Types.BioTreatment BioTreat=WasteWater.Types.BioTreatment.ASM1 "Type of biologial treatment (no effect yet)";
+    parameter Real PI1_x=-0.0003511076570565 "Start output of controller";
 
     /* Inflow [15]*/
     //    parameter Boolean useCI=true "Use constant inflow?"; //not used yet
@@ -25,66 +25,66 @@ package Components "Main components in order to build a WW plant"
     parameter Types.Alkalinity Salk=7 "Alkalinity" annotation (Dialog(tab="Inflow"));
 
     /* Tank 1 - denitrification */
-    parameter Types.MassConcentration Tank1_Si=3.000000000000e+001 "Soluble inert organic matter" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Ss=2.395032857582e+000 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xi=1.275518549259e+003 "Particulate inert organic matter" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xs=3.770076754487e+001 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xbh=1.956193873766e+003 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xba=8.829237725627e+001 "Active autotrophic biomass" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xp=7.087641710603e+002 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_So=7.377559296960e-003 "Dissolved oxygen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Sno=2.060772419090e+000 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Snh=8.182199118905e+000 "Ammonium nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Snd=5.508870585039e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.MassConcentration Tank1_Xnd=2.635166937210e+000 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
-    parameter Types.Alkalinity Tank1_Salk=5.179082991135e+000 "Alkalinity" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Si=30 "Soluble inert organic matter" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Ss=2.395032857582 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xi=1275.518549259 "Particulate inert organic matter" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xs=37.70076754487 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xbh=1956.193873766 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xba=88.29237725627 "Active autotrophic biomass" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xp=708.7641710603 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_So=0.007377559296960 "Dissolved oxygen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Sno=2.060772419090 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Snh=8.182199118905 "Ammonium nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Snd=0.5508870585039 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.MassConcentration Tank1_Xnd=2.635166937210 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
+    parameter Types.Alkalinity Tank1_Salk=5.179082991135 "Alkalinity" annotation (Dialog(tab="Tank 1", group="Tank 1 - denitrification"));
     /* Tank 2 */
-    parameter Types.MassConcentration Tank2_Si=3.000000000000e+001 "Soluble inert organic matter" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Ss=2.463117211568e+000 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xi=1.278333736389e+003 "Particulate inert organic matter" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xs=2.140590310375e+001 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xbh=1.966614626250e+003 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xba=8.900572493248e+001 "Active autotrophic biomass" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xp=7.113292476107e+002 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_So=3.632593914266e+000 "Dissolved oxygen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Sno=4.856770069816e+000 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Snh=5.478663911860e+000 "Ammonium nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Snd=7.252693834073e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.MassConcentration Tank2_Xnd=1.586608768203e+000 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
-    parameter Types.Alkalinity Tank2_Salk=4.782438895247e+000 "Alkalinity" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Si=30 "Soluble inert organic matter" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Ss=2.463117211568 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xi=1278.333736389 "Particulate inert organic matter" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xs=21.40590310375 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xbh=1966.614626250 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xba=89.00572493248 "Active autotrophic biomass" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xp=711.3292476107 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_So=3.632593914266 "Dissolved oxygen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Sno=4.856770069816 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Snh=5.478663911860 "Ammonium nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Snd=0.7252693834073 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.MassConcentration Tank2_Xnd=1.586608768203 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
+    parameter Types.Alkalinity Tank2_Salk=4.782438895247 "Alkalinity" annotation (Dialog(tab="Tank 2", group="Tank 2 - nitrification"));
 
     /* Tank 3 */
-    parameter Types.MassConcentration Tank3_Si=3.000000000000e+001 "Soluble inert organic matter" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Ss=1.768379818970e+000 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xi=1.280658681727e+003 "Particulate inert organic matter" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xs=1.342037061251e+001 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xbh=1.971253187539e+003 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xba=8.953776792719e+001 "Active autotrophic biomass" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xp=7.135293892258e+002 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_So=1.499999536940e+000 "Dissolved oxygen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Sno=7.023954787236e+000 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Snh=3.469832897751e+000 "Ammonium nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Snd=6.330054822579e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.MassConcentration Tank3_Xnd=1.058875620146e+000 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
-    parameter Types.Alkalinity Tank3_Salk=4.485176510073e+000 "Alkalinity" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Si=30 "Soluble inert organic matter" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Ss=1.768379818970 "Readily biodegradable substrate" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xi=1280.658681727 "Particulate inert organic matter" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xs=13.42037061251 "Slowly biodegradable substrate" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xbh=1971.253187539 "Active heterotrophic biomass" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xba=89.53776792719 "Active autotrophic biomass" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xp=713.5293892258 "Particulate products from biomass decay" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_So=1.499999536940 "Dissolved oxygen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Sno=7.023954787236 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Snh=3.469832897751 "Ammonium nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Snd=0.6330054822579 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.MassConcentration Tank3_Xnd=1.058875620146 "Particulate biodegradable organic nitrogen" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
+    parameter Types.Alkalinity Tank3_Salk=4.485176510073 "Alkalinity" annotation (Dialog(tab="Tank 3", group="Tank 3 - nitrification"));
 
     /* Settler */
     parameter SI.Length Settler_hs=5.029601648736e-001
       "Height of sludge layer" annotation (Dialog(tab="Settler"));
-    parameter Types.MassConcentration Settler_Si1=3.000000000000e+001 "Soluble inert organic matter" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_Ss1=1.681287279702e+000 "Readily biodegradable substrate" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_So1=1.499999390854e+000 "Dissolved oxygen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_Sno1=7.168869418367e+000 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_Snh1=2.943675968574e+000 "Ammonium nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_Snd1=6.126843777685e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.Alkalinity Settler_Salk1=4.461450405862e+000 "Alkalinity" annotation (Dialog(tab="Settler", group="First stirrer tank"));
-    parameter Types.MassConcentration Settler_Si2=3.000000000000e+001 "Soluble inert organic matter" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.MassConcentration Settler_Ss2=1.635315887679e+000 "Readily biodegradable substrate" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.MassConcentration Settler_So2=1.499999562861e+000 "Dissolved oxygen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.MassConcentration Settler_Sno2=7.338549109702e+000 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.MassConcentration Settler_Snh2=2.791485011898e+000 "Ammonium nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.MassConcentration Settler_Snd2=6.003165935477e-001 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
-    parameter Types.Alkalinity Settler_Salk2=4.437580751343e+000 "Alkalinity" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_Si1=30 "Soluble inert organic matter" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_Ss1=1.681287279702 "Readily biodegradable substrate" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_So1=1.499999390854 "Dissolved oxygen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_Sno1=7.168869418367 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_Snh1=2.943675968574 "Ammonium nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_Snd1=0.6126843777685 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.Alkalinity Settler_Salk1=4.461450405862 "Alkalinity" annotation (Dialog(tab="Settler", group="First stirrer tank"));
+    parameter Types.MassConcentration Settler_Si2=30 "Soluble inert organic matter" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_Ss2=1.635315887679 "Readily biodegradable substrate" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_So2=1.499999562861 "Dissolved oxygen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_Sno2=7.338549109702 "Nitrate and nitrite nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_Snh2=2.791485011898 "Ammonium nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.MassConcentration Settler_Snd2=0.6003165935477 "Soluble biodegradable organic nitrogen" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
+    parameter Types.Alkalinity Settler_Salk2=4.437580751343 "Alkalinity" annotation (Dialog(tab="Settler", group="Second stirrer tank"));
 
       annotation (
         defaultComponentName="WWS",
