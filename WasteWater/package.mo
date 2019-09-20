@@ -7,7 +7,7 @@ extends Modelica.Icons.Package;
   import WWU = WasteWater.Types  "Short-cut for WW units";
 
   annotation (preferredView="info",
-  uses(Modelica(version="3.2.2")),
+  uses(Modelica(version="3.2.3")),
   Documentation(info="<html>
 <p>This package can be used to model and simulate biological municipal
 wastewater treatment plants.</p>
@@ -49,5 +49,6 @@ email: <a href=\"mailto:gerald.reichl@tu-ilmenau.de\">gerald.reichl@tu-ilmenau.d
 <h5>version 2.0.1 (2003)</h5>
 <p>First official version of the library released at 3rd Modelica Conference.</p>
 </html>"),
-  version="3.0.0-alpha.1");
+  version="3.0.0-alpha.2",
+  conversion(noneFromVersion="3.0.0-alpha.1"));
 end WasteWater;

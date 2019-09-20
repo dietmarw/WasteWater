@@ -962,12 +962,12 @@ Copyright (C) 2000 - 2001, Gerald Reichl
 
 
     package Haertel "Secondary settling tank modelling by Haertel (ASM1)"
-      extends Modelica.Icons.Library;
+      extends Modelica.Icons.Package;
 
       package Interfaces
         "Connectors and partial models for ASM1 Secondary Clarifier Model by Haertel"
 
-        extends Modelica.Icons.Library;
+        extends Modelica.Icons.Package;
 
         connector UpperLayerPin "Connector above influent layer"
 
@@ -1979,11 +1979,11 @@ Copyright (C) 2002 - 2003, Gerald Reichl
     end Haertel;
 
     package Krebs "Secondary settling tank modelling by Krebs (ASM1)"
-      extends Modelica.Icons.Library;
+      extends Modelica.Icons.Package;
 
       package Interfaces "Partial models for Secondary Clarifier Model by Krebs"
 
-        extends Modelica.Icons.Library;
+        extends Modelica.Icons.Package;
 
         partial model SCVar "partial models providing variables"
           package WWU = WasteWater.Types;
@@ -2255,12 +2255,12 @@ Copyright (C) 2003, Gerald Reichl
     end Krebs;
 
     package Otterpohl "Secondary settling tank modelling by Otterpohl"
-      extends Modelica.Icons.Library;
+      extends Modelica.Icons.Package;
 
       package Interfaces
         "Connectors and partial ASM1 models for Secondary Clarifier Model by Otterpohl"
 
-        extends Modelica.Icons.Library;
+        extends Modelica.Icons.Package;
 
         connector UpperLayerPin "Connector above influent layer"
 
@@ -3331,7 +3331,7 @@ Copyright (C) 2003, Gerald Reichl
     end Otterpohl;
 
     package Simple "Simple ASM1 Secondary clarifier model"
-      extends Modelica.Icons.Library;
+      extends Modelica.Icons.Package;
 
       model SimpleSecClarMod "Simple ASM1 Secondary Clarifier Model"
 
@@ -3594,12 +3594,12 @@ Copyright (C) 2002, Gerald Reichl
     end Simple;
 
     package Takacs "Secondary settling tank modelling by Takacs"
-      extends Modelica.Icons.Library;
+      extends Modelica.Icons.Package;
 
       package Interfaces
         "Connectors and partial models for Secondary Clarifier Model by Takacs"
 
-        extends Modelica.Icons.Library;
+        extends Modelica.Icons.Package;
 
         connector UpperLayerPin "Connector above influent layer"
 
